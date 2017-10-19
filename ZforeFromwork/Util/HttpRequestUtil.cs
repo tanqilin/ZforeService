@@ -13,8 +13,6 @@ namespace ZforeFromwork.Util
 {
     public class HttpRequestUtil
     {
-        private static string logPath = @"D:\MyServiceLog.txt";
-
         public static void HttpRequest()
         {
             Thread thread1 = new Thread(new ThreadStart(ReadDataBase));
