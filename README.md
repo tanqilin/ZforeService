@@ -1,2 +1,4 @@
-# ZforeService
+﻿# ZforeService
 数据同步服务
+
+【2017-10-19 09:59】:上传数据库同步服务
