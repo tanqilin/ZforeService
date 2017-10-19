@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 using ZforeFromwork.Model;
 
 namespace ZforeFromwork.Util
@@ -12,15 +14,46 @@ namespace ZforeFromwork.Util
     /// </summary>
     public class XmlUtil
     {
-        public static Config ReadConfig()
+        #region 读取配置文件
+
+        public static Config ReadConfig(string path)
         {
             Config config = new Config();
+            
+            // 文件存在
+            if (File.Exists(path))
+            {
+                XDocument doc = XDocument.Load(path);
+                if (doc != null)
+                {
+                    IEnumerable<XElement> elementlist = doc.Root.Elements("System");
 
-            config.projectNum = "5201314";
-            config.projectName = "未来方舟D1组团";
-            config.onloadUrl = "http://127.0.0.1/";
-
+                    // 找到System节点
+                    foreach (XElement item in elementlist)
+                    {
+                        // 遍历 System下得节点
+                        foreach (XElement item1 in item.Elements())
+                        {
+                            switch (item1.Name.ToString())
+                            {
+                                case "ProjectNum": config.projectNum = item1.Value;break;
+                                case "ProjectName": config.projectName = item1.Value; break;
+                                case "OnloadUrl": config.onloadUrl = item1.Value; break;
+                            }       
+                        }
+                    }
+                }
+                else
+                {
+                    config = null;
+                }
+            }
+            else
+            {
+                config = null;
+            }
             return config;
         }
+        #endregion
     }
 }
