@@ -28,9 +28,21 @@ namespace ZforeFromwork.Util
                 LogUtil.MsgLog("线程启动！");
                 Thread.Sleep(5000);
 
+                // 根据网络状况同步信息
+                if (!NetStateUtil.LocalConnectionStatus())
+                {
+                    LogUtil.MsgLog("网络无连接！");
+                    continue;
+                }
+                LogUtil.MsgLog("网络已连接！");
+
                 // 从数据库读取数据
                 ReadDatabase read = new ReadDatabase();
                 var data = read.ReadHumanInfo("男");
+
+                // 调用webservice例子
+                UploadWebservice.UploadWebservice webservice = new UploadWebservice.UploadWebservice();
+                string result = webservice.HelloWorld("---- web-service ------");
 
                 foreach (Human item in data)
                 {

@@ -1,19 +1,10 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Configuration.Install;
-using System.Data;
-using System.Drawing;
-using System.Linq;
 using System.ServiceProcess;
-using System.Text;
-using System.Threading.Tasks;
+using System.Web.Services.Description;
 using System.Windows.Forms;
-using System.Web;
 using ZforeFromwork.Util;
-using System.Data.SqlClient;
-using ZforeFromwork.Model;
 
 namespace ZforeServiceClient
 {

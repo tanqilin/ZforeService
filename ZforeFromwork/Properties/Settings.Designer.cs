@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ZforeServiceClient.Properties {
+namespace ZforeFromwork.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
@@ -27,9 +27,9 @@ namespace ZforeServiceClient.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
         [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:64475/UploadWebservice.asmx")]
-        public string ZforeServiceClient_UploadWebservice_UploadWebservice {
+        public string ZforeFromwork_UploadWebservice_UploadWebservice {
             get {
-                return ((string)(this["ZforeServiceClient_UploadWebservice_UploadWebservice"]));
+                return ((string)(this["ZforeFromwork_UploadWebservice_UploadWebservice"]));
             }
         }
     }
