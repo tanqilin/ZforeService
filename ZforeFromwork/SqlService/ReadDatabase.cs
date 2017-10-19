@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ZforeFromwork.Model;
+using ZforeFromwork.Util;
 
 namespace ZforeFromwork.SqlService
 {
@@ -27,6 +28,7 @@ namespace ZforeFromwork.SqlService
                 SqlCommand command = new SqlCommand(sql, context.Connection);
                 SqlDataReader dr = command.ExecuteReader();
 
+                // 遍历获取到的数据
                 while (dr.Read())
                 {
                     Human human = new Human
@@ -42,7 +44,8 @@ namespace ZforeFromwork.SqlService
             }
             catch (Exception ex)
             {
-
+                LogUtil.ErrorLog("======== 数据库数据读取错误 =======！");
+                LogUtil.ErrorLog(ex.StackTrace);
             }
             return humans;
         }

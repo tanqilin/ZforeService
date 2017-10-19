@@ -14,7 +14,7 @@ namespace ZforeFromwork.Util
     public class HttpRequestUtil
     {
         private static string logPath = @"D:\MyServiceLog.txt";
-       
+
         public static void HttpRequest()
         {
             Thread thread1 = new Thread(new ThreadStart(ReadDataBase));
@@ -27,11 +27,7 @@ namespace ZforeFromwork.Util
             
             while (true)
             {
-                using (FileStream stream = new FileStream(logPath, FileMode.Append))
-                using (StreamWriter writer = new StreamWriter(stream))
-                {
-                    writer.WriteLine($"{DateTime.Now},线程启动！");
-                }
+                LogUtil.MsgLog("线程启动！");
                 Thread.Sleep(5000);
 
                 // 从数据库读取数据
@@ -40,11 +36,7 @@ namespace ZforeFromwork.Util
 
                 foreach (Human item in data)
                 {
-                    using (FileStream stream = new FileStream(logPath, FileMode.Append))
-                    using (StreamWriter writer = new StreamWriter(stream))
-                    {
-                        writer.WriteLine($"{DateTime.Now}：" + item.Name + "," + item.Number);
-                    }
+                    LogUtil.MsgLog(item.Name + "," + item.Number);
                 }
                 Thread.Sleep(2000);
             }

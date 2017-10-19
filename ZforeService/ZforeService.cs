@@ -19,8 +19,6 @@ namespace ZforeService
 
         #region 属性和构造函数
 
-        string filePath = @"D:\MyServiceLog.txt";
-
         public ZforeService()
         {
             InitializeComponent();
@@ -37,21 +35,12 @@ namespace ZforeService
         protected override void OnContinue()
         {
             base.OnContinue();
-            using (FileStream stream = new FileStream(filePath, FileMode.Append))
-            using (StreamWriter writer = new StreamWriter(stream))
-            {
-                writer.WriteLine($"{DateTime.Now},服务运行中！");
-            }
+            LogUtil.MsgLog("服务运行中！");
         }
 
         protected override void OnStop()
-        {       
-
-            using (FileStream stream = new FileStream(filePath, FileMode.Append))
-            using (StreamWriter writer = new StreamWriter(stream))
-            {
-                writer.WriteLine($"{DateTime.Now},服务停止！");
-            }
+        {
+            LogUtil.ErrorLog("服务停止！");
         }
     }
 }
