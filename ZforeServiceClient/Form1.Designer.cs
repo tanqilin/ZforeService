@@ -160,9 +160,9 @@
             // 
             // rightConfig
             // 
-            this.rightConfig.Location = new System.Drawing.Point(291, 89);
+            this.rightConfig.Location = new System.Drawing.Point(291, 87);
             this.rightConfig.Name = "rightConfig";
-            this.rightConfig.Size = new System.Drawing.Size(75, 21);
+            this.rightConfig.Size = new System.Drawing.Size(75, 23);
             this.rightConfig.TabIndex = 4;
             this.rightConfig.Text = "确认配置";
             this.rightConfig.UseVisualStyleBackColor = true;

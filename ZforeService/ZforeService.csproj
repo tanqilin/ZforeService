@@ -115,5 +115,11 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ZforeFromwork\ZforeFromwork.csproj">
+      <Project>{D63D10E3-7FBF-4B54-A22A-B88F14FA8ACA}</Project>
+      <Name>ZforeFromwork</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -12,6 +12,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Web;
 using ZforeFromwork.Util;
+using System.Data.SqlClient;
+using ZforeFromwork.Model;
 
 namespace ZforeServiceClient
 {
