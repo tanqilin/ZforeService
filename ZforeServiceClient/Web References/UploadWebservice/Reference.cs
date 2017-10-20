@@ -29,7 +29,7 @@ namespace ZforeServiceClient.UploadWebservice {
     [System.Web.Services.WebServiceBindingAttribute(Name="UploadWebserviceSoap", Namespace="http://tempuri.org/")]
     public partial class UploadWebservice : System.Web.Services.Protocols.SoapHttpClientProtocol {
         
-        private System.Threading.SendOrPostCallback HelloWorldOperationCompleted;
+        private System.Threading.SendOrPostCallback UpHumanInfoOperationCompleted;
         
         private System.Threading.SendOrPostCallback addOperationCompleted;
         
@@ -72,37 +72,37 @@ namespace ZforeServiceClient.UploadWebservice {
         }
         
         /// <remarks/>
-        public event HelloWorldCompletedEventHandler HelloWorldCompleted;
+        public event UpHumanInfoCompletedEventHandler UpHumanInfoCompleted;
         
         /// <remarks/>
         public event addCompletedEventHandler addCompleted;
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/HelloWorld", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public string HelloWorld(string msg) {
-            object[] results = this.Invoke("HelloWorld", new object[] {
-                        msg});
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/UpHumanInfo", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string UpHumanInfo(string humanXml) {
+            object[] results = this.Invoke("UpHumanInfo", new object[] {
+                        humanXml});
             return ((string)(results[0]));
         }
         
         /// <remarks/>
-        public void HelloWorldAsync(string msg) {
-            this.HelloWorldAsync(msg, null);
+        public void UpHumanInfoAsync(string humanXml) {
+            this.UpHumanInfoAsync(humanXml, null);
         }
         
         /// <remarks/>
-        public void HelloWorldAsync(string msg, object userState) {
-            if ((this.HelloWorldOperationCompleted == null)) {
-                this.HelloWorldOperationCompleted = new System.Threading.SendOrPostCallback(this.OnHelloWorldOperationCompleted);
+        public void UpHumanInfoAsync(string humanXml, object userState) {
+            if ((this.UpHumanInfoOperationCompleted == null)) {
+                this.UpHumanInfoOperationCompleted = new System.Threading.SendOrPostCallback(this.OnUpHumanInfoOperationCompleted);
             }
-            this.InvokeAsync("HelloWorld", new object[] {
-                        msg}, this.HelloWorldOperationCompleted, userState);
+            this.InvokeAsync("UpHumanInfo", new object[] {
+                        humanXml}, this.UpHumanInfoOperationCompleted, userState);
         }
         
-        private void OnHelloWorldOperationCompleted(object arg) {
-            if ((this.HelloWorldCompleted != null)) {
+        private void OnUpHumanInfoOperationCompleted(object arg) {
+            if ((this.UpHumanInfoCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.HelloWorldCompleted(this, new HelloWorldCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+                this.UpHumanInfoCompleted(this, new UpHumanInfoCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -158,17 +158,17 @@ namespace ZforeServiceClient.UploadWebservice {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2053.0")]
-    public delegate void HelloWorldCompletedEventHandler(object sender, HelloWorldCompletedEventArgs e);
+    public delegate void UpHumanInfoCompletedEventHandler(object sender, UpHumanInfoCompletedEventArgs e);
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2053.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class HelloWorldCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    public partial class UpHumanInfoCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        internal HelloWorldCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+        internal UpHumanInfoCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

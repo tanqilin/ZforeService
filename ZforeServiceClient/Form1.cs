@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Configuration.Install;
 using System.ServiceProcess;
 using System.Web.Services.Description;
 using System.Windows.Forms;
+using ZforeFromwork.Model;
+using ZforeFromwork.SqlService;
 using ZforeFromwork.Util;
 
 namespace ZforeServiceClient
@@ -11,7 +14,6 @@ namespace ZforeServiceClient
     public partial class Form1 : Form
     {
         #region 属性和构造函数
-        private readonly string configPath = $"{Application.StartupPath}\\config.xml";
         private string serviceFilePath = $"{Application.StartupPath}\\ZforeService.exe";
         private string serviceName = "ZforeService";
 
@@ -27,7 +29,7 @@ namespace ZforeServiceClient
         private void iniConfigFile()
         {
             // 读取出xml信息
-            var config = XmlUtil.ReadConfig(configPath);
+            var config = XmlUtil.ReadConfig();
 
             if (config != null)
             {
@@ -68,13 +70,25 @@ namespace ZforeServiceClient
         //事件：启动服务
         private void button2_Click(object sender, EventArgs e)
         {
+            if(XmlUtil.ReadConfig() == null)
+            {
+                MessageBox.Show("请先填写配置信息！","警告！",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                return;
+            }
             if (this.IsServiceExisted(serviceName)) this.ServiceStart(serviceName);
         }
 
         //事件：停止服务
         private void button3_Click(object sender, EventArgs e)
         {
-            if (this.IsServiceExisted(serviceName)) this.ServiceStop(serviceName);
+            Form dialog = new LoginForm();
+            dialog.ShowDialog();
+            // 登录成功则卸载服务
+            if (dialog.DialogResult == DialogResult.OK)
+            {
+                if (this.IsServiceExisted(serviceName))
+                    this.ServiceStop(serviceName);
+            }
         }
 
         //事件：卸载服务
@@ -183,22 +197,12 @@ namespace ZforeServiceClient
                 MessageBox.Show("三项都不能为空！","提示",MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-
-            //创建一个config.xml程序，写入同步配置文件
-            System.Data.DataSet ds = new System.Data.DataSet("Config");
-            System.Data.DataTable table = new System.Data.DataTable("System");
-            ds.Tables.Add(table);
-            table.Columns.Add("ProjectNum", typeof(string));
-            table.Columns.Add("ProjectName", typeof(string));
-            table.Columns.Add("OnloadUrl", typeof(string));
-           
-            System.Data.DataRow row = table.NewRow();
-            row[0] = ProjectNum;
-            row[1] = ProjectName;
-            row[2] = OnloadUrl;
-            ds.Tables["System"].Rows.Add(row);
-
-            ds.WriteXml(configPath);
+            // 向Xml写入配置文件
+            Config config = new Config();
+            config.projectNum = ProjectNum;
+            config.projectName = ProjectName;
+            config.onloadUrl = OnloadUrl;
+            XmlUtil.WriteConfig(config);
 
             this.serviceLog.Items.Clear();
             this.serviceLog.Items.Add($"{DateTime.Now}:配置成功！");

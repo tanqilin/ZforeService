@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZforeServiceClient", "Zfore
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZforeFromwork", "ZforeFromwork\ZforeFromwork.csproj", "{D63D10E3-7FBF-4B54-A22A-B88F14FA8ACA}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "ZforeSetup", "ZforeSetup\ZforeSetup.vdproj", "{F4BCEE53-7295-4608-A932-F931563AEB87}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,8 @@ Global
 		{D63D10E3-7FBF-4B54-A22A-B88F14FA8ACA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D63D10E3-7FBF-4B54-A22A-B88F14FA8ACA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D63D10E3-7FBF-4B54-A22A-B88F14FA8ACA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F4BCEE53-7295-4608-A932-F931563AEB87}.Debug|Any CPU.ActiveCfg = Debug
+		{F4BCEE53-7295-4608-A932-F931563AEB87}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

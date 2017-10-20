@@ -44,8 +44,8 @@ namespace ZforeFromwork.SqlService
             }
             catch (Exception ex)
             {
-                LogUtil.ErrorLog("======== 数据库数据读取错误 =======！");
-                LogUtil.ErrorLog(ex.StackTrace);
+                Console.WriteLine(ex.StackTrace);
+                LogUtil.WaringLog("数据库连接失败...");
             }
             return humans;
         }

@@ -24,15 +24,12 @@ namespace ZforeFromwork.Util
         /// <param name="subject">邮件标题</param>
         /// <param name="mailbody">邮件内容</param>
         /// <returns></returns>
-        public static bool sendTo(List<string> toEmails, string subject, string mailbody)
+        public static bool sendTo(string toEmails, string subject, string mailbody)
         {
             MailMessage mailObj = new MailMessage();
 
             // 添加多个收件人邮箱地址
-            foreach (string toEmail in toEmails)
-            {
-                mailObj.To.Add(toEmail);
-            }
+            mailObj.To.Add(toEmails);
 
             try
             {
@@ -51,8 +48,7 @@ namespace ZforeFromwork.Util
             }
             catch (Exception err)
             {
-                LogUtil.ErrorLog("========= 邮件发送失败 =========！");
-                LogUtil.ErrorLog(err.StackTrace);
+                LogUtil.WaringLog(err.StackTrace);
                 return false;
             }
         }

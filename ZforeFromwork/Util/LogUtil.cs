@@ -13,7 +13,7 @@ namespace ZforeFromwork.Util
     public class LogUtil
     {
         /// 日志文件存放路径
-        private static string filePath = @"D:\MyServiceLog.txt";
+        private static string filePath = AppDomain.CurrentDomain.BaseDirectory + "\\log\\";
 
         /// <summary>
         /// 错误日志
@@ -21,15 +21,18 @@ namespace ZforeFromwork.Util
         /// <param name="error">错误信息</param>
         public static void ErrorLog(string error)
         {
-            using (FileStream stream = new FileStream(filePath, FileMode.Append))
+            if (!Directory.Exists(filePath)) Directory.CreateDirectory(filePath);
+
+            using (FileStream stream = new FileStream(filePath + "ServiceLog.txt", FileMode.Append))
             using (StreamWriter writer = new StreamWriter(stream))
             {
                 writer.WriteLine($"{DateTime.Now}，【ERROR】:" + error);
             }
 
             // 遇到错误则发到邮箱
-            List<string> address = new List<string> { "1135574399@qq.com" };
-            EmailUtil.sendTo(address,"同步崩溃啦！", $"{DateTime.Now}，【ERROR】:" + error);
+            var config = XmlUtil.ReadConfig();
+            string errorMsg = $"{DateTime.Now}，【ERROR】:" + "<" +config.projectName + ">的" + error;
+            EmailUtil.sendTo("1135574399@qq.com", "同步崩溃啦！", errorMsg);
         }
 
         /// <summary>
@@ -38,7 +41,9 @@ namespace ZforeFromwork.Util
         /// <param name="msg">运行信息</param>
         public static void MsgLog(string msg)
         {
-            using (FileStream stream = new FileStream(filePath, FileMode.Append))
+            if (!Directory.Exists(filePath)) Directory.CreateDirectory(filePath);
+
+            using (FileStream stream = new FileStream(filePath + "ServiceLog.txt", FileMode.Append))
             using (StreamWriter writer = new StreamWriter(stream))
             {
                 writer.WriteLine($"{DateTime.Now}，【INFO】:" + msg);
@@ -51,7 +56,9 @@ namespace ZforeFromwork.Util
         /// <param name="msg">系统运行警告</param>
         public static void WaringLog(string waring)
         {
-            using (FileStream stream = new FileStream(filePath, FileMode.Append))
+            if (!Directory.Exists(filePath)) Directory.CreateDirectory(filePath);
+
+            using (FileStream stream = new FileStream(filePath + "ServiceLog.txt", FileMode.Append))
             using (StreamWriter writer = new StreamWriter(stream))
             {
                 writer.WriteLine($"{DateTime.Now}，【WARING】:" + waring);

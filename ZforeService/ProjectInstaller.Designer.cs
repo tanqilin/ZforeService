@@ -41,6 +41,7 @@
             // 
             this.serviceInstaller1.Description = "中孚同步程序";
             this.serviceInstaller1.ServiceName = "ZforeService";
+            this.serviceInstaller1.StartType = System.ServiceProcess.ServiceStartMode.Automatic;
             // 
             // ProjectInstaller
             // 

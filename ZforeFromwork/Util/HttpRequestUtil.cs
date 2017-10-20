@@ -22,34 +22,52 @@ namespace ZforeFromwork.Util
 
         static void ReadDataBase()
         {
-            
+            LogUtil.MsgLog("线程启动！");
             while (true)
             {
-                LogUtil.MsgLog("线程启动！");
-                Thread.Sleep(5000);
-
                 // 根据网络状况同步信息
                 if (!NetStateUtil.LocalConnectionStatus())
                 {
                     LogUtil.MsgLog("网络无连接！");
+                    Thread.Sleep(5000);
                     continue;
                 }
-                LogUtil.MsgLog("网络已连接！");
-
-                // 从数据库读取数据
+              
+                // 从数据库读取数据并转换未Xml字符串
                 ReadDatabase read = new ReadDatabase();
-                var data = read.ReadHumanInfo("男");
+                List<Human> data = read.ReadHumanInfo("男");
+                if (data == null) continue;
+                string ListHuman = XmlUtil.CreateHumanXml(data);
 
-                // 调用webservice例子
-                UploadWebservice.UploadWebservice webservice = new UploadWebservice.UploadWebservice();
-                string result = webservice.HelloWorld("---- web-service ------");
-
-                foreach (Human item in data)
+                // 调用webservice上传人员读卡信息
+                try
                 {
-                    LogUtil.MsgLog(item.Name + "," + item.Number);
+                    UploadWebservice.UploadWebservice webservice = new UploadWebservice.UploadWebservice();
+                    webservice.Timeout = 10;
+                    // 执行WebService并返回结果
+                    ResultHandle(webservice.UpHumanInfo(ListHuman));
                 }
-                Thread.Sleep(2000);
+                catch (Exception err)
+                {
+                    Console.WriteLine(err.StackTrace);
+                    LogUtil.ErrorLog("服务器停止运行！");
+                }
+                Thread.Sleep(5000);
             }
+        }
+
+        /// <summary>
+        /// 上传结果处理
+        /// </summary>
+        private static void ResultHandle(string result = null)
+        {
+            if (String.IsNullOrEmpty(result))
+            {
+                LogUtil.ErrorLog("上传失败...");
+                return;
+            }
+
+            LogUtil.MsgLog(result);
         }
     }
 }
