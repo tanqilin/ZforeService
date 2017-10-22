@@ -13,5 +13,9 @@ namespace ZforeFromwork.Model
         public string projectName { get; set; }
 
         public string onloadUrl { get; set; }
+
+        public string humanSql { get; set; }
+
+        public string salarySql { get; set; }
     }
 }

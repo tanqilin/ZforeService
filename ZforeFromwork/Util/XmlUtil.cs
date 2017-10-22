@@ -15,11 +15,15 @@ namespace ZforeFromwork.Util
     /// </summary>
     public class XmlUtil
     {
-        // 配置文件config.xml路径
+        /// 配置文件config.xml路径
         private static string datePath = AppDomain.CurrentDomain.BaseDirectory + "\\date\\";
         private static string configPath = AppDomain.CurrentDomain.BaseDirectory + "\\conf\\";
 
         #region 写入配置文件
+        /// <summary>
+        /// 写入配置信息
+        /// </summary>
+        /// <param name="config">配置信息</param>
         public static void WriteConfig(Config config)
         {
             if (!Directory.Exists(configPath))
@@ -32,11 +36,16 @@ namespace ZforeFromwork.Util
             table.Columns.Add("ProjectNum", typeof(string));
             table.Columns.Add("ProjectName", typeof(string));
             table.Columns.Add("OnloadUrl", typeof(string));
+            table.Columns.Add("HumanSql", typeof(string));
+            table.Columns.Add("SalarySql", typeof(string));
 
             System.Data.DataRow row = table.NewRow();
             row[0] = config.projectNum;
             row[1] = config.projectName;
             row[2] = config.onloadUrl;
+            row[3] = "select * from TEmployee";
+            row[4] = "select * from TEmployee";
+
             ds.Tables["System"].Rows.Add(row);
 
             ds.WriteXml(configPath+ "config.xml");
@@ -44,7 +53,10 @@ namespace ZforeFromwork.Util
         #endregion
 
         #region 读取配置文件
-
+        /// <summary>
+        /// 读取配置信息
+        /// </summary>
+        /// <returns>Xml中的配置信息</returns>
         public static Config ReadConfig()
         {
             string cinfigFile = configPath + "config.xml";
@@ -69,7 +81,9 @@ namespace ZforeFromwork.Util
                                 case "ProjectNum": config.projectNum = item1.Value;break;
                                 case "ProjectName": config.projectName = item1.Value; break;
                                 case "OnloadUrl": config.onloadUrl = item1.Value; break;
-                            }       
+                                case "HumanSql": config.humanSql = item1.Value; break;
+                                case "SalarySql": config.salarySql = item1.Value; break;
+                            }
                         }
                     }
                 }
@@ -87,6 +101,11 @@ namespace ZforeFromwork.Util
         #endregion
 
         #region 创建人员信息Xml
+        /// <summary>
+        /// 生成人员信息Xml字符串
+        /// </summary>
+        /// <param name="data">人员信息</param>
+        /// <returns>Xml字符串</returns>
         public static string CreateHumanXml(List<Human> data)
         {
             // 读取配置信息
@@ -112,9 +131,11 @@ namespace ZforeFromwork.Util
             {
                 XmlElement nodeHuman = doc.CreateElement("Human");
                 nodeHuman.SetAttribute("name", item.Name);
-                nodeHuman.SetAttribute("age", "23");
+                nodeHuman.SetAttribute("birthday", item.Birthday);
                 nodeHuman.SetAttribute("gender", item.Gender);
                 nodeHuman.SetAttribute("idcard", item.Number);
+                nodeHuman.SetAttribute("address", item.Address);
+                //nodeHuman.SetAttribute("photo", System.Text.Encoding.Default.GetString(item.Picture));
                 node.AppendChild(nodeHuman);
             }
             root.AppendChild(node);

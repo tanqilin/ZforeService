@@ -58,31 +58,31 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(104, 29);
+            this.button2.Location = new System.Drawing.Point(106, 29);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 0;
-            this.button2.Text = "启动服务";
+            this.button2.TabIndex = 1;
+            this.button2.Text = "开启同步";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(197, 29);
+            this.button3.Location = new System.Drawing.Point(201, 29);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 0;
-            this.button3.Text = "停止服务";
+            this.button3.TabIndex = 2;
+            this.button3.Text = "关闭同步";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(290, 29);
+            this.button4.Location = new System.Drawing.Point(296, 29);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 0;
-            this.button4.Text = "卸载服务";
+            this.button4.TabIndex = 3;
+            this.button4.Text = "卸载同步";
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
@@ -93,7 +93,7 @@
             this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.button2);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox1.Location = new System.Drawing.Point(0, 0);
+            this.groupBox1.Location = new System.Drawing.Point(0, 3);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(397, 68);
             this.groupBox1.TabIndex = 1;
@@ -102,19 +102,21 @@
             // 
             // projectId
             // 
-            this.projectId.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.projectId.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.projectId.Location = new System.Drawing.Point(84, 93);
+            this.projectId.Location = new System.Drawing.Point(84, 96);
+            this.projectId.Margin = new System.Windows.Forms.Padding(3, 5, 3, 3);
             this.projectId.Name = "projectId";
             this.projectId.Size = new System.Drawing.Size(288, 21);
-            this.projectId.TabIndex = 2;
+            this.projectId.TabIndex = 4;
             // 
             // label1
             // 
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(11, 96);
+            this.label1.Location = new System.Drawing.Point(11, 98);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(65, 12);
             this.label1.TabIndex = 3;
@@ -122,15 +124,16 @@
             // 
             // projectName
             // 
-            this.projectName.Location = new System.Drawing.Point(84, 117);
+            this.projectName.Location = new System.Drawing.Point(84, 119);
+            this.projectName.Margin = new System.Windows.Forms.Padding(3, 5, 3, 3);
             this.projectName.Name = "projectName";
             this.projectName.Size = new System.Drawing.Size(288, 21);
-            this.projectName.TabIndex = 2;
+            this.projectName.TabIndex = 5;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(11, 120);
+            this.label2.Location = new System.Drawing.Point(11, 121);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(65, 12);
             this.label2.TabIndex = 3;
@@ -141,10 +144,10 @@
             this.serviceLog.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.serviceLog.FormattingEnabled = true;
             this.serviceLog.ItemHeight = 12;
-            this.serviceLog.Location = new System.Drawing.Point(0, 195);
+            this.serviceLog.Location = new System.Drawing.Point(0, 183);
             this.serviceLog.Name = "serviceLog";
-            this.serviceLog.Size = new System.Drawing.Size(397, 136);
-            this.serviceLog.TabIndex = 4;
+            this.serviceLog.Size = new System.Drawing.Size(397, 148);
+            this.serviceLog.TabIndex = 8;
             // 
             // groupBox2
             // 
@@ -153,17 +156,17 @@
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Location = new System.Drawing.Point(6, 77);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(391, 114);
+            this.groupBox2.Size = new System.Drawing.Size(391, 100);
             this.groupBox2.TabIndex = 5;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "同步配置";
             // 
             // rightConfig
             // 
-            this.rightConfig.Location = new System.Drawing.Point(291, 87);
+            this.rightConfig.Location = new System.Drawing.Point(291, 65);
             this.rightConfig.Name = "rightConfig";
             this.rightConfig.Size = new System.Drawing.Size(75, 23);
-            this.rightConfig.TabIndex = 4;
+            this.rightConfig.TabIndex = 7;
             this.rightConfig.Text = "确认配置";
             this.rightConfig.UseVisualStyleBackColor = true;
             this.rightConfig.Click += new System.EventHandler(this.rightConfig_Click);
@@ -172,8 +175,8 @@
             // 
             this.onloadUrl.Location = new System.Drawing.Point(78, 65);
             this.onloadUrl.Name = "onloadUrl";
-            this.onloadUrl.Size = new System.Drawing.Size(288, 21);
-            this.onloadUrl.TabIndex = 2;
+            this.onloadUrl.Size = new System.Drawing.Size(207, 21);
+            this.onloadUrl.TabIndex = 6;
             // 
             // label3
             // 
@@ -199,6 +202,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "Form1";
+            this.Padding = new System.Windows.Forms.Padding(0, 3, 0, 0);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "同步程序";
             this.groupBox1.ResumeLayout(false);

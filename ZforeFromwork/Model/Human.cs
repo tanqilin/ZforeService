@@ -15,11 +15,13 @@ namespace ZforeFromwork.Model
 
         public string Age { get; set; }
 
+        public string Birthday { get; set; }
+
         public string Number { get; set; }
 
         public string Address { get; set; }
 
-        public string Picture { get; set; }
+        public byte[] Picture { get; set; }
 
         public string Remark { get; set; }
 

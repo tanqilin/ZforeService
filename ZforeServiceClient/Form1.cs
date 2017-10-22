@@ -30,7 +30,7 @@ namespace ZforeServiceClient
         {
             // 读取出xml信息
             var config = XmlUtil.ReadConfig();
-
+          
             if (config != null)
             {
                 this.projectId.Text = config.projectNum;
@@ -76,6 +76,7 @@ namespace ZforeServiceClient
                 return;
             }
             if (this.IsServiceExisted(serviceName)) this.ServiceStart(serviceName);
+            else this.serviceLog.Items.Add($"{DateTime.Now}:请先安装服务！");
         }
 
         //事件：停止服务

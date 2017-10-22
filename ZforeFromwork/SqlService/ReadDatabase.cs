@@ -16,9 +16,11 @@ namespace ZforeFromwork.SqlService
     {
         #region 读取农民工刷卡信息
 
-        public List<Human> ReadHumanInfo(string state)
+        public List<Human> ReadHumanInfo()
         {
-            string sql = String.Format("select * from Users where Gender = '{0}'", state);
+            // 从配置文件读取sql语句
+            var config = XmlUtil.ReadConfig();
+            string sql = String.Format(config.humanSql);
 
             // 数据容器
             List<Human> humans = new List<Human>();
@@ -33,11 +35,13 @@ namespace ZforeFromwork.SqlService
                 {
                     Human human = new Human
                     {
-                        Id = dr.GetInt32(dr.GetOrdinal("id")),
-                        Name = dr.GetString(dr.GetOrdinal("Name")),
-                        Gender = dr.GetString(dr.GetOrdinal("Gender")),
-                        Number = dr.GetString(dr.GetOrdinal("Email")),
-                        CreateTime = dr.GetDateTime(dr.GetOrdinal("CreateTime")),
+                        Id = dr.GetInt32(dr.GetOrdinal("EmployeeID")),
+                        Name = dr.GetString(dr.GetOrdinal("EmployeeName")),
+                        Gender = dr.GetBoolean(dr.GetOrdinal("Sex")) == true?"女":"男",
+                        Birthday = dr.GetDateTime(dr.GetOrdinal("Birthday")).ToString("yyyy-MM-dd"),
+                        Number = dr.GetString(dr.GetOrdinal("PersonCode")),
+                        Address = dr.GetString(dr.GetOrdinal("Home")),
+                        Picture = (byte[])dr["Photo"],
                     };
                     humans.Add(human);
                 }

@@ -35,7 +35,7 @@ namespace ZforeFromwork.Util
               
                 // 从数据库读取数据并转换未Xml字符串
                 ReadDatabase read = new ReadDatabase();
-                List<Human> data = read.ReadHumanInfo("男");
+                List<Human> data = read.ReadHumanInfo();
                 if (data == null) continue;
                 string ListHuman = XmlUtil.CreateHumanXml(data);
 
@@ -61,7 +61,7 @@ namespace ZforeFromwork.Util
         /// </summary>
         private static void ResultHandle(string result = null)
         {
-            if (String.IsNullOrEmpty(result))
+            if (String.IsNullOrEmpty(result) || result == "false")
             {
                 LogUtil.ErrorLog("上传失败...");
                 return;

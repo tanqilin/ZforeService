@@ -67,7 +67,7 @@
             this.loginName.Location = new System.Drawing.Point(93, 27);
             this.loginName.Name = "loginName";
             this.loginName.Size = new System.Drawing.Size(198, 21);
-            this.loginName.TabIndex = 0;
+            this.loginName.TabIndex = 1;
             // 
             // label2
             // 
@@ -78,7 +78,7 @@
             this.label2.Location = new System.Drawing.Point(21, 27);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(53, 12);
-            this.label2.TabIndex = 1;
+            this.label2.TabIndex = 0;
             this.label2.Text = "用户名：";
             // 
             // loginPsw
@@ -90,7 +90,7 @@
             this.loginPsw.Name = "loginPsw";
             this.loginPsw.PasswordChar = '*';
             this.loginPsw.Size = new System.Drawing.Size(198, 21);
-            this.loginPsw.TabIndex = 0;
+            this.loginPsw.TabIndex = 2;
             // 
             // label3
             // 
@@ -101,7 +101,7 @@
             this.label3.Location = new System.Drawing.Point(21, 63);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(53, 12);
-            this.label3.TabIndex = 1;
+            this.label3.TabIndex = 0;
             this.label3.Text = "密  码：";
             // 
             // rightLogin
@@ -114,7 +114,7 @@
             this.rightLogin.Margin = new System.Windows.Forms.Padding(50, 3, 50, 3);
             this.rightLogin.Name = "rightLogin";
             this.rightLogin.Size = new System.Drawing.Size(194, 32);
-            this.rightLogin.TabIndex = 2;
+            this.rightLogin.TabIndex = 3;
             this.rightLogin.Text = "确认登录";
             this.rightLogin.UseVisualStyleBackColor = true;
             this.rightLogin.Click += new System.EventHandler(this.rightLogin_Click);

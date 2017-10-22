@@ -2,9 +2,12 @@
 
 namespace ZforeFromwork.SqlService
 {
+    /// <summary>
+    /// 数据库连接管理类
+    /// </summary>
     public partial class SqlContext
     {
-        private static string connsql = "Password=root;Persist Security Info=True;User ID=sa;Initial Catalog=ZforeFineUI;Data Source=."; // 数据库连接字符
+        private static string connsql = "Password=root;Persist Security Info=True;User ID=sa;Initial Catalog=AXData;Data Source=."; // 数据库连接字符
 
         private SqlConnection connection;
 
