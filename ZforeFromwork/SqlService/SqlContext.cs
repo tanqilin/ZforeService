@@ -40,5 +40,10 @@ namespace ZforeFromwork.SqlService
                 Connection.Open();
             }
         }
+
+        public void CloseConnection()
+        {
+            Connection.Close();
+        }
     }
 }

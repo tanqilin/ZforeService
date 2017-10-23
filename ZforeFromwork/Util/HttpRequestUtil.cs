@@ -11,6 +11,9 @@ using ZforeFromwork.SqlService;
 
 namespace ZforeFromwork.Util
 {
+    /// <summary>
+    /// 发送数据线程，定时向服务器发送更新的数据
+    /// </summary>
     public class HttpRequestUtil
     {
         public static void HttpRequest()
@@ -29,14 +32,15 @@ namespace ZforeFromwork.Util
                 if (!NetStateUtil.LocalConnectionStatus())
                 {
                     LogUtil.MsgLog("网络无连接！");
-                    Thread.Sleep(5000);
+                    Thread.Sleep(30000);
                     continue;
                 }
               
                 // 从数据库读取数据并转换未Xml字符串
                 ReadDatabase read = new ReadDatabase();
                 List<Human> data = read.ReadHumanInfo();
-                if (data == null) continue;
+                if (data == null || data.Count() == 0) continue;
+
                 string ListHuman = XmlUtil.CreateHumanXml(data);
 
                 // 调用webservice上传人员读卡信息
@@ -57,7 +61,7 @@ namespace ZforeFromwork.Util
         }
 
         /// <summary>
-        /// 上传结果处理
+        /// 人员上传结果处理
         /// </summary>
         private static void ResultHandle(string result = null)
         {
@@ -66,8 +70,19 @@ namespace ZforeFromwork.Util
                 LogUtil.ErrorLog("上传失败...");
                 return;
             }
+           
+            /// 解析上报的结果
+            List <HumanResult> results = XmlUtil.ReadHumanResultXml(result);
 
-            LogUtil.MsgLog(result);
+            LogUtil.MsgLog("=====================================");
+            foreach (var item in results)
+            {
+                LogUtil.MsgLog(item.Result + "," + item.IdCard);
+            }
+            LogUtil.MsgLog("=====================================");
+
+            ReadDatabase Sql = new ReadDatabase();
+            Sql.HumanResultSql(results);
         }
     }
 }

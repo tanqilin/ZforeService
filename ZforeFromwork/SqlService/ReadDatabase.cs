@@ -33,6 +33,9 @@ namespace ZforeFromwork.SqlService
                 // 遍历获取到的数据
                 while (dr.Read())
                 {
+                    // 读取身份证号不能为空
+                    if (String.IsNullOrEmpty(dr.GetString(dr.GetOrdinal("PersonCode")))) continue;
+
                     Human human = new Human
                     {
                         Id = dr.GetInt32(dr.GetOrdinal("EmployeeID")),
@@ -48,10 +51,48 @@ namespace ZforeFromwork.SqlService
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.StackTrace);
+                LogUtil.WaringLog(ex.StackTrace);
                 LogUtil.WaringLog("数据库连接失败...");
             }
+            finally
+            {
+                context.CloseConnection();
+            }
             return humans;
+        }
+
+        #endregion
+
+        #region 导入人员信息后执行Sql语句
+        /// <summary>
+        /// 导入成功后需要执行的sql语句
+        /// </summary>
+        /// <param name="results"></param>
+        public void HumanResultSql(List<HumanResult> results)
+        {
+            // 从配置文件读取sql语句
+            var config = XmlUtil.ReadConfig();
+
+            // 数据容器 ExecuteReader
+            List<Human> humans = new List<Human>();
+            try
+            {
+                context.OpenConnection();
+               
+                foreach (var item in results)
+                {
+                    if (item.Result == "false") continue;
+                 
+                    // 上传成功则更新Car字段
+                    string sql = String.Format("update TEmployee set Car = 1 where PersonCode = '{0}'", item.IdCard);
+                    SqlCommand command = new SqlCommand(sql, context.Connection);
+                    command.ExecuteNonQuery();
+                }
+            }
+            catch (Exception err)
+            {
+                Console.WriteLine(err.StackTrace);
+            }
         }
 
         #endregion

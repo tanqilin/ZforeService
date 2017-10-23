@@ -43,7 +43,7 @@ namespace ZforeFromwork.Util
             row[0] = config.projectNum;
             row[1] = config.projectName;
             row[2] = config.onloadUrl;
-            row[3] = "select * from TEmployee";
+            row[3] = "select * from TEmployee where Car != 1";
             row[4] = "select * from TEmployee";
 
             ds.Tables["System"].Rows.Add(row);
@@ -129,13 +129,16 @@ namespace ZforeFromwork.Util
             XmlNode node = doc.CreateElement("List");
             foreach (Human item in data)
             {
+                // 节点身份证号不能为空
+                if (String.IsNullOrEmpty(item.Number)) continue;
+
                 XmlElement nodeHuman = doc.CreateElement("Human");
                 nodeHuman.SetAttribute("name", item.Name);
                 nodeHuman.SetAttribute("birthday", item.Birthday);
                 nodeHuman.SetAttribute("gender", item.Gender);
                 nodeHuman.SetAttribute("idcard", item.Number);
                 nodeHuman.SetAttribute("address", item.Address);
-                //nodeHuman.SetAttribute("photo", System.Text.Encoding.Default.GetString(item.Picture));
+                nodeHuman.SetAttribute("photo", System.Convert.ToBase64String(item.Picture));
                 node.AppendChild(nodeHuman);
             }
             root.AppendChild(node);
@@ -146,6 +149,38 @@ namespace ZforeFromwork.Util
             doc.Save(datePath + "Human.xml");
             // 把xml转换为xml字符串
             return doc.OuterXml;
+        }
+        #endregion
+
+        #region 解析人员上报结果
+        public static List<HumanResult> ReadHumanResultXml(string resultXml)
+        {
+            List<HumanResult> results = new List<HumanResult>();
+            XmlDocument document = new XmlDocument();
+            document.LoadXml(resultXml);
+
+            if (document != null)
+            {
+                XmlNodeList HumanList = document.GetElementsByTagName("List");
+
+                // 找到List节点
+                foreach (XmlElement item in HumanList)
+                {
+                    // 遍历 List 下得所有Human节点 
+                    foreach (XmlElement item1 in item.GetElementsByTagName("Result"))
+                    {
+                        HumanResult result = new HumanResult();
+                        result.Result = item1.GetAttribute("result").ToString();
+                        result.IdCard = item1.GetAttribute("idcard").ToString();
+                        results.Add(result);
+                    }
+                }
+            }
+            else
+            {
+                results = null;
+            }
+            return results;
         }
         #endregion
     }

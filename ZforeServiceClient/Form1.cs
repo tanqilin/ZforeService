@@ -2,7 +2,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Configuration.Install;
+using System.IO;
 using System.ServiceProcess;
+using System.Text;
 using System.Web.Services.Description;
 using System.Windows.Forms;
 using ZforeFromwork.Model;
@@ -30,7 +32,14 @@ namespace ZforeServiceClient
         {
             // 读取出xml信息
             var config = XmlUtil.ReadConfig();
-          
+            // 从数据库读取数据并转换未Xml字符串
+            ReadDatabase read = new ReadDatabase();
+            List<Human> data = read.ReadHumanInfo();
+
+            //// 使用xml传输图片，byte[] -> string -> byte[]
+            //string ret = System.Convert.ToBase64String(data[0].Picture); 
+            //byte[] buff = Convert.FromBase64String(ret);
+
             if (config != null)
             {
                 this.projectId.Text = config.projectNum;
