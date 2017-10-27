@@ -125,7 +125,7 @@ namespace ZforeFromwork.Util
                     LogUtil.MsgLog(err.StackTrace, "manageLog");
                 }
 
-                Thread.Sleep(60000);
+                Thread.Sleep(30*60000);
             }
         }
         #endregion

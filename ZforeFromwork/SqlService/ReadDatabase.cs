@@ -84,9 +84,9 @@ namespace ZforeFromwork.SqlService
                         Number = dr.GetString(dr.GetOrdinal("PersonCode")),
                         Address = dr.GetString(dr.GetOrdinal("Home")),
                         Leave = dr.GetBoolean(dr.GetOrdinal("Leave")).ToString().ToLower(),
-                        LeaveDate = dr.GetDateTime(dr.GetOrdinal("LeaveDate")).ToString("yyyy-MM-dd"),
-                        GroupName = dr.GetString(dr.GetOrdinal("DeptName")),
-                        WorkCode = dr.GetString(dr.GetOrdinal("JobCode")),
+                        LeaveDate = dr.IsDBNull(dr.GetOrdinal("LeaveDate"))?"":dr.GetDateTime(dr.GetOrdinal("LeaveDate")).ToString("yyyy-MM-dd"),
+                        GroupName = dr.IsDBNull(dr.GetOrdinal("DeptName")) ? "": dr.GetString(dr.GetOrdinal("DeptName")),
+                        WorkCode = dr.IsDBNull(dr.GetOrdinal("JobCode")) ? "" : dr.GetString(dr.GetOrdinal("JobCode")),
                         Picture = (byte[])dr["Photo"],
                     };
                     humans.Add(human);
