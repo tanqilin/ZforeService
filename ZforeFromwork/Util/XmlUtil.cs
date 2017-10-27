@@ -16,8 +16,8 @@ namespace ZforeFromwork.Util
     public class XmlUtil
     {
         /// 配置文件config.xml路径
-        private static string datePath = AppDomain.CurrentDomain.BaseDirectory + "\\date\\";
-        private static string configPath = AppDomain.CurrentDomain.BaseDirectory + "\\conf\\";
+        public static string datePath = AppDomain.CurrentDomain.BaseDirectory + "\\data\\";
+        public static string configPath = AppDomain.CurrentDomain.BaseDirectory + "\\conf\\";
 
         #region 写入配置文件
         /// <summary>
@@ -37,17 +37,25 @@ namespace ZforeFromwork.Util
             table.Columns.Add("ProjectName", typeof(string));
             table.Columns.Add("OnloadUrl", typeof(string));
             table.Columns.Add("HumanSql", typeof(string));
-            table.Columns.Add("SalarySql", typeof(string));
+            table.Columns.Add("AttendSql", typeof(string));
 
             System.Data.DataRow row = table.NewRow();
             row[0] = config.projectNum;
             row[1] = config.projectName;
             row[2] = config.onloadUrl;
-            row[3] = "select * from TEmployee where Car != 1";
+            try
+            {
+                FileInfo file = new FileInfo(datePath+ "QueryHuman.sql");
+                string script = file.OpenText().ReadToEnd();
+                row[3] = script.Replace("dbo.", "");
+            }
+            catch
+            {
+                row[3] = "select top(1) * from TEmployee where Car != 1";
+            }
             row[4] = "select * from TEmployee";
 
             ds.Tables["System"].Rows.Add(row);
-
             ds.WriteXml(configPath+ "config.xml");
         }
         #endregion
@@ -82,7 +90,7 @@ namespace ZforeFromwork.Util
                                 case "ProjectName": config.projectName = item1.Value; break;
                                 case "OnloadUrl": config.onloadUrl = item1.Value; break;
                                 case "HumanSql": config.humanSql = item1.Value; break;
-                                case "SalarySql": config.salarySql = item1.Value; break;
+                                case "AttendSql": config.attendSql = item1.Value; break;
                             }
                         }
                     }
@@ -135,9 +143,13 @@ namespace ZforeFromwork.Util
                 XmlElement nodeHuman = doc.CreateElement("Human");
                 nodeHuman.SetAttribute("name", item.Name);
                 nodeHuman.SetAttribute("birthday", item.Birthday);
-                nodeHuman.SetAttribute("gender", item.Gender);
+                nodeHuman.SetAttribute("gender", item.Gender == "男"?"1":"0");
                 nodeHuman.SetAttribute("idcard", item.Number);
                 nodeHuman.SetAttribute("address", item.Address);
+                nodeHuman.SetAttribute("leave", item.Leave);
+                nodeHuman.SetAttribute("leavedate", item.LeaveDate);
+                nodeHuman.SetAttribute("group", item.GroupName);
+                nodeHuman.SetAttribute("workcode", item.WorkCode);
                 nodeHuman.SetAttribute("photo", System.Convert.ToBase64String(item.Picture));
                 node.AppendChild(nodeHuman);
             }
@@ -153,6 +165,11 @@ namespace ZforeFromwork.Util
         #endregion
 
         #region 解析人员上报结果
+        /// <summary>
+        /// 接续人员上报WebService返回的结果
+        /// </summary>
+        /// <param name="resultXml">Xml结果字符串</param>
+        /// <returns>结果集合</returns>
         public static List<HumanResult> ReadHumanResultXml(string resultXml)
         {
             List<HumanResult> results = new List<HumanResult>();

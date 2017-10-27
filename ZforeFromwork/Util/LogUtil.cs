@@ -39,11 +39,12 @@ namespace ZforeFromwork.Util
         /// 运行日志
         /// </summary>
         /// <param name="msg">运行信息</param>
-        public static void MsgLog(string msg)
+        public static void MsgLog(string msg, string logName = null)
         {
             if (!Directory.Exists(filePath)) Directory.CreateDirectory(filePath);
 
-            using (FileStream stream = new FileStream(filePath + "ServiceLog.txt", FileMode.Append))
+            if (String.IsNullOrEmpty(logName)) logName = "ServiceLog";
+            using (FileStream stream = new FileStream(filePath + logName+ ".txt", FileMode.Append))
             using (StreamWriter writer = new StreamWriter(stream))
             {
                 writer.WriteLine($"{DateTime.Now}，【INFO】:" + msg);
@@ -62,6 +63,21 @@ namespace ZforeFromwork.Util
             using (StreamWriter writer = new StreamWriter(stream))
             {
                 writer.WriteLine($"{DateTime.Now}，【WARING】:" + waring);
+            }
+        }
+
+        /// <summary>
+        /// 清空日志
+        /// </summary>
+        public static void ClearLog(string logName)
+        {
+            if (!Directory.Exists(filePath)) Directory.CreateDirectory(filePath);
+
+            if (String.IsNullOrEmpty(logName)) logName = "ServiceLog";
+            FileStream stream = new FileStream(filePath + logName + ".txt", FileMode.Create);
+            using (StreamWriter writer = new StreamWriter(stream))
+            {
+                writer.Write("");
             }
         }
     }

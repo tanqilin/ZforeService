@@ -23,7 +23,27 @@ namespace ZforeFromwork.Model
 
         public byte[] Picture { get; set; }
 
-        public string Remark { get; set; }
+        /// <summary>
+        /// 是否离职
+        /// </summary>
+        public string Leave { get; set; }
+
+        /// <summary>
+        /// 离职日期
+        /// </summary>
+        public string LeaveDate { get; set; }
+
+        /// <summary>
+        /// 所属班组名
+        /// </summary>
+        public string GroupName { get; set; }
+
+        /// <summary>
+        /// 工种编号
+        /// </summary>
+        public string WorkCode { get; set; }
+
+        public DateTime Remark { get; set; }
 
         #region 通用属性
 

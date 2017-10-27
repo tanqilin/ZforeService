@@ -32,10 +32,6 @@ namespace ZforeServiceClient
         {
             // 读取出xml信息
             var config = XmlUtil.ReadConfig();
-            // 从数据库读取数据并转换未Xml字符串
-            ReadDatabase read = new ReadDatabase();
-            List<Human> data = read.ReadHumanInfo();
-
             //// 使用xml传输图片，byte[] -> string -> byte[]
             //string ret = System.Convert.ToBase64String(data[0].Picture); 
             //byte[] buff = Convert.FromBase64String(ret);
@@ -195,6 +191,7 @@ namespace ZforeServiceClient
 
         private void rightConfig_Click(object sender, EventArgs e)
         {
+            this.serviceLog.Items.Clear();
             string ProjectNum = this.projectId.Text;
             string ProjectName = this.projectName.Text;
             string OnloadUrl = this.onloadUrl.Text;
@@ -214,7 +211,13 @@ namespace ZforeServiceClient
             config.onloadUrl = OnloadUrl;
             XmlUtil.WriteConfig(config);
 
-            this.serviceLog.Items.Clear();
+            // 初始化数据库种子数据
+            ReadDatabase database = new ReadDatabase();
+            if(database.InitDatabase())
+                this.serviceLog.Items.Add($"{DateTime.Now}:数据插入成功！");
+            else
+                this.serviceLog.Items.Add($"{DateTime.Now}:数据插入失败！");
+
             this.serviceLog.Items.Add($"{DateTime.Now}:配置成功！");
             iniEnabledAllButton(false);
         }

@@ -16,6 +16,6 @@ namespace ZforeFromwork.Model
 
         public string humanSql { get; set; }
 
-        public string salarySql { get; set; }
+        public string attendSql { get; set; }
     }
 }

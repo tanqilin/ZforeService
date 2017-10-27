@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,6 +15,44 @@ namespace ZforeFromwork.SqlService
     /// </summary>
     public class ReadDatabase : BaseContext
     {
+        #region 初始化数据库数据
+        public bool InitDatabase()
+        {
+            // 从配置文件读取sql语句
+            if (!File.Exists(XmlUtil.datePath + "WorkType.sql")) return false;
+            // 下边的方法读取txt不会出现乱码
+            FileStream fs = new FileStream(XmlUtil.datePath + "WorkType.sql", FileMode.Open);
+            StreamReader sr = new StreamReader(fs, Encoding.Default);
+            string script = sr.ReadToEnd();
+            string sql = String.Format(script.Replace("dbo.", ""));
+
+            // 开启数据库事务
+            context.OpenConnection();
+            SqlTransaction sqlTransaction = context.Connection.BeginTransaction();
+            SqlCommand sqlCommand = new SqlCommand(sql, context.Connection);
+            sqlCommand.Connection = context.Connection;
+            sqlCommand.Transaction = sqlTransaction;
+            try
+            {
+                // 上传成功则更新Car字段
+                sqlCommand.ExecuteNonQuery();
+                sqlTransaction.Commit();
+            }
+            catch (Exception ex)
+            {
+                // 事务回滚
+                sqlTransaction.Rollback();
+                Console.WriteLine(ex.StackTrace);
+                return false;
+            }
+            finally
+            {
+                context.CloseConnection();
+            }
+            return true;
+        }
+        #endregion
+
         #region 读取农民工刷卡信息
 
         public List<Human> ReadHumanInfo()
@@ -44,6 +83,10 @@ namespace ZforeFromwork.SqlService
                         Birthday = dr.GetDateTime(dr.GetOrdinal("Birthday")).ToString("yyyy-MM-dd"),
                         Number = dr.GetString(dr.GetOrdinal("PersonCode")),
                         Address = dr.GetString(dr.GetOrdinal("Home")),
+                        Leave = dr.GetBoolean(dr.GetOrdinal("Leave")).ToString().ToLower(),
+                        LeaveDate = dr.GetDateTime(dr.GetOrdinal("LeaveDate")).ToString("yyyy-MM-dd"),
+                        GroupName = dr.GetString(dr.GetOrdinal("DeptName")),
+                        WorkCode = dr.GetString(dr.GetOrdinal("JobCode")),
                         Picture = (byte[])dr["Photo"],
                     };
                     humans.Add(human);
@@ -51,8 +94,9 @@ namespace ZforeFromwork.SqlService
             }
             catch (Exception ex)
             {
-                LogUtil.WaringLog(ex.StackTrace);
+                Console.WriteLine(ex.StackTrace);
                 LogUtil.WaringLog("数据库连接失败...");
+                return humans = null;
             }
             finally
             {
