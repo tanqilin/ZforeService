@@ -27,12 +27,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_52C52EE806484B2CA95B93D63192CEA9"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_5A2602BE8399762B5CB3B33DD6AEA31C"
         "OwnerKey" = "8:_CD8117CB19F84E55BE6F035CEB76135E"
         "MsmSig" = "8:_UNDEFINED"
@@ -59,6 +53,12 @@
         {
         "MsmKey" = "8:_D8A06340A968DAAC6D0C64837A80FF1F"
         "OwnerKey" = "8:_CD8117CB19F84E55BE6F035CEB76135E"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_EADEAB32C44F4C2191DBEEA87057F486"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -142,6 +142,14 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.6.1"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.6.1 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.6.1"
+                    }
+                }
             }
         }
     }
@@ -201,26 +209,6 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_52C52EE806484B2CA95B93D63192CEA9"
-            {
-            "SourcePath" = "8:..\\..\\AppBoxMvc\\Zfore.Present\\Zfore.Main\\favicon.ico"
-            "TargetName" = "8:favicon.ico"
-            "Tag" = "8:"
-            "Folder" = "8:_07D86953D621498C9372729E2B58693A"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_5A2602BE8399762B5CB3B33DD6AEA31C"
@@ -325,6 +313,26 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_EADEAB32C44F4C2191DBEEA87057F486"
+            {
+            "SourcePath" = "8:..\\ZforeServiceClient\\bin\\Debug\\favicon.ico"
+            "TargetName" = "8:favicon.ico"
+            "Tag" = "8:"
+            "Folder" = "8:_07D86953D621498C9372729E2B58693A"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
         }
         "FileType"
         {
@@ -426,7 +434,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:ZforeSetup"
         "ProductCode" = "8:{E6EBB2F5-F1F4-4F96-8B21-DF8C22C3B00F}"
-        "PackageCode" = "8:{CCCF9D2D-57D5-429E-9BE5-B178ECD00F41}"
+        "PackageCode" = "8:{D3D76070-4636-465B-B72E-048763367A71}"
         "UpgradeCode" = "8:{9303E433-B0D9-4A32-B435-F922002BFA6B}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -557,7 +565,7 @@
             "Target" = "8:_CD8117CB19F84E55BE6F035CEB76135E"
             "Folder" = "8:_1B87C5FB2D9E42CA9EFD55657A140A0C"
             "WorkingFolder" = "8:_07D86953D621498C9372729E2B58693A"
-            "Icon" = "8:_52C52EE806484B2CA95B93D63192CEA9"
+            "Icon" = "8:_EADEAB32C44F4C2191DBEEA87057F486"
             "Feature" = "8:"
             }
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_1E88CEAAC1F143119C10FDD5A6E6337E"
@@ -571,7 +579,7 @@
             "Target" = "8:_CD8117CB19F84E55BE6F035CEB76135E"
             "Folder" = "8:_79589C683007489CBD2C2B63DB31B033"
             "WorkingFolder" = "8:_07D86953D621498C9372729E2B58693A"
-            "Icon" = "8:_52C52EE806484B2CA95B93D63192CEA9"
+            "Icon" = "8:_EADEAB32C44F4C2191DBEEA87057F486"
             "Feature" = "8:"
             }
         }

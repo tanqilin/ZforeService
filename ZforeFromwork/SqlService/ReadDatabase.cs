@@ -95,7 +95,7 @@ namespace ZforeFromwork.SqlService
             catch (Exception ex)
             {
                 Console.WriteLine(ex.StackTrace);
-                LogUtil.WaringLog("数据库连接失败...");
+                LogUtil.WaringLog("database read error...");
                 return humans = null;
             }
             finally

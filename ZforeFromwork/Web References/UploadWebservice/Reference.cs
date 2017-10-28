@@ -31,7 +31,9 @@ namespace ZforeFromwork.UploadWebservice {
         
         private System.Threading.SendOrPostCallback UpHumanInfoOperationCompleted;
         
-        private System.Threading.SendOrPostCallback addOperationCompleted;
+        private System.Threading.SendOrPostCallback UpAttendInfoOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback InMyHeartOperationCompleted;
         
         private bool useDefaultCredentialsSetExplicitly;
         
@@ -75,7 +77,10 @@ namespace ZforeFromwork.UploadWebservice {
         public event UpHumanInfoCompletedEventHandler UpHumanInfoCompleted;
         
         /// <remarks/>
-        public event addCompletedEventHandler addCompleted;
+        public event UpAttendInfoCompletedEventHandler UpAttendInfoCompleted;
+        
+        /// <remarks/>
+        public event InMyHeartCompletedEventHandler InMyHeartCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/UpHumanInfo", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -107,33 +112,56 @@ namespace ZforeFromwork.UploadWebservice {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/add", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public int add(string a, string b) {
-            object[] results = this.Invoke("add", new object[] {
-                        a,
-                        b});
-            return ((int)(results[0]));
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/UpAttendInfo", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void UpAttendInfo() {
+            this.Invoke("UpAttendInfo", new object[0]);
         }
         
         /// <remarks/>
-        public void addAsync(string a, string b) {
-            this.addAsync(a, b, null);
+        public void UpAttendInfoAsync() {
+            this.UpAttendInfoAsync(null);
         }
         
         /// <remarks/>
-        public void addAsync(string a, string b, object userState) {
-            if ((this.addOperationCompleted == null)) {
-                this.addOperationCompleted = new System.Threading.SendOrPostCallback(this.OnaddOperationCompleted);
+        public void UpAttendInfoAsync(object userState) {
+            if ((this.UpAttendInfoOperationCompleted == null)) {
+                this.UpAttendInfoOperationCompleted = new System.Threading.SendOrPostCallback(this.OnUpAttendInfoOperationCompleted);
             }
-            this.InvokeAsync("add", new object[] {
-                        a,
-                        b}, this.addOperationCompleted, userState);
+            this.InvokeAsync("UpAttendInfo", new object[0], this.UpAttendInfoOperationCompleted, userState);
         }
         
-        private void OnaddOperationCompleted(object arg) {
-            if ((this.addCompleted != null)) {
+        private void OnUpAttendInfoOperationCompleted(object arg) {
+            if ((this.UpAttendInfoCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.addCompleted(this, new addCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+                this.UpAttendInfoCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/InMyHeart", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void InMyHeart(string heartXml) {
+            this.Invoke("InMyHeart", new object[] {
+                        heartXml});
+        }
+        
+        /// <remarks/>
+        public void InMyHeartAsync(string heartXml) {
+            this.InMyHeartAsync(heartXml, null);
+        }
+        
+        /// <remarks/>
+        public void InMyHeartAsync(string heartXml, object userState) {
+            if ((this.InMyHeartOperationCompleted == null)) {
+                this.InMyHeartOperationCompleted = new System.Threading.SendOrPostCallback(this.OnInMyHeartOperationCompleted);
+            }
+            this.InvokeAsync("InMyHeart", new object[] {
+                        heartXml}, this.InMyHeartOperationCompleted, userState);
+        }
+        
+        private void OnInMyHeartOperationCompleted(object arg) {
+            if ((this.InMyHeartCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.InMyHeartCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -184,29 +212,11 @@ namespace ZforeFromwork.UploadWebservice {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2053.0")]
-    public delegate void addCompletedEventHandler(object sender, addCompletedEventArgs e);
+    public delegate void UpAttendInfoCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2053.0")]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class addCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        internal addCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        /// <remarks/>
-        public int Result {
-            get {
-                this.RaiseExceptionIfNecessary();
-                return ((int)(this.results[0]));
-            }
-        }
-    }
+    public delegate void InMyHeartCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
 }
 
 #pragma warning restore 1591

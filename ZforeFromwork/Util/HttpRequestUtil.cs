@@ -59,13 +59,13 @@ namespace ZforeFromwork.Util
         /// </summary>
         static void ReadHumanData()
         {
-            LogUtil.MsgLog("--人员--线程启动！", "humanLog");
+            LogUtil.MsgLog("human up start！", "humanLog");
             while (true)
             {
                 // 根据网络状况同步信息
                 if (!NetStateUtil.LocalConnectionStatus())
                 {
-                    LogUtil.MsgLog("网络无连接！", "humanLog");
+                    LogUtil.MsgLog("net connectionless！", "humanLog");
                     Thread.Sleep(60000);
                     continue;
                 }
@@ -88,8 +88,9 @@ namespace ZforeFromwork.Util
                 }
                 catch (Exception err)
                 {
+                    Thread.Sleep(15000);
                     Console.WriteLine(err.StackTrace);
-                    LogUtil.WaringLog("服务器停止运行！");
+                    LogUtil.WaringLog("service not runing！");
                 }
                 Thread.Sleep(10000);
             }
@@ -100,7 +101,7 @@ namespace ZforeFromwork.Util
         /// </summary>
         static void ReadAttendData()
         {
-            LogUtil.MsgLog("--考勤--线程启动！","attendLog");
+            LogUtil.MsgLog("attend start！","attendLog");
             while (true)
             {
                 Thread.Sleep(60000);
@@ -112,12 +113,12 @@ namespace ZforeFromwork.Util
         /// </summary>
         static void ManageThread()
         {
-            LogUtil.MsgLog("--心跳--线程启动！", "manageLog");
+            LogUtil.MsgLog("heart start！", "manageLog");
             while (true)
             {
                 try
                 {
-                    LogUtil.MsgLog("我还活着！", "manageLog");
+                    LogUtil.MsgLog("I'm alive！", "manageLog");
                     // 在这里做线程维护，先空着
                 }
                 catch(Exception err)
@@ -138,19 +139,19 @@ namespace ZforeFromwork.Util
         {
             if (String.IsNullOrEmpty(result) || result == "false")
             {
-                LogUtil.ErrorLog("上传失败...");
+                LogUtil.WaringLog("上传失败（验证不通过）...");
                 return;
             }
            
             /// 解析上报的结果
             List <HumanResult> results = XmlUtil.ReadHumanResultXml(result);
             LogUtil.MsgLog(result, "humanLog");
-            LogUtil.MsgLog("=====================================", "humanLog");
-            foreach (var item in results)
-            {
-                LogUtil.MsgLog(item.Result + "," + item.IdCard, "humanLog");
-            }
-            LogUtil.MsgLog("=====================================", "humanLog");
+            //LogUtil.MsgLog("=====================================", "humanLog");
+            //foreach (var item in results)
+            //{
+            //    LogUtil.MsgLog(item.Result + "," + item.IdCard, "humanLog");
+            //}
+            //LogUtil.MsgLog("=====================================", "humanLog");
 
             ReadDatabase Sql = new ReadDatabase();
             Sql.HumanResultSql(results);
