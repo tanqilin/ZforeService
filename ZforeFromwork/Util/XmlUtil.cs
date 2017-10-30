@@ -164,6 +164,31 @@ namespace ZforeFromwork.Util
         }
         #endregion
 
+        #region 创建心跳请求Xml
+        public static string CreateHeart()
+        {
+            // 读取配置信息
+            var config = ReadConfig();
+
+            XmlDocument doc = new XmlDocument();
+            XmlDeclaration dec = doc.CreateXmlDeclaration("1.0", "GB2312", null);
+            doc.AppendChild(dec);
+
+            XmlElement root = doc.CreateElement("Message");
+            doc.AppendChild(root);
+
+            // Xml配置标签
+            XmlElement nodeProject = doc.CreateElement("Project");
+            nodeProject.SetAttribute("name", config.projectName);
+            nodeProject.SetAttribute("num", config.projectNum);
+            nodeProject.SetAttribute("url", config.onloadUrl);
+            root.AppendChild(nodeProject);
+
+            // 把xml转换为xml字符串
+            return doc.OuterXml;
+        }
+        #endregion
+
         #region 解析人员上报结果
         /// <summary>
         /// 接续人员上报WebService返回的结果

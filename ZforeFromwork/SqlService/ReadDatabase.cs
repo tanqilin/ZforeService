@@ -75,21 +75,30 @@ namespace ZforeFromwork.SqlService
                     // 读取身份证号不能为空
                     if (String.IsNullOrEmpty(dr.GetString(dr.GetOrdinal("PersonCode")))) continue;
 
-                    Human human = new Human
+                    try
                     {
-                        Id = dr.GetInt32(dr.GetOrdinal("EmployeeID")),
-                        Name = dr.GetString(dr.GetOrdinal("EmployeeName")),
-                        Gender = dr.GetBoolean(dr.GetOrdinal("Sex")) == true?"女":"男",
-                        Birthday = dr.GetDateTime(dr.GetOrdinal("Birthday")).ToString("yyyy-MM-dd"),
-                        Number = dr.GetString(dr.GetOrdinal("PersonCode")),
-                        Address = dr.GetString(dr.GetOrdinal("Home")),
-                        Leave = dr.GetBoolean(dr.GetOrdinal("Leave")).ToString().ToLower(),
-                        LeaveDate = dr.IsDBNull(dr.GetOrdinal("LeaveDate"))?"":dr.GetDateTime(dr.GetOrdinal("LeaveDate")).ToString("yyyy-MM-dd"),
-                        GroupName = dr.IsDBNull(dr.GetOrdinal("DeptName")) ? "": dr.GetString(dr.GetOrdinal("DeptName")),
-                        WorkCode = dr.IsDBNull(dr.GetOrdinal("JobCode")) ? "" : dr.GetString(dr.GetOrdinal("JobCode")),
-                        Picture = (byte[])dr["Photo"],
-                    };
-                    humans.Add(human);
+                        Human human = new Human
+                        {
+                            Id = dr.GetInt32(dr.GetOrdinal("EmployeeID")),
+                            Name = dr.GetString(dr.GetOrdinal("EmployeeName")),
+                            Gender = dr.GetBoolean(dr.GetOrdinal("Sex")) == true ? "女" : "男",
+                            Birthday = dr.GetDateTime(dr.GetOrdinal("Birthday")).ToString("yyyy-MM-dd"),
+                            Number = dr.GetString(dr.GetOrdinal("PersonCode")),
+                            Address = dr.GetString(dr.GetOrdinal("Home")),
+                            Leave = dr.GetBoolean(dr.GetOrdinal("Leave")).ToString().ToLower(),
+                            LeaveDate = dr.IsDBNull(dr.GetOrdinal("LeaveDate")) ? "" : dr.GetDateTime(dr.GetOrdinal("LeaveDate")).ToString("yyyy-MM-dd"),
+                            GroupName = dr.IsDBNull(dr.GetOrdinal("DeptName")) ? "" : dr.GetString(dr.GetOrdinal("DeptName")),
+                            WorkCode = dr.IsDBNull(dr.GetOrdinal("JobCode")) ? "" : dr.GetString(dr.GetOrdinal("JobCode")),
+                            Picture = (byte[])dr["Photo"],
+                        };
+                        humans.Add(human);
+                    }
+                    catch
+                    {
+                        LogUtil.WaringLog("database to entity error！");
+                        humans = null;
+                        break;
+                    }
                 }
             }
             catch (Exception ex)

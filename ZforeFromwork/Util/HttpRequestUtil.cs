@@ -16,9 +16,14 @@ namespace ZforeFromwork.Util
     /// </summary>
     public class HttpRequestUtil
     {
+
+        #region 属性和构造函数
+
         private static Thread humanThread;
         private static Thread attendThread;
         private static Thread managerThread;
+
+        #endregion
 
         #region 启动线程
         /// <summary>
@@ -65,15 +70,19 @@ namespace ZforeFromwork.Util
                 // 根据网络状况同步信息
                 if (!NetStateUtil.LocalConnectionStatus())
                 {
-                    LogUtil.MsgLog("net connectionless！", "humanLog");
-                    Thread.Sleep(60000);
+                    LogUtil.MsgLog("Net connectionless！ Try again in 5 minutes", "humanLog");
+                    Thread.Sleep(5*60000);
                     continue;
                 }
 
                 // 从数据库读取数据并转换未Xml字符串
                 ReadDatabase read = new ReadDatabase();
                 List<Human> data = read.ReadHumanInfo();
-                if (data == null || data.Count() == 0) continue;
+                if (data == null || data.Count() == 0)
+                {
+                    Thread.Sleep(15 * 60000);
+                    continue;
+                }
 
                 string ListHuman = XmlUtil.CreateHumanXml(data);
 
@@ -81,18 +90,18 @@ namespace ZforeFromwork.Util
                 try
                 {
                     UploadWebservice.UploadWebservice webservice = new UploadWebservice.UploadWebservice();
-                    webservice.Timeout = 30;
+                    webservice.Timeout = 15000;
                     // 执行WebService并返回结果
                     string result = webservice.UpHumanInfo(ListHuman);
                     HumanResultHandle(result);
                 }
                 catch (Exception err)
                 {
-                    Thread.Sleep(15000);
+                    Thread.Sleep(5*60000);
                     Console.WriteLine(err.StackTrace);
-                    LogUtil.WaringLog("service not runing！");
+                    LogUtil.WaringLog("WebService not runing! Try again in 5 minutes");
                 }
-                Thread.Sleep(10000);
+                Thread.Sleep(60000);
             }
         }
 
@@ -118,11 +127,15 @@ namespace ZforeFromwork.Util
             {
                 try
                 {
-                    LogUtil.MsgLog("I'm alive！", "manageLog");
+                    UploadWebservice.UploadWebservice webservice = new UploadWebservice.UploadWebservice();
+                    webservice.Timeout = 10000;
+                    string projectInfo = XmlUtil.CreateHeart();
+                    webservice.InMyHeart(projectInfo);
                     // 在这里做线程维护，先空着
                 }
                 catch(Exception err)
                 {
+                    Thread.Sleep(60000);
                     LogUtil.MsgLog(err.StackTrace, "manageLog");
                 }
 

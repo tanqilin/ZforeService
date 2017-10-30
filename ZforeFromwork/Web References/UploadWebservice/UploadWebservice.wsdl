@@ -32,6 +32,7 @@
       <s:element name="InMyHeartResponse">
         <s:complexType />
       </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
     </s:schema>
   </wsdl:types>
   <wsdl:message name="UpHumanInfoSoapIn">
@@ -52,6 +53,30 @@
   <wsdl:message name="InMyHeartSoapOut">
     <wsdl:part name="parameters" element="tns:InMyHeartResponse" />
   </wsdl:message>
+  <wsdl:message name="UpHumanInfoHttpGetIn">
+    <wsdl:part name="humanXml" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpHumanInfoHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="UpAttendInfoHttpGetIn" />
+  <wsdl:message name="UpAttendInfoHttpGetOut" />
+  <wsdl:message name="InMyHeartHttpGetIn">
+    <wsdl:part name="heartXml" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="InMyHeartHttpGetOut" />
+  <wsdl:message name="UpHumanInfoHttpPostIn">
+    <wsdl:part name="humanXml" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpHumanInfoHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="UpAttendInfoHttpPostIn" />
+  <wsdl:message name="UpAttendInfoHttpPostOut" />
+  <wsdl:message name="InMyHeartHttpPostIn">
+    <wsdl:part name="heartXml" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="InMyHeartHttpPostOut" />
   <wsdl:portType name="UploadWebserviceSoap">
     <wsdl:operation name="UpHumanInfo">
       <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Web服务，上传人员信息</wsdl:documentation>
@@ -67,6 +92,40 @@
       <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">接收同步程序心跳</wsdl:documentation>
       <wsdl:input message="tns:InMyHeartSoapIn" />
       <wsdl:output message="tns:InMyHeartSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="UploadWebserviceHttpGet">
+    <wsdl:operation name="UpHumanInfo">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Web服务，上传人员信息</wsdl:documentation>
+      <wsdl:input message="tns:UpHumanInfoHttpGetIn" />
+      <wsdl:output message="tns:UpHumanInfoHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpAttendInfo">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">上传考勤信息</wsdl:documentation>
+      <wsdl:input message="tns:UpAttendInfoHttpGetIn" />
+      <wsdl:output message="tns:UpAttendInfoHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InMyHeart">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">接收同步程序心跳</wsdl:documentation>
+      <wsdl:input message="tns:InMyHeartHttpGetIn" />
+      <wsdl:output message="tns:InMyHeartHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="UploadWebserviceHttpPost">
+    <wsdl:operation name="UpHumanInfo">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Web服务，上传人员信息</wsdl:documentation>
+      <wsdl:input message="tns:UpHumanInfoHttpPostIn" />
+      <wsdl:output message="tns:UpHumanInfoHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpAttendInfo">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">上传考勤信息</wsdl:documentation>
+      <wsdl:input message="tns:UpAttendInfoHttpPostIn" />
+      <wsdl:output message="tns:UpAttendInfoHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InMyHeart">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">接收同步程序心跳</wsdl:documentation>
+      <wsdl:input message="tns:InMyHeartHttpPostIn" />
+      <wsdl:output message="tns:InMyHeartHttpPostOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="UploadWebserviceSoap" type="tns:UploadWebserviceSoap">
@@ -129,12 +188,70 @@
       </wsdl:output>
     </wsdl:operation>
   </wsdl:binding>
+  <wsdl:binding name="UploadWebserviceHttpGet" type="tns:UploadWebserviceHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="UpHumanInfo">
+      <http:operation location="/UpHumanInfo" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpAttendInfo">
+      <http:operation location="/UpAttendInfo" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="InMyHeart">
+      <http:operation location="/InMyHeart" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="UploadWebserviceHttpPost" type="tns:UploadWebserviceHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="UpHumanInfo">
+      <http:operation location="/UpHumanInfo" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpAttendInfo">
+      <http:operation location="/UpAttendInfo" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="InMyHeart">
+      <http:operation location="/InMyHeart" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+  </wsdl:binding>
   <wsdl:service name="UploadWebservice">
     <wsdl:port name="UploadWebserviceSoap" binding="tns:UploadWebserviceSoap">
       <soap:address location="http://122.114.95.70/UploadWebservice.asmx" />
     </wsdl:port>
     <wsdl:port name="UploadWebserviceSoap12" binding="tns:UploadWebserviceSoap12">
       <soap12:address location="http://122.114.95.70/UploadWebservice.asmx" />
+    </wsdl:port>
+    <wsdl:port name="UploadWebserviceHttpGet" binding="tns:UploadWebserviceHttpGet">
+      <http:address location="http://122.114.95.70/UploadWebservice.asmx" />
+    </wsdl:port>
+    <wsdl:port name="UploadWebserviceHttpPost" binding="tns:UploadWebserviceHttpPost">
+      <http:address location="http://122.114.95.70/UploadWebservice.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>
