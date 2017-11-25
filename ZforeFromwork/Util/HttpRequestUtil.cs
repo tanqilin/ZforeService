@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
-using System.IO;
 using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using ZforeFromwork.Model;
 using ZforeFromwork.SqlService;
 
@@ -16,7 +12,6 @@ namespace ZforeFromwork.Util
     /// </summary>
     public class HttpRequestUtil
     {
-
         #region 属性和构造函数
 
         private static Thread humanThread;
@@ -84,11 +79,10 @@ namespace ZforeFromwork.Util
                     continue;
                 }
 
-                string ListHuman = XmlUtil.CreateHumanXml(data);
-
                 // 调用webservice上传人员读卡信息
                 try
                 {
+                    string ListHuman = XmlUtil.CreateHumanXml(data);
                     UploadWebservice.UploadWebservice webservice = new UploadWebservice.UploadWebservice();
                     webservice.Timeout = 15000;
                     // 执行WebService并返回结果
@@ -118,7 +112,7 @@ namespace ZforeFromwork.Util
         }
 
         /// <summary>
-        /// 管理线程
+        /// 管理线程(发送心跳)
         /// </summary>
         static void ManageThread()
         {
@@ -127,11 +121,13 @@ namespace ZforeFromwork.Util
             {
                 try
                 {
+                    LogUtil.MsgLog("I'm Life","manageLog");
+                    /// 每半小时发送一次心跳
                     UploadWebservice.UploadWebservice webservice = new UploadWebservice.UploadWebservice();
                     webservice.Timeout = 10000;
                     string projectInfo = XmlUtil.CreateHeart();
                     webservice.InMyHeart(projectInfo);
-                    // 在这里做线程维护，先空着
+                    /// 在这里做线程维护，先空着
                 }
                 catch(Exception err)
                 {

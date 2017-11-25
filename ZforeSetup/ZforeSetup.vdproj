@@ -64,6 +64,12 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_5A2602BE8399762B5CB3B33DD6AEA31C"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_CD8117CB19F84E55BE6F035CEB76135E"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -77,12 +83,6 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_24D7F769EC42A7777B8C5A7A94FF6702"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_5A2602BE8399762B5CB3B33DD6AEA31C"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -341,7 +341,7 @@
         {
             "{3C67513D-01DD-4637-8A68-80971EB9504F}:_07D86953D621498C9372729E2B58693A"
             {
-            "DefaultLocation" = "8:[ProgramFilesFolder][Manufacturer]\\[ProductName]"
+            "DefaultLocation" = "8:[ProgramFiles64Folder][Manufacturer]\\[ProductName]"
             "Name" = "8:#1925"
             "AlwaysCreate" = "11:FALSE"
             "Condition" = "8:"
@@ -433,15 +433,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:ZforeSetup"
-        "ProductCode" = "8:{E6EBB2F5-F1F4-4F96-8B21-DF8C22C3B00F}"
-        "PackageCode" = "8:{D3D76070-4636-465B-B72E-048763367A71}"
+        "ProductCode" = "8:{82F806C8-D026-4C0D-AC61-6404FC5C4057}"
+        "PackageCode" = "8:{93B43648-B641-45B3-886A-F06D83E62771}"
         "UpgradeCode" = "8:{9303E433-B0D9-4A32-B435-F922002BFA6B}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
-        "RemovePreviousVersions" = "11:FALSE"
+        "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.0.0"
+        "ProductVersion" = "8:1.0.6"
         "Manufacturer" = "8:Microsoft"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
@@ -455,7 +455,7 @@
         "ARPIconIndex" = "3:0"
         "SearchPath" = "8:"
         "UseSystemSearchPath" = "11:TRUE"
-        "TargetPlatform" = "3:0"
+        "TargetPlatform" = "3:1"
         "PreBuildEvent" = "8:"
         "PostBuildEvent" = "8:"
         "RunPostBuildEvent" = "3:0"
