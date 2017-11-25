@@ -65,7 +65,7 @@ namespace ZforeFromwork.Util
                 // 根据网络状况同步信息
                 if (!NetStateUtil.LocalConnectionStatus())
                 {
-                    LogUtil.MsgLog("Net connectionless！ Try again in 5 minutes", "humanLog");
+                    LogUtil.MsgLog("Network connectionless! Try again in 5 minutes", "humanLog");
                     Thread.Sleep(5*60000);
                     continue;
                 }
@@ -75,6 +75,7 @@ namespace ZforeFromwork.Util
                 List<Human> data = read.ReadHumanInfo();
                 if (data == null || data.Count() == 0)
                 {
+                    LogUtil.MsgLog("There is no new data!", "humanLog");
                     Thread.Sleep(15 * 60000);
                     continue;
                 }
@@ -89,11 +90,10 @@ namespace ZforeFromwork.Util
                     string result = webservice.UpHumanInfo(ListHuman);
                     HumanResultHandle(result);
                 }
-                catch (Exception err)
+                catch
                 {
                     Thread.Sleep(5*60000);
-                    Console.WriteLine(err.StackTrace);
-                    LogUtil.WaringLog("WebService not runing! Try again in 5 minutes");
+                    LogUtil.MsgLog("WebService not runing! Try again in 5 minutes", "humanLog");
                 }
                 Thread.Sleep(60000);
             }
@@ -116,26 +116,34 @@ namespace ZforeFromwork.Util
         /// </summary>
         static void ManageThread()
         {
-            LogUtil.MsgLog("heart start！", "manageLog");
+            LogUtil.MsgLog("heart start ...！", "manageLog");
             while (true)
             {
+                // 根据网络状况同步信息
+                if (!NetStateUtil.LocalConnectionStatus())
+                {
+                    LogUtil.MsgLog("Network connectionless! Try again in 5 minutes", "manageLog");
+                    Thread.Sleep(5 * 60000);
+                    continue;
+                }
+
                 try
                 {
-                    LogUtil.MsgLog("I'm Life","manageLog");
-                    /// 每半小时发送一次心跳
+                    /// 每十分钟发送一次心跳
                     UploadWebservice.UploadWebservice webservice = new UploadWebservice.UploadWebservice();
                     webservice.Timeout = 10000;
                     string projectInfo = XmlUtil.CreateHeart();
-                    webservice.InMyHeart(projectInfo);
+                    string result = webservice.InMyHeart(projectInfo);
+                    LogUtil.MsgLog("I'm Life...- " + result, "manageLog");
                     /// 在这里做线程维护，先空着
                 }
-                catch(Exception err)
+                catch
                 {
                     Thread.Sleep(60000);
-                    LogUtil.MsgLog(err.StackTrace, "manageLog");
+                    LogUtil.MsgLog("WebService not runing! Try again in 5 minutes", "manageLog");
                 }
 
-                Thread.Sleep(30*60000);
+                Thread.Sleep(10*60000);
             }
         }
         #endregion
@@ -155,12 +163,6 @@ namespace ZforeFromwork.Util
             /// 解析上报的结果
             List <HumanResult> results = XmlUtil.ReadHumanResultXml(result);
             LogUtil.MsgLog(result, "humanLog");
-            //LogUtil.MsgLog("=====================================", "humanLog");
-            //foreach (var item in results)
-            //{
-            //    LogUtil.MsgLog(item.Result + "," + item.IdCard, "humanLog");
-            //}
-            //LogUtil.MsgLog("=====================================", "humanLog");
 
             ReadDatabase Sql = new ReadDatabase();
             Sql.HumanResultSql(results);

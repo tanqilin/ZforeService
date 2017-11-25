@@ -29,7 +29,7 @@ namespace ZforeService
         protected override void OnStart(string[] args)
         {
             /// 服务启动时清空日志文件
-            LogUtil.ClearLog("ServiceLog");
+            // LogUtil.ClearLog("ServiceLog");
             LogUtil.MsgLog("服务启动！");
             // 开启线程发送网络请求
             HttpRequestUtil.HttpSendHuman();

@@ -27,6 +27,8 @@ namespace ZforeFromwork.Util
             using (StreamWriter writer = new StreamWriter(stream))
             {
                 writer.WriteLine($"{DateTime.Now}，【ERROR】:" + error);
+                writer.Close();
+                stream.Close();
             }
 
             // 遇到错误则发到邮箱
@@ -48,6 +50,8 @@ namespace ZforeFromwork.Util
             using (StreamWriter writer = new StreamWriter(stream))
             {
                 writer.WriteLine($"{DateTime.Now}，【INFO】:" + msg);
+                writer.Close();
+                stream.Close();
             }
         }
 
@@ -63,6 +67,8 @@ namespace ZforeFromwork.Util
             using (StreamWriter writer = new StreamWriter(stream))
             {
                 writer.WriteLine($"{DateTime.Now}，【WARING】:" + waring);
+                writer.Close();
+                stream.Close();
             }
         }
 
@@ -78,6 +84,8 @@ namespace ZforeFromwork.Util
             using (StreamWriter writer = new StreamWriter(stream))
             {
                 writer.Write("");
+                writer.Close();
+                stream.Close();
             }
         }
     }

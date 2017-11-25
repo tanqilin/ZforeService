@@ -33,6 +33,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_684ECAE06E18444BA441D85A5198F2FD"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_9C3E1DA379AF4DDD9C1A4C9A4EAB4775"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -64,12 +70,6 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_5A2602BE8399762B5CB3B33DD6AEA31C"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_CD8117CB19F84E55BE6F035CEB76135E"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -83,6 +83,12 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_24D7F769EC42A7777B8C5A7A94FF6702"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_5A2602BE8399762B5CB3B33DD6AEA31C"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -240,6 +246,26 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_684ECAE06E18444BA441D85A5198F2FD"
+            {
+            "SourcePath" = "8:C:\\Windows\\System32\\msiexec.exe"
+            "TargetName" = "8:msiexec.exe"
+            "Tag" = "8:"
+            "Folder" = "8:_07D86953D621498C9372729E2B58693A"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_9C3E1DA379AF4DDD9C1A4C9A4EAB4775"
@@ -433,15 +459,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:ZforeSetup"
-        "ProductCode" = "8:{82F806C8-D026-4C0D-AC61-6404FC5C4057}"
-        "PackageCode" = "8:{93B43648-B641-45B3-886A-F06D83E62771}"
+        "ProductCode" = "8:{043C49C3-593B-4E1B-8642-1837048DD435}"
+        "PackageCode" = "8:{803BAEA7-7928-4784-9FBA-B19480027E3A}"
         "UpgradeCode" = "8:{9303E433-B0D9-4A32-B435-F922002BFA6B}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
-        "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.0.6"
+        "InstallAllUsers" = "11:TRUE"
+        "ProductVersion" = "8:1.0.11"
         "Manufacturer" = "8:Microsoft"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
@@ -570,7 +596,7 @@
             }
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_1E88CEAAC1F143119C10FDD5A6E6337E"
             {
-            "Name" = "8:Shortcut to 主输出 from ZforeServiceClient (Active)"
+            "Name" = "8:中孚同步程序"
             "Arguments" = "8:"
             "Description" = "8:"
             "ShowCmd" = "3:1"
@@ -578,6 +604,48 @@
             "Transitive" = "11:FALSE"
             "Target" = "8:_CD8117CB19F84E55BE6F035CEB76135E"
             "Folder" = "8:_79589C683007489CBD2C2B63DB31B033"
+            "WorkingFolder" = "8:_07D86953D621498C9372729E2B58693A"
+            "Icon" = "8:_EADEAB32C44F4C2191DBEEA87057F486"
+            "Feature" = "8:"
+            }
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_4DB22BCB067A4874AC80B097D1A7A5BB"
+            {
+            "Name" = "8:UnInstall.exe"
+            "Arguments" = "8:/x {043C49C3-593B-4E1B-8642-1837048DD435}"
+            "Description" = "8:"
+            "ShowCmd" = "3:1"
+            "IconIndex" = "3:0"
+            "Transitive" = "11:FALSE"
+            "Target" = "8:_684ECAE06E18444BA441D85A5198F2FD"
+            "Folder" = "8:_07D86953D621498C9372729E2B58693A"
+            "WorkingFolder" = "8:_07D86953D621498C9372729E2B58693A"
+            "Icon" = "8:"
+            "Feature" = "8:"
+            }
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_A3F09754331A404C930469C76D70CE43"
+            {
+            "Name" = "8:卸载.exe"
+            "Arguments" = "8:/x {043C49C3-593B-4E1B-8642-1837048DD435}"
+            "Description" = "8:"
+            "ShowCmd" = "3:1"
+            "IconIndex" = "3:0"
+            "Transitive" = "11:FALSE"
+            "Target" = "8:_684ECAE06E18444BA441D85A5198F2FD"
+            "Folder" = "8:_79589C683007489CBD2C2B63DB31B033"
+            "WorkingFolder" = "8:_07D86953D621498C9372729E2B58693A"
+            "Icon" = "8:"
+            "Feature" = "8:"
+            }
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_F891B59A798A4D408599991494FBF753"
+            {
+            "Name" = "8:Zfore.exe"
+            "Arguments" = "8:"
+            "Description" = "8:"
+            "ShowCmd" = "3:1"
+            "IconIndex" = "3:0"
+            "Transitive" = "11:FALSE"
+            "Target" = "8:_CD8117CB19F84E55BE6F035CEB76135E"
+            "Folder" = "8:_07D86953D621498C9372729E2B58693A"
             "WorkingFolder" = "8:_07D86953D621498C9372729E2B58693A"
             "Icon" = "8:_EADEAB32C44F4C2191DBEEA87057F486"
             "Feature" = "8:"
@@ -642,7 +710,7 @@
                     }
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_EEF82432B63A4D90885660BDE6F71D5C"
                     {
-                    "Sequence" = "3:300"
+                    "Sequence" = "3:400"
                     "DisplayName" = "8:确认安装"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
@@ -664,7 +732,7 @@
                     }
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_F5E7C3DE421F4135AFB4843FEA169C94"
                     {
-                    "Sequence" = "3:200"
+                    "Sequence" = "3:300"
                     "DisplayName" = "8:安装文件夹"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
@@ -739,7 +807,7 @@
                 {
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_53452DA4FFD44A0684E30F8EE3CDF1AC"
                     {
-                    "Sequence" = "3:200"
+                    "Sequence" = "3:400"
                     "DisplayName" = "8:安装文件夹"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
@@ -774,7 +842,7 @@
                     }
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_92ADA437B2E445A19BBDE115387AE667"
                     {
-                    "Sequence" = "3:300"
+                    "Sequence" = "3:500"
                     "DisplayName" = "8:确认安装"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"

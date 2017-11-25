@@ -56,6 +56,9 @@ namespace ZforeServiceClient
             this.projectName.Enabled = start;
             this.onloadUrl.Enabled = start;
             this.rightConfig.Enabled = start;
+
+            if (this.ServiceIsStart()) this.button2.Text = "重启同步";
+            else this.button2.Text = "开启同步";
         }
         #endregion
 
@@ -80,7 +83,11 @@ namespace ZforeServiceClient
                 MessageBox.Show("请先填写配置信息！","警告！",MessageBoxButtons.OK,MessageBoxIcon.Warning);
                 return;
             }
-            if (this.IsServiceExisted(serviceName)) this.ServiceStart(serviceName);
+            if (this.IsServiceExisted(serviceName))
+            {
+                this.ServiceStart(serviceName);
+                this.button2.Text = "重启同步";
+            }
             else this.serviceLog.Items.Add($"{DateTime.Now}:请先安装服务！");
         }
 
@@ -168,8 +175,21 @@ namespace ZforeServiceClient
                 {
                     control.Start();
                 }
+                else
+                {
+                    /// 重启服务
+                    if (control.Status == ServiceControllerStatus.Running)
+                    {
+                        control.Stop();
+                        this.serviceLog.Items.Add($"{DateTime.Now}:服务停止中...！");
+                        control.WaitForStatus(ServiceControllerStatus.Stopped);
+                    }
+                    control.Start();
+                    this.serviceLog.Items.Add($"{DateTime.Now}:服务启动中...！");
+                    control.WaitForStatus(ServiceControllerStatus.Running);
+                }
+                this.serviceLog.Items.Add($"{DateTime.Now}:服务已启动！");
             }
-            this.serviceLog.Items.Add($"{DateTime.Now}:服务已启动！");
         }
 
         //停止服务
@@ -185,6 +205,20 @@ namespace ZforeServiceClient
             this.serviceLog.Items.Add($"{DateTime.Now}:服务已停止！");
         }
 
+        /// <summary>
+        /// 判断服务是否启动
+        /// </summary>
+        /// <returns></returns>
+        private bool ServiceIsStart()
+        {
+            using (ServiceController control = new ServiceController(serviceName))
+            {
+                if (control.Status == ServiceControllerStatus.Running)
+                    return true;
+                else
+                    return false;
+            }
+        }
         #endregion
 
         #region 确认(保存)配置信息
