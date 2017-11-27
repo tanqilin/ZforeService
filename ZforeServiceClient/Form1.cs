@@ -55,8 +55,8 @@ namespace ZforeServiceClient
         {
             this.projectId.Enabled = start;
             this.projectName.Enabled = start;
-            this.onloadUrl.Enabled = true;
-            this.rightConfig.Enabled = true;
+            this.onloadUrl.Enabled = start;
+            this.rightConfig.Enabled = start;
         }
         #endregion
 
@@ -81,7 +81,11 @@ namespace ZforeServiceClient
                 MessageBox.Show("请先填写配置信息！","警告！",MessageBoxButtons.OK,MessageBoxIcon.Warning);
                 return;
             }
-            if (this.IsServiceExisted(serviceName)) this.ServiceStart(serviceName);
+            if (this.IsServiceExisted(serviceName))
+            {
+                this.ServiceStart(serviceName);
+                this.button2.Text = "重启同步";
+            }
             else this.serviceLog.Items.Add($"{DateTime.Now}:请先安装服务！");
         }
 
@@ -169,8 +173,21 @@ namespace ZforeServiceClient
                 {
                     control.Start();
                 }
+                else
+                {
+                    /// 重启服务
+                    if (control.Status == ServiceControllerStatus.Running)
+                    {
+                        control.Stop();
+                        this.serviceLog.Items.Add($"{DateTime.Now}:服务停止中...！");
+                        control.WaitForStatus(ServiceControllerStatus.Stopped);
+                    }
+                    control.Start();
+                    this.serviceLog.Items.Add($"{DateTime.Now}:服务启动中...！");
+                    control.WaitForStatus(ServiceControllerStatus.Running);
+                }
+                this.serviceLog.Items.Add($"{DateTime.Now}:服务已启动！");
             }
-            this.serviceLog.Items.Add($"{DateTime.Now}:服务已启动！");
         }
 
         //停止服务
@@ -185,12 +202,6 @@ namespace ZforeServiceClient
             }
             this.serviceLog.Items.Add($"{DateTime.Now}:服务已停止！");
         }
-
-        /// <summary>
-        /// 判断服务是否启动
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
 
         #endregion
 

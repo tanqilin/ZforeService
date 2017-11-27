@@ -9,7 +9,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZforeServiceClient", "Zfore
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZforeFromwork", "ZforeFromwork\ZforeFromwork.csproj", "{D63D10E3-7FBF-4B54-A22A-B88F14FA8ACA}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "ZforeSetup", "ZforeSetup\ZforeSetup.vdproj", "{10A6E792-E280-4EF7-9B51-E7FD2AE9F7EE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Installer", "Installer\Installer.csproj", "{07ADA267-E846-4606-8A70-F23CF7F028B5}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "ZforeSetup", "ZforeSetup\ZforeSetup.vdproj", "{2CFC793D-8C5A-48DA-AC76-57255CDAA93F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,8 +31,14 @@ Global
 		{D63D10E3-7FBF-4B54-A22A-B88F14FA8ACA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D63D10E3-7FBF-4B54-A22A-B88F14FA8ACA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D63D10E3-7FBF-4B54-A22A-B88F14FA8ACA}.Release|Any CPU.Build.0 = Release|Any CPU
-		{10A6E792-E280-4EF7-9B51-E7FD2AE9F7EE}.Debug|Any CPU.ActiveCfg = Debug
-		{10A6E792-E280-4EF7-9B51-E7FD2AE9F7EE}.Release|Any CPU.ActiveCfg = Release
+		{07ADA267-E846-4606-8A70-F23CF7F028B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07ADA267-E846-4606-8A70-F23CF7F028B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07ADA267-E846-4606-8A70-F23CF7F028B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07ADA267-E846-4606-8A70-F23CF7F028B5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2CFC793D-8C5A-48DA-AC76-57255CDAA93F}.Debug|Any CPU.ActiveCfg = Debug
+		{2CFC793D-8C5A-48DA-AC76-57255CDAA93F}.Debug|Any CPU.Build.0 = Debug
+		{2CFC793D-8C5A-48DA-AC76-57255CDAA93F}.Release|Any CPU.ActiveCfg = Release
+		{2CFC793D-8C5A-48DA-AC76-57255CDAA93F}.Release|Any CPU.Build.0 = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
