@@ -211,13 +211,17 @@ namespace ZforeServiceClient
         /// <returns></returns>
         private bool ServiceIsStart()
         {
-            using (ServiceController control = new ServiceController(serviceName))
+            if (this.IsServiceExisted(serviceName))
             {
-                if (control.Status == ServiceControllerStatus.Running)
-                    return true;
-                else
-                    return false;
+                using (ServiceController control = new ServiceController(serviceName))
+                {
+                    if (control.Status == ServiceControllerStatus.Running)
+                        return true;
+                    else
+                        return false;
+                }
             }
+            return false;
         }
         #endregion
 

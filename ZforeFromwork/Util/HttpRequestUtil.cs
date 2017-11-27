@@ -75,7 +75,7 @@ namespace ZforeFromwork.Util
                 List<Human> data = read.ReadHumanInfo();
                 if (data == null || data.Count() == 0)
                 {
-                    LogUtil.MsgLog("There is no new data!", "humanLog");
+                    LogUtil.MsgLog("There is no new data! Try again in 15 minutes", "humanLog");
                     Thread.Sleep(15 * 60000);
                     continue;
                 }
@@ -87,12 +87,15 @@ namespace ZforeFromwork.Util
                     UploadWebservice.UploadWebservice webservice = new UploadWebservice.UploadWebservice();
                     webservice.Timeout = 15000;
                     // 执行WebService并返回结果
+                    LogUtil.MsgLog(ListHuman, "humanLog");
                     string result = webservice.UpHumanInfo(ListHuman);
                     HumanResultHandle(result);
                 }
-                catch
+                catch(Exception err)
                 {
-                    Thread.Sleep(5*60000);
+                    LogUtil.MsgLog(err.StackTrace, "humanLog");
+
+                    //Thread.Sleep(5*60000);
                     LogUtil.MsgLog("WebService not runing! Try again in 5 minutes", "humanLog");
                 }
                 Thread.Sleep(60000);
@@ -134,13 +137,13 @@ namespace ZforeFromwork.Util
                     webservice.Timeout = 10000;
                     string projectInfo = XmlUtil.CreateHeart();
                     string result = webservice.InMyHeart(projectInfo);
-                    LogUtil.MsgLog("I'm Life...- " + result, "manageLog");
+                    LogUtil.MsgLog("I'm Life...- " + result + "! Try again in 10 minutes", "manageLog");
                     /// 在这里做线程维护，先空着
                 }
                 catch
                 {
                     Thread.Sleep(60000);
-                    LogUtil.MsgLog("WebService not runing! Try again in 5 minutes", "manageLog");
+                    LogUtil.MsgLog("WebService not runing! Try again in 10 minutes", "manageLog");
                 }
 
                 Thread.Sleep(10*60000);

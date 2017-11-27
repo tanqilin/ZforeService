@@ -254,16 +254,16 @@
   </wsdl:binding>
   <wsdl:service name="UploadWebservice">
     <wsdl:port name="UploadWebserviceSoap" binding="tns:UploadWebserviceSoap">
-      <soap:address location="http://192.168.1.128/UploadWebservice.asmx" />
+      <soap:address location="http://122.114.95.70/UploadWebservice.asmx" />
     </wsdl:port>
     <wsdl:port name="UploadWebserviceSoap12" binding="tns:UploadWebserviceSoap12">
-      <soap12:address location="http://192.168.1.128/UploadWebservice.asmx" />
+      <soap12:address location="http://122.114.95.70/UploadWebservice.asmx" />
     </wsdl:port>
     <wsdl:port name="UploadWebserviceHttpGet" binding="tns:UploadWebserviceHttpGet">
-      <http:address location="http://192.168.1.128/UploadWebservice.asmx" />
+      <http:address location="http://122.114.95.70/UploadWebservice.asmx" />
     </wsdl:port>
     <wsdl:port name="UploadWebserviceHttpPost" binding="tns:UploadWebserviceHttpPost">
-      <http:address location="http://192.168.1.128/UploadWebservice.asmx" />
+      <http:address location="http://122.114.95.70/UploadWebservice.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

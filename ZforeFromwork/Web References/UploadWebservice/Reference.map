@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <DiscoveryClientResultsFile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Results>
-    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.ContractReference" url="http://192.168.1.128/UploadWebservice.asmx?wsdl" filename="UploadWebservice.wsdl" />
-    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.DiscoveryDocumentReference" url="http://192.168.1.128/UploadWebservice.asmx?disco" filename="UploadWebservice.disco" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.DiscoveryDocumentReference" url="http://122.114.95.70/UploadWebservice.asmx?disco" filename="UploadWebservice.disco" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.ContractReference" url="http://122.114.95.70/UploadWebservice.asmx?wsdl" filename="UploadWebservice.wsdl" />
   </Results>
 </DiscoveryClientResultsFile>

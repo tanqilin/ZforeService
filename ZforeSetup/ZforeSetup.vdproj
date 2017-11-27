@@ -22,13 +22,31 @@
         "Entry"
         {
         "MsmKey" = "8:_24D7F769EC42A7777B8C5A7A94FF6702"
+        "OwnerKey" = "8:_51BDB5F728A44AC486D15B525E0EFAAF"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_24D7F769EC42A7777B8C5A7A94FF6702"
         "OwnerKey" = "8:_D8A06340A968DAAC6D0C64837A80FF1F"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_51BDB5F728A44AC486D15B525E0EFAAF"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_5A2602BE8399762B5CB3B33DD6AEA31C"
         "OwnerKey" = "8:_CD8117CB19F84E55BE6F035CEB76135E"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_5A2602BE8399762B5CB3B33DD6AEA31C"
+        "OwnerKey" = "8:_51BDB5F728A44AC486D15B525E0EFAAF"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -71,6 +89,12 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_CD8117CB19F84E55BE6F035CEB76135E"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_51BDB5F728A44AC486D15B525E0EFAAF"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -163,6 +187,62 @@
     {
         "CustomAction"
         {
+            "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_6CE29F05FBF147B1B753234B76F110BE"
+            {
+            "Name" = "8:主输出 from Installer (Active)"
+            "Condition" = "8:"
+            "Object" = "8:_51BDB5F728A44AC486D15B525E0EFAAF"
+            "FileType" = "3:1"
+            "InstallAction" = "3:4"
+            "Arguments" = "8:"
+            "EntryPoint" = "8:"
+            "Sequence" = "3:1"
+            "Identifier" = "8:_1A54C69D_01BF_4330_B473_A4E0DBDC2A65"
+            "InstallerClass" = "11:TRUE"
+            "CustomActionData" = "8:"
+            }
+            "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_BB88BEE3F3984668881685DDE390D3EC"
+            {
+            "Name" = "8:主输出 from Installer (Active)"
+            "Condition" = "8:"
+            "Object" = "8:_51BDB5F728A44AC486D15B525E0EFAAF"
+            "FileType" = "3:1"
+            "InstallAction" = "3:1"
+            "Arguments" = "8:"
+            "EntryPoint" = "8:"
+            "Sequence" = "3:1"
+            "Identifier" = "8:_8D81D231_E056_4782_A3D4_B2805FFDC24C"
+            "InstallerClass" = "11:TRUE"
+            "CustomActionData" = "8:/targetdir=\"[TARGETDIR]\\\" /dbuser=[DBUSER]"
+            }
+            "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_BFAD8234ABD6413A8B358BEDD3BA562D"
+            {
+            "Name" = "8:主输出 from Installer (Active)"
+            "Condition" = "8:"
+            "Object" = "8:_51BDB5F728A44AC486D15B525E0EFAAF"
+            "FileType" = "3:1"
+            "InstallAction" = "3:2"
+            "Arguments" = "8:"
+            "EntryPoint" = "8:"
+            "Sequence" = "3:1"
+            "Identifier" = "8:_00B8B957_7BF6_4D05_8CBA_D571976CAE4E"
+            "InstallerClass" = "11:TRUE"
+            "CustomActionData" = "8:/dbuser=[DBUSER]"
+            }
+            "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_C7D7903365164B92BC850F535793443A"
+            {
+            "Name" = "8:主输出 from Installer (Active)"
+            "Condition" = "8:"
+            "Object" = "8:_51BDB5F728A44AC486D15B525E0EFAAF"
+            "FileType" = "3:1"
+            "InstallAction" = "3:3"
+            "Arguments" = "8:"
+            "EntryPoint" = "8:"
+            "Sequence" = "3:1"
+            "Identifier" = "8:_55C1EC3B_5BDF_44F8_B2C7_B978DB5EF177"
+            "InstallerClass" = "11:TRUE"
+            "CustomActionData" = "8:"
+            }
         }
         "DefaultFeature"
         {
@@ -460,7 +540,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:ZforeSetup"
         "ProductCode" = "8:{043C49C3-593B-4E1B-8642-1837048DD435}"
-        "PackageCode" = "8:{803BAEA7-7928-4784-9FBA-B19480027E3A}"
+        "PackageCode" = "8:{D73A17C2-3E9D-491B-9A3E-D8A3A5FC0788}"
         "UpgradeCode" = "8:{9303E433-B0D9-4A32-B435-F922002BFA6B}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -805,9 +885,70 @@
             "Attributes" = "3:1"
                 "Dialogs"
                 {
+                    "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_08440DCD544A4A0BB89B28734BBC7DD5"
+                    {
+                    "Sequence" = "3:200"
+                    "DisplayName" = "8:客户信息"
+                    "UseDynamicProperties" = "11:TRUE"
+                    "IsDependency" = "11:FALSE"
+                    "SourcePath" = "8:<VsdDialogDir>\\VsdCustomerInfoDlg.wid"
+                        "Properties"
+                        {
+                            "BannerBitmap"
+                            {
+                            "Name" = "8:BannerBitmap"
+                            "DisplayName" = "8:#1001"
+                            "Description" = "8:#1101"
+                            "Type" = "3:8"
+                            "ContextData" = "8:Bitmap"
+                            "Attributes" = "3:4"
+                            "Setting" = "3:1"
+                            "UsePlugInResources" = "11:TRUE"
+                            }
+                            "Serial"
+                            {
+                            "Name" = "8:Serial"
+                            "DisplayName" = "8:#1004"
+                            "Description" = "8:#1104"
+                            "Type" = "3:3"
+                            "ContextData" = "8:"
+                            "Attributes" = "3:2"
+                            "Setting" = "3:1"
+                            "Value" = "8:<###-%%%%%%%>"
+                            "DefaultValue" = "8:<###-%%%%%%%>"
+                            "UsePlugInResources" = "11:TRUE"
+                            }
+                            "ShowOrg"
+                            {
+                            "Name" = "8:ShowOrg"
+                            "DisplayName" = "8:#1006"
+                            "Description" = "8:#1106"
+                            "Type" = "3:5"
+                            "ContextData" = "8:1;True=1;False=0"
+                            "Attributes" = "3:0"
+                            "Setting" = "3:0"
+                            "Value" = "3:1"
+                            "DefaultValue" = "3:1"
+                            "UsePlugInResources" = "11:TRUE"
+                            }
+                            "ShowSerial"
+                            {
+                            "Name" = "8:ShowSerial"
+                            "DisplayName" = "8:#1005"
+                            "Description" = "8:#1105"
+                            "Type" = "3:5"
+                            "ContextData" = "8:1;True=1;False=0"
+                            "Attributes" = "3:0"
+                            "Setting" = "3:0"
+                            "Value" = "3:0"
+                            "DefaultValue" = "3:0"
+                            "UsePlugInResources" = "11:TRUE"
+                            }
+                        }
+                    }
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_53452DA4FFD44A0684E30F8EE3CDF1AC"
                     {
-                    "Sequence" = "3:400"
+                    "Sequence" = "3:300"
                     "DisplayName" = "8:安装文件夹"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
@@ -842,7 +983,7 @@
                     }
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_92ADA437B2E445A19BBDE115387AE667"
                     {
-                    "Sequence" = "3:500"
+                    "Sequence" = "3:400"
                     "DisplayName" = "8:确认安装"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
@@ -919,9 +1060,9 @@
             "Attributes" = "3:3"
                 "Dialogs"
                 {
-                    "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_1485E5AA0BF6481E8D279CD47E8CDF38"
+                    "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_2983E693E9A24C99990A1653B4C2F7A2"
                     {
-                    "Sequence" = "3:100"
+                    "Sequence" = "3:200"
                     "DisplayName" = "8:已完成"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
@@ -947,8 +1088,8 @@
                             "Type" = "3:15"
                             "ContextData" = "8:"
                             "Attributes" = "3:0"
-                            "Setting" = "3:1"
-                            "Value" = "8:#1258"
+                            "Setting" = "3:2"
+                            "Value" = "8:如有新版本将在实名制系统主页进行通告！请注意查看"
                             "DefaultValue" = "8:#1258"
                             "UsePlugInResources" = "11:TRUE"
                             }
@@ -1049,6 +1190,34 @@
         }
         "ProjectOutput"
         {
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_51BDB5F728A44AC486D15B525E0EFAAF"
+            {
+            "SourcePath" = "8:..\\Installer\\obj\\Debug\\Installer.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_07D86953D621498C9372729E2B58693A"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            "ProjectOutputGroupRegister" = "3:1"
+            "OutputConfiguration" = "8:"
+            "OutputGroupCanonicalName" = "8:Built"
+            "OutputProjectGuid" = "8:{07ADA267-E846-4606-8A70-F23CF7F028B5}"
+            "ShowKeyOutput" = "11:TRUE"
+                "ExcludeFilters"
+                {
+                }
+            }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_CD8117CB19F84E55BE6F035CEB76135E"
             {
             "SourcePath" = "8:..\\ZforeServiceClient\\obj\\Debug\\ZforeServiceClient.exe"

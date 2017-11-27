@@ -26,7 +26,7 @@ namespace ZforeFromwork.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://192.168.1.128/UploadWebservice.asmx")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://122.114.95.70/UploadWebservice.asmx")]
         public string ZforeFromwork_UploadWebservice_UploadWebservice {
             get {
                 return ((string)(this["ZforeFromwork_UploadWebservice_UploadWebservice"]));
