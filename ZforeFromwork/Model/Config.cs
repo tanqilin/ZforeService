@@ -17,5 +17,7 @@ namespace ZforeFromwork.Model
         public string humanSql { get; set; }
 
         public string attendSql { get; set; }
+
+        public static string up_human_url = "http://{0}/SysnUpload/UpHumanInfo";
     }
 }

@@ -55,8 +55,8 @@ namespace ZforeServiceClient
         {
             this.projectId.Enabled = start;
             this.projectName.Enabled = start;
-            this.onloadUrl.Enabled = start;
-            this.rightConfig.Enabled = start;
+            this.onloadUrl.Enabled = true;
+            this.rightConfig.Enabled = true;
         }
         #endregion
 
@@ -185,6 +185,12 @@ namespace ZforeServiceClient
             }
             this.serviceLog.Items.Add($"{DateTime.Now}:服务已停止！");
         }
+
+        /// <summary>
+        /// 判断服务是否启动
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
 
         #endregion
 

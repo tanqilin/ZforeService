@@ -85,15 +85,15 @@ namespace ZforeFromwork.Util
                 }
 
                 string ListHuman = XmlUtil.CreateHumanXml(data);
-
-                // 调用webservice上传人员读卡信息
                 try
                 {
-                    UploadWebservice.UploadWebservice webservice = new UploadWebservice.UploadWebservice();
-                    webservice.Timeout = 15000;
-                    // 执行WebService并返回结果
-                    string result = webservice.UpHumanInfo(ListHuman);
-                    HumanResultHandle(result);
+                    Config config = XmlUtil.ReadConfig();
+                    /// 格式化请求URL并发送请求
+                    string url = String.Format(Config.up_human_url, config.onloadUrl);
+                    string result = HttpRequest.SendPostHttpRequest(url, ListHuman, Encoding.UTF8);
+                    LogUtil.MsgLog(result, "humanLog");
+
+                    //HumanResultHandle(result);
                 }
                 catch (Exception err)
                 {
