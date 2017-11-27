@@ -62,7 +62,8 @@
     <Compile Include="SqlService\ReadDatabase.cs" />
     <Compile Include="SqlService\SqlContext.cs" />
     <Compile Include="Util\EmailUtil.cs" />
-    <Compile Include="Util\HttpRequestUtil.cs" />
+    <Compile Include="Util\HttpRequest.cs" />
+    <Compile Include="Util\ThreadUtil.cs" />
     <Compile Include="Util\LogUtil.cs" />
     <Compile Include="Util\NetStateUtil.cs" />
     <Compile Include="Util\XmlUtil.cs" />

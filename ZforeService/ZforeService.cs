@@ -32,9 +32,9 @@ namespace ZforeService
             LogUtil.ClearLog("ServiceLog");
             LogUtil.MsgLog("服务启动！");
             // 开启线程发送网络请求
-            HttpRequestUtil.HttpSendHuman();
-            HttpRequestUtil.HttpSendAttend();
-            HttpRequestUtil.ThreadManage();
+            ThreadUtil.HttpSendHuman();
+            ThreadUtil.HttpSendAttend();
+            ThreadUtil.ThreadManage();
         }
 
         protected override void OnContinue()

@@ -30,7 +30,11 @@
         </s:complexType>
       </s:element>
       <s:element name="InMyHeartResponse">
-        <s:complexType />
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InMyHeartResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
       </s:element>
       <s:element name="string" nillable="true" type="s:string" />
     </s:schema>
@@ -64,7 +68,9 @@
   <wsdl:message name="InMyHeartHttpGetIn">
     <wsdl:part name="heartXml" type="s:string" />
   </wsdl:message>
-  <wsdl:message name="InMyHeartHttpGetOut" />
+  <wsdl:message name="InMyHeartHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
   <wsdl:message name="UpHumanInfoHttpPostIn">
     <wsdl:part name="humanXml" type="s:string" />
   </wsdl:message>
@@ -76,7 +82,9 @@
   <wsdl:message name="InMyHeartHttpPostIn">
     <wsdl:part name="heartXml" type="s:string" />
   </wsdl:message>
-  <wsdl:message name="InMyHeartHttpPostOut" />
+  <wsdl:message name="InMyHeartHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
   <wsdl:portType name="UploadWebserviceSoap">
     <wsdl:operation name="UpHumanInfo">
       <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Web服务，上传人员信息</wsdl:documentation>
@@ -211,7 +219,9 @@
       <wsdl:input>
         <http:urlEncoded />
       </wsdl:input>
-      <wsdl:output />
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
     </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="UploadWebserviceHttpPost" type="tns:UploadWebserviceHttpPost">
@@ -237,7 +247,9 @@
       <wsdl:input>
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>
-      <wsdl:output />
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
     </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="UploadWebservice">

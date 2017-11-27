@@ -14,7 +14,7 @@ namespace ZforeFromwork.Util
     /// <summary>
     /// 发送数据线程，定时向服务器发送更新的数据
     /// </summary>
-    public class HttpRequestUtil
+    public class ThreadUtil
     {
 
         #region 属性和构造函数
@@ -130,8 +130,9 @@ namespace ZforeFromwork.Util
                     UploadWebservice.UploadWebservice webservice = new UploadWebservice.UploadWebservice();
                     webservice.Timeout = 10000;
                     string projectInfo = XmlUtil.CreateHeart();
-                    webservice.InMyHeart(projectInfo);
+                    string result = webservice.InMyHeart(projectInfo);
                     // 在这里做线程维护，先空着
+                    LogUtil.MsgLog("I'm Life - " + result, "manageLog");
                 }
                 catch(Exception err)
                 {

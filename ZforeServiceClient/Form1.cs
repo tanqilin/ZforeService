@@ -32,6 +32,7 @@ namespace ZforeServiceClient
         {
             // 读取出xml信息
             var config = XmlUtil.ReadConfig();
+           
             //// 使用xml传输图片，byte[] -> string -> byte[]
             //string ret = System.Convert.ToBase64String(data[0].Picture); 
             //byte[] buff = Convert.FromBase64String(ret);
