@@ -16,6 +16,10 @@ namespace ZforeFromwork.SqlService
         #region 初始化数据库数据
         public bool InitDatabase()
         {
+            /// 如果已经配置过一次了则不再插入数据
+            string cinfig = XmlUtil.configPath + "config.xml";
+            if (File.Exists(cinfig)) return true;
+
             // 从配置文件读取sql语句
             if (!File.Exists(XmlUtil.datePath + "WorkType.sql")) return false;
             // 下边的方法读取txt不会出现乱码

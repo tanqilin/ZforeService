@@ -22,7 +22,19 @@
         "Entry"
         {
         "MsmKey" = "8:_24D7F769EC42A7777B8C5A7A94FF6702"
+        "OwnerKey" = "8:_A6A20C876F584935B60030EE3F877C8F"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_24D7F769EC42A7777B8C5A7A94FF6702"
         "OwnerKey" = "8:_D8A06340A968DAAC6D0C64837A80FF1F"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_58F270E3FB7D42EDAF85F90F97B625B4"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -33,7 +45,19 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_5A2602BE8399762B5CB3B33DD6AEA31C"
+        "OwnerKey" = "8:_A6A20C876F584935B60030EE3F877C8F"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_9C3E1DA379AF4DDD9C1A4C9A4EAB4775"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_A6A20C876F584935B60030EE3F877C8F"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -65,6 +89,12 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_CD8117CB19F84E55BE6F035CEB76135E"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_A6A20C876F584935B60030EE3F877C8F"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -157,6 +187,34 @@
     {
         "CustomAction"
         {
+            "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_03D70347A08743BBAC63354026343675"
+            {
+            "Name" = "8:主输出 from Installer (Active)"
+            "Condition" = "8:"
+            "Object" = "8:_A6A20C876F584935B60030EE3F877C8F"
+            "FileType" = "3:1"
+            "InstallAction" = "3:2"
+            "Arguments" = "8:"
+            "EntryPoint" = "8:"
+            "Sequence" = "3:1"
+            "Identifier" = "8:_2C1CCCED_8581_4FEA_8F5A_AC46C29AA1B5"
+            "InstallerClass" = "11:TRUE"
+            "CustomActionData" = "8:/targetdir=\"[TARGETDIR]\\\""
+            }
+            "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_53EA4AC6D8C74BAE831F2557914E8A22"
+            {
+            "Name" = "8:主输出 from Installer (Active)"
+            "Condition" = "8:"
+            "Object" = "8:_A6A20C876F584935B60030EE3F877C8F"
+            "FileType" = "3:1"
+            "InstallAction" = "3:1"
+            "Arguments" = "8:"
+            "EntryPoint" = "8:"
+            "Sequence" = "3:1"
+            "Identifier" = "8:_55A2508B_88FD_4844_9788_195402446676"
+            "InstallerClass" = "11:TRUE"
+            "CustomActionData" = "8:/targetdir=\"[TARGETDIR]\\\""
+            }
         }
         "DefaultFeature"
         {
@@ -209,6 +267,26 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_58F270E3FB7D42EDAF85F90F97B625B4"
+            {
+            "SourcePath" = "8:C:\\Windows\\System32\\msiexec.exe"
+            "TargetName" = "8:msiexec.exe"
+            "Tag" = "8:"
+            "Folder" = "8:_07D86953D621498C9372729E2B58693A"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_5A2602BE8399762B5CB3B33DD6AEA31C"
@@ -341,7 +419,7 @@
         {
             "{3C67513D-01DD-4637-8A68-80971EB9504F}:_07D86953D621498C9372729E2B58693A"
             {
-            "DefaultLocation" = "8:[ProgramFilesFolder][Manufacturer]\\[ProductName]"
+            "DefaultLocation" = "8:[ProgramFiles64Folder][Manufacturer]\\[ProductName]"
             "Name" = "8:#1925"
             "AlwaysCreate" = "11:FALSE"
             "Condition" = "8:"
@@ -433,15 +511,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:ZforeSetup"
-        "ProductCode" = "8:{52436052-D7AC-4FB7-8532-112C60BB2FC2}"
-        "PackageCode" = "8:{4FD25732-15F7-4F3E-8045-F9F53DEA375F}"
+        "ProductCode" = "8:{F35019A6-E12E-4C66-AFAC-C964395AC5EC}"
+        "PackageCode" = "8:{D675C734-6454-4471-B7F9-23BF5FAFFD21}"
         "UpgradeCode" = "8:{9303E433-B0D9-4A32-B435-F922002BFA6B}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:TRUE"
-        "ProductVersion" = "8:1.0.11"
+        "ProductVersion" = "8:1.0.13"
         "Manufacturer" = "8:Microsoft"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
@@ -455,7 +533,7 @@
         "ARPIconIndex" = "3:0"
         "SearchPath" = "8:"
         "UseSystemSearchPath" = "11:TRUE"
-        "TargetPlatform" = "3:0"
+        "TargetPlatform" = "3:1"
         "PreBuildEvent" = "8:"
         "PostBuildEvent" = "8:"
         "RunPostBuildEvent" = "3:0"
@@ -580,6 +658,20 @@
             "Folder" = "8:_79589C683007489CBD2C2B63DB31B033"
             "WorkingFolder" = "8:_07D86953D621498C9372729E2B58693A"
             "Icon" = "8:_EADEAB32C44F4C2191DBEEA87057F486"
+            "Feature" = "8:"
+            }
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_89CF2BB7F5974AD3BA4524DD8468011E"
+            {
+            "Name" = "8:UnInstall"
+            "Arguments" = "8:/x {A5B0D89F-5300-4FC5-9BA9-D0E27A122792}"
+            "Description" = "8:"
+            "ShowCmd" = "3:1"
+            "IconIndex" = "3:0"
+            "Transitive" = "11:FALSE"
+            "Target" = "8:_58F270E3FB7D42EDAF85F90F97B625B4"
+            "Folder" = "8:_07D86953D621498C9372729E2B58693A"
+            "WorkingFolder" = "8:_07D86953D621498C9372729E2B58693A"
+            "Icon" = "8:"
             "Feature" = "8:"
             }
         }
@@ -981,6 +1073,34 @@
         }
         "ProjectOutput"
         {
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_A6A20C876F584935B60030EE3F877C8F"
+            {
+            "SourcePath" = "8:..\\Installer\\obj\\Debug\\Installer.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_07D86953D621498C9372729E2B58693A"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            "ProjectOutputGroupRegister" = "3:1"
+            "OutputConfiguration" = "8:"
+            "OutputGroupCanonicalName" = "8:Built"
+            "OutputProjectGuid" = "8:{07ADA267-E846-4606-8A70-F23CF7F028B5}"
+            "ShowKeyOutput" = "11:TRUE"
+                "ExcludeFilters"
+                {
+                }
+            }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_CD8117CB19F84E55BE6F035CEB76135E"
             {
             "SourcePath" = "8:..\\ZforeServiceClient\\obj\\Debug\\ZforeServiceClient.exe"

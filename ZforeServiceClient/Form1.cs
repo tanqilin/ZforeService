@@ -32,7 +32,6 @@ namespace ZforeServiceClient
         {
             // 读取出xml信息
             var config = XmlUtil.ReadConfig();
-           
             //// 使用xml传输图片，byte[] -> string -> byte[]
             //string ret = System.Convert.ToBase64String(data[0].Picture); 
             //byte[] buff = Convert.FromBase64String(ret);
@@ -57,6 +56,9 @@ namespace ZforeServiceClient
             this.projectName.Enabled = start;
             this.onloadUrl.Enabled = start;
             this.rightConfig.Enabled = start;
+
+            if (this.ServiceIsStart()) this.button2.Text = "重启同步";
+            else this.button2.Text = "开启同步";
         }
         #endregion
 
@@ -76,9 +78,9 @@ namespace ZforeServiceClient
         //事件：启动服务
         private void button2_Click(object sender, EventArgs e)
         {
-            if(XmlUtil.ReadConfig() == null)
+            if (XmlUtil.ReadConfig() == null)
             {
-                MessageBox.Show("请先填写配置信息！","警告！",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                MessageBox.Show("请先填写配置信息！", "警告！", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
             if (this.IsServiceExisted(serviceName))
@@ -108,7 +110,7 @@ namespace ZforeServiceClient
             Form dialog = new LoginForm();
             dialog.ShowDialog();
             // 登录成功则卸载服务
-            if(dialog.DialogResult == DialogResult.OK)
+            if (dialog.DialogResult == DialogResult.OK)
             {
                 if (this.IsServiceExisted(serviceName))
                 {
@@ -203,6 +205,24 @@ namespace ZforeServiceClient
             this.serviceLog.Items.Add($"{DateTime.Now}:服务已停止！");
         }
 
+        /// <summary>
+        /// 判断服务是否启动
+        /// </summary>
+        /// <returns></returns>
+        private bool ServiceIsStart()
+        {
+            if (this.IsServiceExisted(serviceName))
+            {
+                using (ServiceController control = new ServiceController(serviceName))
+                {
+                    if (control.Status == ServiceControllerStatus.Running)
+                        return true;
+                    else
+                        return false;
+                }
+            }
+            return false;
+        }
         #endregion
 
         #region 确认(保存)配置信息
@@ -214,29 +234,31 @@ namespace ZforeServiceClient
             string ProjectName = this.projectName.Text;
             string OnloadUrl = this.onloadUrl.Text;
 
-            // 检查配置信息
-            if (String.IsNullOrEmpty(ProjectNum)||
+            /// 检查配置信息
+            if (String.IsNullOrEmpty(ProjectNum) ||
                 String.IsNullOrEmpty(ProjectName) ||
                 String.IsNullOrEmpty(OnloadUrl))
             {
-                MessageBox.Show("三项都不能为空！","提示",MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("三项都不能为空！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            // 向Xml写入配置文件
+
+            /// 初始化数据库种子数据
+            ReadDatabase database = new ReadDatabase();
+            if (database.InitDatabase())
+                this.serviceLog.Items.Add($"{DateTime.Now}:数据插入成功！");
+            else
+                this.serviceLog.Items.Add($"{DateTime.Now}:数据插入失败！");
+
+            this.serviceLog.Items.Add($"{DateTime.Now}:配置成功！");
+
+            /// 向Xml写入配置文件
             Config config = new Config();
             config.projectNum = ProjectNum;
             config.projectName = ProjectName;
             config.onloadUrl = OnloadUrl;
             XmlUtil.WriteConfig(config);
 
-            // 初始化数据库种子数据
-            ReadDatabase database = new ReadDatabase();
-            if(database.InitDatabase())
-                this.serviceLog.Items.Add($"{DateTime.Now}:数据插入成功！");
-            else
-                this.serviceLog.Items.Add($"{DateTime.Now}:数据插入失败！");
-
-            this.serviceLog.Items.Add($"{DateTime.Now}:配置成功！");
             iniEnabledAllButton(false);
         }
 

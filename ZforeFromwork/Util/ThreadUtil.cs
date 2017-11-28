@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading;
 using ZforeFromwork.Model;
 using ZforeFromwork.SqlService;
@@ -82,20 +83,18 @@ namespace ZforeFromwork.Util
 
                 string ListHuman = XmlUtil.CreateHumanXml(data);
 
-                // 调用webservice上传人员读卡信息
                 try
                 {
-                    UploadWebservice.UploadWebservice webservice = new UploadWebservice.UploadWebservice();
-                    webservice.Timeout = 15000;
-                    // 执行WebService并返回结果
-                    string result = webservice.UpHumanInfo(ListHuman);
+                    Thread.Sleep(1000);
+                    /// 格式化URL并发送上传请求
+                    Config config = XmlUtil.ReadConfig();
+                    string url = String.Format(Config.up_human_url, config.onloadUrl);
+                    string result = HttpRequest.SendPostHttpRequest(url,ListHuman, Encoding.UTF8);
                     HumanResultHandle(result);
                 }
-                catch(Exception err)
+                catch
                 {
-                    LogUtil.MsgLog(err.StackTrace, "humanLog");
-
-                    //Thread.Sleep(5*60000);
+                    Thread.Sleep(60000);
                     LogUtil.MsgLog("WebService not runing! Try again in 5 minutes", "humanLog");
                 }
                 Thread.Sleep(60000);
@@ -132,12 +131,14 @@ namespace ZforeFromwork.Util
 
                 try
                 {
-                    /// 每十分钟发送一次心跳
-                    UploadWebservice.UploadWebservice webservice = new UploadWebservice.UploadWebservice();
-                    webservice.Timeout = 10000;
+                    /// 封装心跳包请求信息
                     string projectInfo = XmlUtil.CreateHeart();
-                    webservice.InMyHeart(projectInfo);
-                    // 在这里做线程维护，先空着
+
+                    /// 格式化URL并发送上传请求
+                    Config config = XmlUtil.ReadConfig();
+                    string url = String.Format(Config.up_heart_url, config.onloadUrl);
+                    string result = HttpRequest.SendPostHttpRequest(url, projectInfo, Encoding.UTF8);
+                    LogUtil.MsgLog("I'm Life.. " + result, "manageLog");
                 }
                 catch
                 {
@@ -161,9 +162,10 @@ namespace ZforeFromwork.Util
                 LogUtil.WaringLog("上传失败（验证不通过）...");
                 return;
             }
-           
+
             /// 解析上报的结果
             List <HumanResult> results = XmlUtil.ReadHumanResultXml(result);
+            if (results == null || results.Count == 0) throw new Exception();
             LogUtil.MsgLog(result, "humanLog");
 
             ReadDatabase Sql = new ReadDatabase();
