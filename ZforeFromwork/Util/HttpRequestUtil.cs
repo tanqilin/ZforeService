@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading;
 using ZforeFromwork.Model;
 using ZforeFromwork.SqlService;
@@ -11,7 +10,7 @@ namespace ZforeFromwork.Util
     /// <summary>
     /// 发送数据线程，定时向服务器发送更新的数据
     /// </summary>
-    public class ThreadUtil
+    public class HttpRequestUtil
     {
         #region 属性和构造函数
 
@@ -76,35 +75,24 @@ namespace ZforeFromwork.Util
                 List<Human> data = read.ReadHumanInfo();
                 if (data == null || data.Count() == 0)
                 {
-                    LogUtil.MsgLog("There is no new data! Try again in 15 minutes", "humanLog");
+                    LogUtil.MsgLog("There is no new data!", "humanLog");
                     Thread.Sleep(15 * 60000);
                     continue;
                 }
 
-                string ListHuman = XmlUtil.CreateHumanXml(data);
-
+                // 调用webservice上传人员读卡信息
                 try
                 {
-                    Thread.Sleep(1000);
-                    /// 格式化URL并发送上传请求
-                    Config config = XmlUtil.ReadConfig();
-                    string url = String.Format(Config.up_human_url, config.onloadUrl);
-                    string result = HttpRequest.SendPostHttpRequest(url,ListHuman, Encoding.UTF8);
+                    string ListHuman = XmlUtil.CreateHumanXml(data);
+                    UploadWebservice.UploadWebservice webservice = new UploadWebservice.UploadWebservice();
+                    webservice.Timeout = 15000;
+                    // 执行WebService并返回结果
+                    string result = webservice.UpHumanInfo(ListHuman);
                     HumanResultHandle(result);
                 }
                 catch
                 {
-                    /// 如果调用Http接口出错则调用WebService接口
-                    try
-                    {
-                        UploadWebservice.UploadWebservice webservice = new UploadWebservice.UploadWebservice();
-                        webservice.Timeout = 15000;
-                        // 执行WebService并返回结果
-                        LogUtil.MsgLog(ListHuman, "humanLog");
-                        string result = webservice.UpHumanInfo(ListHuman);
-                    }
-                    catch { }
-                    Thread.Sleep(60000);
+                    Thread.Sleep(5*60000);
                     LogUtil.MsgLog("WebService not runing! Try again in 5 minutes", "humanLog");
                 }
                 Thread.Sleep(60000);
@@ -141,19 +129,18 @@ namespace ZforeFromwork.Util
 
                 try
                 {
-                    /// 封装心跳包请求信息
+                    /// 每十分钟发送一次心跳
+                    UploadWebservice.UploadWebservice webservice = new UploadWebservice.UploadWebservice();
+                    webservice.Timeout = 10000;
                     string projectInfo = XmlUtil.CreateHeart();
-
-                    /// 格式化URL并发送上传请求
-                    Config config = XmlUtil.ReadConfig();
-                    string url = String.Format(Config.up_heart_url, config.onloadUrl);
-                    string result = HttpRequest.SendPostHttpRequest(url, projectInfo, Encoding.UTF8);
-                    LogUtil.MsgLog("I'm Life.. " + result, "manageLog");
+                    string result = webservice.InMyHeart(projectInfo);
+                    LogUtil.MsgLog("I'm Life...- " + result, "manageLog");
+                    /// 在这里做线程维护，先空着
                 }
                 catch
                 {
                     Thread.Sleep(60000);
-                    LogUtil.MsgLog("WebService not runing! Try again in 10 minutes", "manageLog");
+                    LogUtil.MsgLog("WebService not runing! Try again in 5 minutes", "manageLog");
                 }
 
                 Thread.Sleep(10*60000);
@@ -172,10 +159,9 @@ namespace ZforeFromwork.Util
                 LogUtil.WaringLog("上传失败（验证不通过）...");
                 return;
             }
-
+           
             /// 解析上报的结果
             List <HumanResult> results = XmlUtil.ReadHumanResultXml(result);
-            if (results == null || results.Count == 0) throw new Exception();
             LogUtil.MsgLog(result, "humanLog");
 
             ReadDatabase Sql = new ReadDatabase();
