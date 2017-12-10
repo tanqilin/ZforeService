@@ -152,16 +152,20 @@
             // 
             // combo_group
             // 
+            this.combo_group.DisplayMember = "DeptName";
+            this.combo_group.DropDownHeight = 100;
             this.combo_group.FormattingEnabled = true;
+            this.combo_group.IntegralHeight = false;
             this.combo_group.Location = new System.Drawing.Point(357, 186);
             this.combo_group.Name = "combo_group";
             this.combo_group.Size = new System.Drawing.Size(240, 20);
             this.combo_group.TabIndex = 7;
+            this.combo_group.ValueMember = "DeptID";
             // 
             // combo_work
             // 
             this.combo_work.DisplayMember = "JobName";
-            this.combo_work.DropDownHeight = 100;
+            this.combo_work.DropDownHeight = 80;
             this.combo_work.FormattingEnabled = true;
             this.combo_work.IntegralHeight = false;
             this.combo_work.Location = new System.Drawing.Point(357, 219);
@@ -190,11 +194,14 @@
             // 
             // button1
             // 
+            this.button1.Image = global::ZforeServiceClient.Properties.Resources.mkpic;
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button1.Location = new System.Drawing.Point(128, 295);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 14;
-            this.button1.Text = "抓拍";
+            this.button1.Text = "抓  拍";
+            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.button1.UseVisualStyleBackColor = true;
             // 
             // pictureBox1

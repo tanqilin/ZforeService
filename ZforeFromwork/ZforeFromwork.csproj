@@ -65,8 +65,10 @@
     <Compile Include="Database\Model\DeptAModel.cs" />
     <Compile Include="Database\Model\EmployeeModel.cs" />
     <Compile Include="Database\Service\BaseService.cs" />
+    <Compile Include="Database\Service\Interface\IDeptAService.cs" />
     <Compile Include="Database\Service\Interface\IEmployeeService.cs" />
     <Compile Include="Database\Service\Interface\IJobService.cs" />
+    <Compile Include="Database\Service\Realization\DeptAService.cs" />
     <Compile Include="Database\Service\Realization\EmployeeService.cs" />
     <Compile Include="Database\Service\Realization\JobService.cs" />
     <Compile Include="Database\SqlContext.cs" />

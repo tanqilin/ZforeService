@@ -13,8 +13,16 @@ namespace ZforeFromwork.Database.Service.Interface
 
         void InsertEmployee(Employee entity);
 
+        void UpdateEmployee(Employee entity);
+
         Employee GetEmployeeByID(int id);
 
         List<Employee> GetAllEmployee();
+
+        List<Employee> GetEmployeeByDeptID(int id);
+
+        List<Employee> GetEmployeeByJobID(int id);
+
+        List<Employee> FindEmployee(string search);
     }
 }

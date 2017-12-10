@@ -247,5 +247,8 @@
   <ItemGroup>
     <None Include="bin\Debug\icon\delete.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\icon\mkpic.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

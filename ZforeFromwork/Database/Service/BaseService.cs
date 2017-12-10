@@ -38,11 +38,12 @@ namespace ZforeFromwork.Database.Service
         /// <summary>
         ///  删除实体集合
         /// </summary>
-        public void DeleteEntitys<T>(List<int> ids) where T : BaseEntity, new()
+        public void DeleteEntitys<T>(T entity) where T : BaseEntity, new()
         {
             try
             {
                 var context = db.Set<T>();
+                context.Remove(entity);
                 //context.Where(u => ids.Contains(u.ID)).ToList().ForEach(u => context.Remove(u));
                 //context.Where(u => ids.Contains(u.ID)).ToList().ForEach(u => context.Remove(u));
                 db.SaveChanges();

@@ -25,15 +25,49 @@ namespace ZforeFromwork.Database.Service.Realization
             base.InsertEntity(entity);
         }
 
+        public void UpdateEmployee(Employee entity)
+        {
+            base.UpdateEntity(entity);
+        }
+
         public Employee GetEmployeeByID(int id)
         {
-            return base.GetEntityById<Employee>(2);
+            return base.GetEntityById<Employee>(id);
         }
 
         public List<Employee> GetAllEmployee()
         {
             var data =  base.GetAllEntitys<Employee>();
             return data.Where(e=>e.PersonCode != "").ToList();
+        }
+
+        public List<Employee> GetEmployeeByDeptID(int id)
+        {
+            return db.TEmployee.Where(e => e.PersonCode != "").Where(e => e.DeptID == id).ToList();
+        }
+
+        public List<Employee> GetEmployeeByJobID(int id)
+        {
+            return db.TEmployee.Where(e => e.PersonCode != "").Where(e => e.JobID == id).ToList();
+        }
+
+        /// <summary>
+        /// 搜索人员信
+        /// </summary>
+        /// <param name="search"></param>
+        /// <returns></returns>
+        public List<Employee> FindEmployee(string search)
+        {
+            IQueryable<Employee> q = db.TEmployee;
+
+            // 搜索班组编号/班组名/工种类型
+            string searchText = search.Trim();
+            if (!String.IsNullOrEmpty(searchText))
+            {
+                q = q.Where(u => u.PersonCode.Contains(searchText) || u.EmployeeName.Contains(searchText));
+            }
+
+            return q.ToList();
         }
     }
 }
