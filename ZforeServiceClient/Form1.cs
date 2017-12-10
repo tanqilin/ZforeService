@@ -3,13 +3,16 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Configuration.Install;
 using System.IO;
+using System.Linq;
 using System.ServiceProcess;
 using System.Text;
 using System.Web.Services.Description;
 using System.Windows.Forms;
+using ZforeFromwork.Database.Entity;
 using ZforeFromwork.Model;
 using ZforeFromwork.SqlService;
 using ZforeFromwork.Util;
+using ZforeServiceClient.Forms;
 
 namespace ZforeServiceClient
 {
@@ -263,5 +266,16 @@ namespace ZforeServiceClient
         }
 
         #endregion
+
+        /// <summary>
+        /// 添加人员按钮
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void add_people_Click(object sender, EventArgs e)
+        {
+            Form dialog = new PersonnelForm();
+            dialog.ShowDialog();
+        }
     }
 }

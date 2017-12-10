@@ -15,14 +15,14 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_24D7F769EC42A7777B8C5A7A94FF6702"
-        "OwnerKey" = "8:_A6A20C876F584935B60030EE3F877C8F"
+        "MsmKey" = "8:_103D4EA338D441FC980C6B05255DAAB1"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_24D7F769EC42A7777B8C5A7A94FF6702"
-        "OwnerKey" = "8:_D8A06340A968DAAC6D0C64837A80FF1F"
+        "OwnerKey" = "8:_A6A20C876F584935B60030EE3F877C8F"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -33,7 +33,49 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_24D7F769EC42A7777B8C5A7A94FF6702"
+        "OwnerKey" = "8:_D8A06340A968DAAC6D0C64837A80FF1F"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_33C542395EF04BB590790A08FAC7057E"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_49256D2581B648798B3D2160B5537C76"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_56F32C0412BF4EF8B5BE00A6A400D33E"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_5851B6E7ECFC43C2A5F1236CC64E16C8"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_58F270E3FB7D42EDAF85F90F97B625B4"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_71C9D278AABB4AC4B3E4F4FA9EC40E5C"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_76A7472A6524452DAFD1203F9D878159"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -63,6 +105,36 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_AF34D4A1F5CB47A3B01B847B385654E1"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_B88BB4D1FA3C4BABB307C095682F2EFF"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_B8D25B868E544A0DAE76A0954E26BE79"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_BF2047013AD148F18FEFD714A2096167"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_C64E499E9BE642C8B3E78A9DE2B15995"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_CD8117CB19F84E55BE6F035CEB76135E"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -87,6 +159,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_ED99CB72F87242F8BCEE962B9805E70D"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_CD8117CB19F84E55BE6F035CEB76135E"
         "MsmSig" = "8:_UNDEFINED"
@@ -94,13 +172,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_D8A06340A968DAAC6D0C64837A80FF1F"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_A6A20C876F584935B60030EE3F877C8F"
+        "OwnerKey" = "8:_ACA2B90FE13CA2A1F8311321839A20E3"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -112,7 +184,13 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_ACA2B90FE13CA2A1F8311321839A20E3"
+        "OwnerKey" = "8:_A6A20C876F584935B60030EE3F877C8F"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_D8A06340A968DAAC6D0C64837A80FF1F"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -238,6 +316,26 @@
         }
         "File"
         {
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_103D4EA338D441FC980C6B05255DAAB1"
+            {
+            "SourcePath" = "8:..\\ZforeServiceClient\\bin\\Debug\\icon\\people_64.png"
+            "TargetName" = "8:people_64.png"
+            "Tag" = "8:"
+            "Folder" = "8:_C1491902F2F24FF3A8E24186BB51418A"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_24D7F769EC42A7777B8C5A7A94FF6702"
             {
             "AssemblyRegister" = "3:1"
@@ -245,11 +343,6 @@
             "AssemblyAsmDisplayName" = "8:ZforeFromwork, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_24D7F769EC42A7777B8C5A7A94FF6702"
-                    {
-                    "Name" = "8:ZforeFromwork.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:ZforeFromwork.dll"
             "TargetName" = "8:"
@@ -269,12 +362,132 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_33C542395EF04BB590790A08FAC7057E"
+            {
+            "SourcePath" = "8:..\\ZforeServiceClient\\bin\\Debug\\idcard\\driver\\USBDrv3.0-x64.msi"
+            "TargetName" = "8:USBDrv3.0-x64.msi"
+            "Tag" = "8:"
+            "Folder" = "8:_FF6BC7230C784B5FAAE70C44C0FDEEC5"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_49256D2581B648798B3D2160B5537C76"
+            {
+            "SourcePath" = "8:..\\ZforeServiceClient\\bin\\Debug\\idcard\\USBHIDHelper.dll"
+            "TargetName" = "8:USBHIDHelper.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_2B513B18F73541B9AE3F7EEBA492B65E"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_56F32C0412BF4EF8B5BE00A6A400D33E"
+            {
+            "SourcePath" = "8:..\\ZforeServiceClient\\bin\\Debug\\idcard\\termb.dll"
+            "TargetName" = "8:termb.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_2B513B18F73541B9AE3F7EEBA492B65E"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_5851B6E7ECFC43C2A5F1236CC64E16C8"
+            {
+            "SourcePath" = "8:..\\ZforeServiceClient\\bin\\Debug\\idcard\\driver\\USBDrv3.0-x86.msi"
+            "TargetName" = "8:USBDrv3.0-x86.msi"
+            "Tag" = "8:"
+            "Folder" = "8:_FF6BC7230C784B5FAAE70C44C0FDEEC5"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_58F270E3FB7D42EDAF85F90F97B625B4"
             {
             "SourcePath" = "8:C:\\Windows\\System32\\msiexec.exe"
             "TargetName" = "8:msiexec.exe"
             "Tag" = "8:"
             "Folder" = "8:_07D86953D621498C9372729E2B58693A"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_71C9D278AABB4AC4B3E4F4FA9EC40E5C"
+            {
+            "SourcePath" = "8:..\\ZforeServiceClient\\bin\\Debug\\icon\\people_200.png"
+            "TargetName" = "8:people_200.png"
+            "Tag" = "8:"
+            "Folder" = "8:_C1491902F2F24FF3A8E24186BB51418A"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_76A7472A6524452DAFD1203F9D878159"
+            {
+            "SourcePath" = "8:..\\ZforeServiceClient\\bin\\Debug\\idcard\\zkSDTComm.dll"
+            "TargetName" = "8:zkSDTComm.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_2B513B18F73541B9AE3F7EEBA492B65E"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -316,11 +529,6 @@
             "AssemblyAsmDisplayName" = "8:System.Net.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
                 "ScatterAssemblies"
                 {
-                    "_ACA2B90FE13CA2A1F8311321839A20E3"
-                    {
-                    "Name" = "8:System.Net.Http.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:System.Net.Http.dll"
             "TargetName" = "8:"
@@ -338,6 +546,106 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_AF34D4A1F5CB47A3B01B847B385654E1"
+            {
+            "SourcePath" = "8:..\\ZforeServiceClient\\bin\\Debug\\idcard\\driver\\USBDrv-uninstall.bat"
+            "TargetName" = "8:USBDrv-uninstall.bat"
+            "Tag" = "8:"
+            "Folder" = "8:_FF6BC7230C784B5FAAE70C44C0FDEEC5"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_B88BB4D1FA3C4BABB307C095682F2EFF"
+            {
+            "SourcePath" = "8:..\\ZforeServiceClient\\bin\\Debug\\idcard\\driver\\USBDrv-install.bat"
+            "TargetName" = "8:USBDrv-install.bat"
+            "Tag" = "8:"
+            "Folder" = "8:_FF6BC7230C784B5FAAE70C44C0FDEEC5"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_B8D25B868E544A0DAE76A0954E26BE79"
+            {
+            "SourcePath" = "8:..\\ZforeServiceClient\\bin\\Debug\\idcard\\sdtapi.dll"
+            "TargetName" = "8:sdtapi.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_2B513B18F73541B9AE3F7EEBA492B65E"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_BF2047013AD148F18FEFD714A2096167"
+            {
+            "SourcePath" = "8:..\\ZforeServiceClient\\bin\\Debug\\idcard\\NIDReaderAPI.dll"
+            "TargetName" = "8:NIDReaderAPI.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_2B513B18F73541B9AE3F7EEBA492B65E"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_C64E499E9BE642C8B3E78A9DE2B15995"
+            {
+            "SourcePath" = "8:..\\ZforeServiceClient\\bin\\Debug\\idcard\\DLL_File.dll"
+            "TargetName" = "8:DLL_File.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_2B513B18F73541B9AE3F7EEBA492B65E"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_D02BC042F129433298D66072145D0230"
@@ -367,11 +675,6 @@
             "AssemblyAsmDisplayName" = "8:ZforeService, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_D8A06340A968DAAC6D0C64837A80FF1F"
-                    {
-                    "Name" = "8:ZforeService.exe"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:ZforeService.exe"
             "TargetName" = "8:"
@@ -411,6 +714,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_ED99CB72F87242F8BCEE962B9805E70D"
+            {
+            "SourcePath" = "8:..\\ZforeServiceClient\\bin\\Debug\\idcard\\msvcr80.dll"
+            "TargetName" = "8:msvcr80.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_2B513B18F73541B9AE3F7EEBA492B65E"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
         }
         "FileType"
         {
@@ -427,6 +750,28 @@
             "Property" = "8:TARGETDIR"
                 "Folders"
                 {
+                    "{9EF0B969-E518-4E46-987F-47570745A589}:_2B513B18F73541B9AE3F7EEBA492B65E"
+                    {
+                    "Name" = "8:idcard"
+                    "AlwaysCreate" = "11:FALSE"
+                    "Condition" = "8:"
+                    "Transitive" = "11:FALSE"
+                    "Property" = "8:_EE82C6D80847445B9FEC4A9EB46E4BC4"
+                        "Folders"
+                        {
+                            "{9EF0B969-E518-4E46-987F-47570745A589}:_FF6BC7230C784B5FAAE70C44C0FDEEC5"
+                            {
+                            "Name" = "8:driver"
+                            "AlwaysCreate" = "11:FALSE"
+                            "Condition" = "8:"
+                            "Transitive" = "11:FALSE"
+                            "Property" = "8:_53E42C2CC5E9490A8E2D824310C62516"
+                                "Folders"
+                                {
+                                }
+                            }
+                        }
+                    }
                     "{9EF0B969-E518-4E46-987F-47570745A589}:_74C6C8FA65EA44A4A7870CA941422E86"
                     {
                     "Name" = "8:log"
@@ -456,6 +801,17 @@
                     "Condition" = "8:"
                     "Transitive" = "11:FALSE"
                     "Property" = "8:_C31A6E7A30634ECD8D696B97283E53F8"
+                        "Folders"
+                        {
+                        }
+                    }
+                    "{9EF0B969-E518-4E46-987F-47570745A589}:_C1491902F2F24FF3A8E24186BB51418A"
+                    {
+                    "Name" = "8:icon"
+                    "AlwaysCreate" = "11:FALSE"
+                    "Condition" = "8:"
+                    "Transitive" = "11:FALSE"
+                    "Property" = "8:_7F8A29D9AE3143E8AA053AEC25124A3A"
                         "Folders"
                         {
                         }
@@ -512,7 +868,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:ZforeSetup"
         "ProductCode" = "8:{F35019A6-E12E-4C66-AFAC-C964395AC5EC}"
-        "PackageCode" = "8:{4EF5E774-728E-4D83-AD34-75B3D00DA3D5}"
+        "PackageCode" = "8:{92D8CB1D-F8A1-4102-9C58-3B5E20576195}"
         "UpgradeCode" = "8:{9303E433-B0D9-4A32-B435-F922002BFA6B}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"

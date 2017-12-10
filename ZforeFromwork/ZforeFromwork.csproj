@@ -30,16 +30,20 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=6.2.2.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.6.2.2\lib\net45\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -49,6 +53,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AotuMapper\AutoMapperConfiguration.cs" />
+    <Compile Include="AotuMapper\MappingExtensions.cs" />
+    <Compile Include="Database\DBContextFactory.cs" />
+    <Compile Include="Database\Entity\BaseEntity.cs" />
+    <Compile Include="Database\Entity\DeptA.cs" />
+    <Compile Include="Database\Entity\Employee.cs" />
+    <Compile Include="Database\Entity\Job.cs" />
+    <Compile Include="Database\Entity\Log.cs" />
+    <Compile Include="Database\Model\BaseModel.cs" />
+    <Compile Include="Database\Model\DeptAModel.cs" />
+    <Compile Include="Database\Model\EmployeeModel.cs" />
+    <Compile Include="Database\Service\BaseService.cs" />
+    <Compile Include="Database\Service\Interface\IEmployeeService.cs" />
+    <Compile Include="Database\Service\Interface\IJobService.cs" />
+    <Compile Include="Database\Service\Realization\EmployeeService.cs" />
+    <Compile Include="Database\Service\Realization\JobService.cs" />
+    <Compile Include="Database\SqlContext.cs" />
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Config.cs" />
     <Compile Include="Model\Human.cs" />
     <Compile Include="Model\HumanResult.cs" />
@@ -58,7 +80,10 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="ReadCard\Card.cs" />
+    <Compile Include="ReadCard\CardInfo.cs" />
     <Compile Include="SqlService\BaseContext.cs" />
+    <Compile Include="SqlService\IContextDatabase.cs" />
     <Compile Include="SqlService\ReadDatabase.cs" />
     <Compile Include="SqlService\SqlContext.cs" />
     <Compile Include="Util\EmailUtil.cs" />
@@ -108,5 +133,6 @@
   <ItemGroup>
     <None Include="Web References\UploadWebservice\UploadWebservice.disco" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
