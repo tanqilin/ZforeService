@@ -21,5 +21,6 @@ namespace ZforeFromwork.Database
         public DbSet<Job> TJob { get; set; }
         public DbSet<DeptA> TDeptA { get; set; }
         public DbSet<Project> TProject { get; set; }
+        public DbSet<Video> TVideo { get; set; }
     }
 }

@@ -121,6 +121,12 @@
       <DependentUpon>AddProjectForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\control\logListControl.cs" />
+    <Compile Include="Forms\DHVideoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\DHVideoForm.Designer.cs">
+      <DependentUpon>DHVideoForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\LoadingForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -152,6 +158,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\AddProjectForm.resx">
       <DependentUpon>AddProjectForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DHVideoForm.resx">
+      <DependentUpon>DHVideoForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\LoadingForm.resx">
       <DependentUpon>LoadingForm.cs</DependentUpon>
@@ -263,6 +272,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="bin\Debug\icon\mkpic.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\icon\video.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\icon\video_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\icon\search_red.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\icon\connect.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

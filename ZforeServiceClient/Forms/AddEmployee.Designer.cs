@@ -50,6 +50,8 @@
             this.picture_image = new System.Windows.Forms.PictureBox();
             this.rightSave = new System.Windows.Forms.Button();
             this.readCard = new System.Windows.Forms.Button();
+            this.videoList = new System.Windows.Forms.ComboBox();
+            this.videoConne = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureDh)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picture_image)).BeginInit();
             this.SuspendLayout();
@@ -158,7 +160,7 @@
             this.combo_group.IntegralHeight = false;
             this.combo_group.Location = new System.Drawing.Point(357, 186);
             this.combo_group.Name = "combo_group";
-            this.combo_group.Size = new System.Drawing.Size(240, 20);
+            this.combo_group.Size = new System.Drawing.Size(220, 20);
             this.combo_group.TabIndex = 7;
             this.combo_group.ValueMember = "DeptID";
             // 
@@ -170,7 +172,7 @@
             this.combo_work.IntegralHeight = false;
             this.combo_work.Location = new System.Drawing.Point(357, 219);
             this.combo_work.Name = "combo_work";
-            this.combo_work.Size = new System.Drawing.Size(240, 20);
+            this.combo_work.Size = new System.Drawing.Size(220, 20);
             this.combo_work.TabIndex = 8;
             this.combo_work.ValueMember = "JobCode";
             // 
@@ -210,7 +212,7 @@
             this.pictureDh.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureDh.Location = new System.Drawing.Point(357, 22);
             this.pictureDh.Name = "pictureDh";
-            this.pictureDh.Size = new System.Drawing.Size(240, 142);
+            this.pictureDh.Size = new System.Drawing.Size(220, 111);
             this.pictureDh.TabIndex = 13;
             this.pictureDh.TabStop = false;
             // 
@@ -218,7 +220,7 @@
             // 
             this.closeWin.Image = global::ZforeServiceClient.Properties.Resources.close;
             this.closeWin.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.closeWin.Location = new System.Drawing.Point(522, 295);
+            this.closeWin.Location = new System.Drawing.Point(502, 295);
             this.closeWin.Name = "closeWin";
             this.closeWin.Size = new System.Drawing.Size(75, 23);
             this.closeWin.TabIndex = 12;
@@ -242,7 +244,7 @@
             this.rightSave.Cursor = System.Windows.Forms.Cursors.Hand;
             this.rightSave.Image = global::ZforeServiceClient.Properties.Resources.save;
             this.rightSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.rightSave.Location = new System.Drawing.Point(430, 295);
+            this.rightSave.Location = new System.Drawing.Point(410, 295);
             this.rightSave.Name = "rightSave";
             this.rightSave.Size = new System.Drawing.Size(75, 23);
             this.rightSave.TabIndex = 11;
@@ -265,11 +267,37 @@
             this.readCard.UseVisualStyleBackColor = true;
             this.readCard.Click += new System.EventHandler(this.readCard_Click);
             // 
+            // videoList
+            // 
+            this.videoList.DisplayMember = "VideoName";
+            this.videoList.DropDownHeight = 100;
+            this.videoList.FormattingEnabled = true;
+            this.videoList.IntegralHeight = false;
+            this.videoList.Location = new System.Drawing.Point(358, 145);
+            this.videoList.Name = "videoList";
+            this.videoList.Size = new System.Drawing.Size(132, 20);
+            this.videoList.TabIndex = 7;
+            this.videoList.ValueMember = "VideoID";
+            // 
+            // videoConne
+            // 
+            this.videoConne.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.videoConne.Image = global::ZforeServiceClient.Properties.Resources.connect;
+            this.videoConne.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.videoConne.Location = new System.Drawing.Point(501, 143);
+            this.videoConne.Name = "videoConne";
+            this.videoConne.Size = new System.Drawing.Size(75, 23);
+            this.videoConne.TabIndex = 11;
+            this.videoConne.Text = "连  接";
+            this.videoConne.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.videoConne.UseVisualStyleBackColor = true;
+            this.videoConne.Click += new System.EventHandler(this.videoConne_Click);
+            // 
             // AddEmployee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(609, 330);
+            this.ClientSize = new System.Drawing.Size(588, 332);
             this.Controls.Add(this.dhVideo);
             this.Controls.Add(this.pictureDh);
             this.Controls.Add(this.closeWin);
@@ -278,8 +306,10 @@
             this.Controls.Add(this.picture_image);
             this.Controls.Add(this.combo_work);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.videoList);
             this.Controls.Add(this.combo_group);
             this.Controls.Add(this.label2);
+            this.Controls.Add(this.videoConne);
             this.Controls.Add(this.rightSave);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.readCard);
@@ -329,5 +359,7 @@
         private System.Windows.Forms.Button closeWin;
         private System.Windows.Forms.PictureBox pictureDh;
         private System.Windows.Forms.Button dhVideo;
+        private System.Windows.Forms.ComboBox videoList;
+        private System.Windows.Forms.Button videoConne;
     }
 }

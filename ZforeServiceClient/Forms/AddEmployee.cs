@@ -1,19 +1,14 @@
 ﻿using NetSDKCS;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using ZforeFromwork.Database.Entity;
-using ZforeFromwork.Database.Model;
 using ZforeFromwork.Database.Service.Interface;
 using ZforeFromwork.Database.Service.Realization;
 using ZforeFromwork.ReadCard;
+using ZforeFromwork.Util;
 
 namespace ZforeServiceClient.Forms
 {
@@ -27,8 +22,10 @@ namespace ZforeServiceClient.Forms
         /// 读取信息存储容器
         /// </summary>
         private CardInfo card = new CardInfo();
+        private Project project = null;
         private Employee editEmployee = null;
         private IJobService _jobService;
+        private IVideoService _videoService;
         private IDeptAService _deptAService;
         private IEmployeeService _employeeService;
 
@@ -42,23 +39,15 @@ namespace ZforeServiceClient.Forms
         IntPtr realHandle = IntPtr.Zero;
         private const uint TimeOut = 3000;   // 连接超时
 
-        public AddEmployee()
+        public AddEmployee(Project project,Employee employee = null)
         {
             InitializeComponent();
-            _jobService = new JobService();
-            _deptAService = new DeptAService();
-            _employeeService = new EmployeeService();
-            this.InitDhVideo(); //编译的CPU版本和提供的dll不一致
-        }
-
-        public AddEmployee(Employee employee)
-        {
+            this.project = project;
             this.editEmployee = employee;
-            InitializeComponent();
             _jobService = new JobService();
+            _videoService = new VideoService();
             _deptAService = new DeptAService();
             _employeeService = new EmployeeService();
-            this.InitDhVideo();
         }
 
         /// <summary>
@@ -67,10 +56,8 @@ namespace ZforeServiceClient.Forms
         /// <param name="e"></param>
         protected override void OnLoad(EventArgs e)
         {
-            var depts = _deptAService.GetAllGroup();
-            this.combo_group.DataSource = depts;
-            var jobs = _jobService.GetAllJobs();
-            this.combo_work.DataSource = jobs;
+            this.InitAllDownList();
+            this.InitEmployeeControl();
 
             /// 不为null表示编辑时已经传了人员信息过来
             if (this.editEmployee != null) {
@@ -93,7 +80,7 @@ namespace ZforeServiceClient.Forms
         /// <summary>
         /// 初始化大华摄像头
         /// </summary>
-        public void InitDhVideo()
+        private void InitDhVideo(Video video)
         {
             try
             {
@@ -106,7 +93,7 @@ namespace ZforeServiceClient.Forms
                 else
                 {
                     NET_DEVICEINFO_Ex deviceInfo = new NET_DEVICEINFO_Ex();
-                    loginID = NETClient.Login("192.168.1.108", Convert.ToUInt16(37777), "admin", "123456", EM_LOGIN_SPAC_CAP_TYPE.TCP, IntPtr.Zero, ref deviceInfo);
+                    loginID = NETClient.Login(video.IP, Convert.ToUInt16(video.Port), video.UserName, video.Password, EM_LOGIN_SPAC_CAP_TYPE.TCP, IntPtr.Zero, ref deviceInfo);
                     if (loginID != IntPtr.Zero)
                     {
                         this.dhVideo.Enabled = true;
@@ -115,12 +102,36 @@ namespace ZforeServiceClient.Forms
                 }
             }
             catch (Exception err){
-
+                LogUtil.WaringLog("摄像头打开失败(读取人员信息窗口)："+err.StackTrace);
             }
         }
-
         #endregion
 
+        #region 初始化所有下拉框
+        private void InitAllDownList()
+        {
+            var depts = _deptAService.GetAllGroup();
+            this.combo_group.DataSource = depts;
+            var jobs = _jobService.GetAllJobs();
+            this.combo_work.DataSource = jobs;
+            var video = _videoService.GetAllVideo();
+            this.videoList.DataSource = video;
+        }
+        #endregion
+
+        #region 初始化人员信息模块控件
+        private void InitEmployeeControl(bool enable = false)
+        {
+            this.text_name.Enabled = enable;
+            this.text_sex.Enabled = enable;
+            this.text_birthdate.Enabled = enable;
+            this.text_number.Enabled = enable;
+            this.text_address.Enabled = enable;
+            this.text_nation.Enabled = enable;
+        }
+        #endregion
+
+        #region 身份证阅读器部分
         #region 通道1001读取及数据处理
         public void GetCardInfo()
         {
@@ -195,7 +206,38 @@ namespace ZforeServiceClient.Forms
             }
         }
         #endregion
+        #endregion
 
+        #region 摄像头部分
+        /// <summary>
+        /// 关闭大华摄像头进行抓拍
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void dhVideo_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (realHandle != IntPtr.Zero)
+                    NETClient.StopRealPlay(realHandle);
+            }
+            catch { }
+        }
+
+        /// <summary>
+        /// 连接摄像头
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void videoConne_Click(object sender, EventArgs e)
+        {
+            string videoId = this.videoList.SelectedValue.ToString();
+            Video video = _videoService.GetVideoByID(Convert.ToInt32(videoId));
+
+            if (video == null) return;
+            this.InitDhVideo(video);
+        }
+        #endregion
 
         /// <summary>
         /// 添加人员
@@ -205,31 +247,29 @@ namespace ZforeServiceClient.Forms
         private void rightSave_Click(object sender, EventArgs e)
         {
             string CardID = this.text_number.Text;
-            if (String.IsNullOrEmpty(CardID)) return;
-
+            if (project == null || String.IsNullOrEmpty(CardID)) return;
+           
             /// 编辑人员信息
             if (editEmployee != null)
             {
+                editEmployee.EmployeeProNum = project.ProjectNum;
                 editEmployee.DeptID = Convert.ToInt32(this.combo_group.SelectedValue);
                 editEmployee.JobID = Convert.ToInt32(this.combo_work.SelectedValue);
                 _employeeService.UpdateEmployee(editEmployee);
             }
             else
             {
-
+                editEmployee = new Employee();
                 List<Employee> employee = _employeeService.FindEmployee(CardID);
                 if (employee != null && employee.Count > 0)
                 {
                     MessageBox.Show("人员已存在，请勿重复添加！");
                     return;
                 }
-
-
             }
 
             this.Close();
         }
-
 
         /// <summary>
         /// 关闭窗口
@@ -239,17 +279,6 @@ namespace ZforeServiceClient.Forms
         private void closeWin_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        /// <summary>
-        /// 关闭大华摄像头进行抓拍
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void dhVideo_Click(object sender, EventArgs e)
-        {
-            if(realHandle != IntPtr.Zero)
-                NETClient.StopRealPlay(realHandle);
         }
     }
 }

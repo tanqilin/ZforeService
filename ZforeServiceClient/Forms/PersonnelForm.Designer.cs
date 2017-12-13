@@ -55,6 +55,7 @@
             this.删除ToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.添加人员ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.videoMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.搜索ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.searchEmployee = new System.Windows.Forms.ToolStripTextBox();
             this.jobList = new System.Windows.Forms.ListBox();
@@ -211,7 +212,7 @@
             this.离职ToolStripMenuItem,
             this.删除ToolStripMenuItem3});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(146, 114);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(153, 136);
             this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
             // 
             // 添加ToolStripMenuItem
@@ -219,29 +220,29 @@
             this.添加ToolStripMenuItem.Image = global::ZforeServiceClient.Properties.Resources.add;
             this.添加ToolStripMenuItem.Name = "添加ToolStripMenuItem";
             this.添加ToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.A)));
-            this.添加ToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+            this.添加ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.添加ToolStripMenuItem.Text = "增加";
             this.添加ToolStripMenuItem.Click += new System.EventHandler(this.addEmployee_Click);
             // 
             // 编辑ToolStripMenuItem2
             // 
             this.编辑ToolStripMenuItem2.Name = "编辑ToolStripMenuItem2";
-            this.编辑ToolStripMenuItem2.Size = new System.Drawing.Size(145, 22);
+            this.编辑ToolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
             this.编辑ToolStripMenuItem2.Text = "编辑";
-            this.编辑ToolStripMenuItem2.Click += new System.EventHandler(this.employeeRight_Click);
+            this.编辑ToolStripMenuItem2.Click += new System.EventHandler(this.addEmployee_Click);
             // 
             // 删除ToolStripMenuItem
             // 
             this.删除ToolStripMenuItem.Image = global::ZforeServiceClient.Properties.Resources.reset;
             this.删除ToolStripMenuItem.Name = "删除ToolStripMenuItem";
-            this.删除ToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+            this.删除ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.删除ToolStripMenuItem.Text = "刷新";
             this.删除ToolStripMenuItem.Click += new System.EventHandler(this.employeeRight_Click);
             // 
             // 离职ToolStripMenuItem
             // 
             this.离职ToolStripMenuItem.Name = "离职ToolStripMenuItem";
-            this.离职ToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+            this.离职ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.离职ToolStripMenuItem.Text = "离职";
             this.离职ToolStripMenuItem.Click += new System.EventHandler(this.employeeRight_Click);
             // 
@@ -249,15 +250,16 @@
             // 
             this.删除ToolStripMenuItem3.Image = global::ZforeServiceClient.Properties.Resources.delete;
             this.删除ToolStripMenuItem3.Name = "删除ToolStripMenuItem3";
-            this.删除ToolStripMenuItem3.Size = new System.Drawing.Size(145, 22);
+            this.删除ToolStripMenuItem3.Size = new System.Drawing.Size(152, 22);
             this.删除ToolStripMenuItem3.Text = "删除";
             this.删除ToolStripMenuItem3.Click += new System.EventHandler(this.employeeRight_Click);
             // 
             // menuStrip1
             // 
-            this.menuStrip1.BackColor = System.Drawing.Color.Gainsboro;
+            this.menuStrip1.BackColor = System.Drawing.Color.LightGray;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.添加人员ToolStripMenuItem1,
+            this.videoMenu,
             this.搜索ToolStripMenuItem,
             this.searchEmployee});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
@@ -274,9 +276,17 @@
             this.添加人员ToolStripMenuItem1.Text = "添加人员";
             this.添加人员ToolStripMenuItem1.Click += new System.EventHandler(this.addEmployee_Click);
             // 
+            // videoMenu
+            // 
+            this.videoMenu.Image = global::ZforeServiceClient.Properties.Resources.video_32;
+            this.videoMenu.Name = "videoMenu";
+            this.videoMenu.Size = new System.Drawing.Size(96, 23);
+            this.videoMenu.Text = "摄像头管理";
+            this.videoMenu.Click += new System.EventHandler(this.videoMenu_Click);
+            // 
             // 搜索ToolStripMenuItem
             // 
-            this.搜索ToolStripMenuItem.Image = global::ZforeServiceClient.Properties.Resources.search;
+            this.搜索ToolStripMenuItem.Image = global::ZforeServiceClient.Properties.Resources.search_red1;
             this.搜索ToolStripMenuItem.Name = "搜索ToolStripMenuItem";
             this.搜索ToolStripMenuItem.Size = new System.Drawing.Size(63, 23);
             this.搜索ToolStripMenuItem.Text = "搜索:";
@@ -382,21 +392,21 @@
             this.删除ToolStripMenuItem1,
             this.刷新ToolStripMenuItem});
             this.contextMenuStrip2.Name = "contextMenuStrip2";
-            this.contextMenuStrip2.Size = new System.Drawing.Size(153, 114);
+            this.contextMenuStrip2.Size = new System.Drawing.Size(101, 92);
             this.contextMenuStrip2.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip2_Opening);
             // 
             // 增加项目ToolStripMenuItem
             // 
             this.增加项目ToolStripMenuItem.Image = global::ZforeServiceClient.Properties.Resources.add;
             this.增加项目ToolStripMenuItem.Name = "增加项目ToolStripMenuItem";
-            this.增加项目ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.增加项目ToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
             this.增加项目ToolStripMenuItem.Text = "增加";
             this.增加项目ToolStripMenuItem.Click += new System.EventHandler(this.addProject_Click);
             // 
             // 编辑ToolStripMenuItem
             // 
             this.编辑ToolStripMenuItem.Name = "编辑ToolStripMenuItem";
-            this.编辑ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.编辑ToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
             this.编辑ToolStripMenuItem.Text = "编辑";
             this.编辑ToolStripMenuItem.Click += new System.EventHandler(this.addProject_Click);
             // 
@@ -404,7 +414,7 @@
             // 
             this.删除ToolStripMenuItem1.Image = global::ZforeServiceClient.Properties.Resources.delete;
             this.删除ToolStripMenuItem1.Name = "删除ToolStripMenuItem1";
-            this.删除ToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.删除ToolStripMenuItem1.Size = new System.Drawing.Size(100, 22);
             this.删除ToolStripMenuItem1.Text = "删除";
             this.删除ToolStripMenuItem1.Click += new System.EventHandler(this.addProject_Click);
             // 
@@ -412,7 +422,7 @@
             // 
             this.刷新ToolStripMenuItem.Image = global::ZforeServiceClient.Properties.Resources.reset;
             this.刷新ToolStripMenuItem.Name = "刷新ToolStripMenuItem";
-            this.刷新ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.刷新ToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
             this.刷新ToolStripMenuItem.Text = "刷新";
             this.刷新ToolStripMenuItem.Click += new System.EventHandler(this.addProject_Click);
             // 
@@ -546,7 +556,7 @@
         private System.Windows.Forms.ToolStripMenuItem 添加ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 删除ToolStripMenuItem;
         private System.Windows.Forms.ListBox jobList;
-        private System.Windows.Forms.ListBox logList;
+        public System.Windows.Forms.ListBox logList;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button allJob;
         private System.Windows.Forms.Panel panel2;
@@ -568,5 +578,6 @@
         private System.Windows.Forms.ToolStripMenuItem 删除ToolStripMenuItem3;
         private System.Windows.Forms.ToolStripMenuItem 离职ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 编辑ToolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem videoMenu;
     }
 }

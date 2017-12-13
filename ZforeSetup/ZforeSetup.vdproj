@@ -27,6 +27,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_04F6335D86C5496189E94F34F2550890"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_0E44640B51A547918CEC17F701561385"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -279,6 +285,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_66EFA65694CD4497A6F6D3B49CAA16B7"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_6BC1717CB852413DA28998E39FAA4910"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -459,6 +471,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_BD15427D74494571A9683AD30DBFA228"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_BF2047013AD148F18FEFD714A2096167"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -586,6 +604,12 @@
         "Entry"
         {
         "MsmKey" = "8:_ED99CB72F87242F8BCEE962B9805E70D"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_F1326A3464E94094B0A70ECA23082649"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -820,6 +844,26 @@
             {
             "SourcePath" = "8:..\\ZforeServiceClient\\bin\\Debug\\icon\\close.png"
             "TargetName" = "8:close.png"
+            "Tag" = "8:"
+            "Folder" = "8:_40E24B0EC2E44222AE945B86F7804BDF"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_04F6335D86C5496189E94F34F2550890"
+            {
+            "SourcePath" = "8:..\\ZforeServiceClient\\bin\\Debug\\icon\\video_32.png"
+            "TargetName" = "8:video_32.png"
             "Tag" = "8:"
             "Folder" = "8:_40E24B0EC2E44222AE945B86F7804BDF"
             "Condition" = "8:"
@@ -1609,6 +1653,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_66EFA65694CD4497A6F6D3B49CAA16B7"
+            {
+            "SourcePath" = "8:..\\ZforeServiceClient\\bin\\Debug\\icon\\connect.png"
+            "TargetName" = "8:connect.png"
+            "Tag" = "8:"
+            "Folder" = "8:_40E24B0EC2E44222AE945B86F7804BDF"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_6BC1717CB852413DA28998E39FAA4910"
             {
             "SourcePath" = "8:..\\ZforeServiceClient\\bin\\Debug\\data\\AddDatabase.sql"
@@ -2162,6 +2226,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_BD15427D74494571A9683AD30DBFA228"
+            {
+            "SourcePath" = "8:..\\ZforeServiceClient\\bin\\Debug\\icon\\search_red.png"
+            "TargetName" = "8:search_red.png"
+            "Tag" = "8:"
+            "Folder" = "8:_40E24B0EC2E44222AE945B86F7804BDF"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_BF2047013AD148F18FEFD714A2096167"
             {
             "SourcePath" = "8:..\\ZforeServiceClient\\bin\\Debug\\idcard\\NIDReaderAPI.dll"
@@ -2584,6 +2668,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_F1326A3464E94094B0A70ECA23082649"
+            {
+            "SourcePath" = "8:..\\ZforeServiceClient\\bin\\Debug\\icon\\video.png"
+            "TargetName" = "8:video.png"
+            "Tag" = "8:"
+            "Folder" = "8:_40E24B0EC2E44222AE945B86F7804BDF"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_F269EE9EE9724899A88AA69C5C608537"
             {
             "SourcePath" = "8:..\\ZforeServiceClient\\bin\\Debug\\icon\\save.png"
@@ -2831,7 +2935,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:ZforeSetup"
         "ProductCode" = "8:{F35019A6-E12E-4C66-AFAC-C964395AC5EC}"
-        "PackageCode" = "8:{39DB921E-9533-4D0F-B918-15A0969ACEB4}"
+        "PackageCode" = "8:{AC6E294A-59C4-4B42-B2A6-44C5E8FAA707}"
         "UpgradeCode" = "8:{9303E433-B0D9-4A32-B435-F922002BFA6B}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"

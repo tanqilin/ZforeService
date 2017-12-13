@@ -234,7 +234,7 @@ namespace ZforeServiceClient.Forms
         }
         #endregion
 
-        #region 顶部右键菜单管理
+        #region 窗口顶部菜单管理
         /// <summary>
         /// 搜索人员信息
         /// </summary>
@@ -245,6 +245,17 @@ namespace ZforeServiceClient.Forms
             string search = this.searchEmployee.Text;
             List<Employee> data = _employeeService.FindEmployee(search);
             this.loadEmployee(data);
+        }
+
+        /// <summary>
+        /// 摄像头管理
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void videoMenu_Click(object sender, EventArgs e)
+        {
+            Form videoWin = new DHVideoForm();
+            videoWin.ShowDialog();
         }
         #endregion
 
@@ -389,20 +400,11 @@ namespace ZforeServiceClient.Forms
         /// <param name="e"></param>
         private void employeeRight_Click(object sender, EventArgs e)
         {
-            Form addEmpolyee = null;
             string clickType = sender.ToString();
             if (clickType == "刷新")
             {
                 this.loadEmployee();
                 return;
-            }
-            else if (clickType == "编辑")
-            {
-                int index = this.dataGrid_people.CurrentRow.Index;
-                int employeeId = Convert.ToInt32(this.dataGrid_people.Rows[index].Cells["EmployeeID"].Value);
-                Employee employee = _employeeService.GetEmployeeByID(employeeId);
-                addEmpolyee = new AddEmployee(employee);
-                addEmpolyee.ShowDialog();
             }
         }
         #endregion
@@ -415,15 +417,15 @@ namespace ZforeServiceClient.Forms
         /// <param name="e"></param>
         private void addEmployee_Click(object sender, EventArgs e)
         {
-            Form addEmployee = new AddEmployee();
+            Form addEmployee = null;
             /// 向所选项目中添加人员
-            TreeNode project = null;
+            Project project = null;
             foreach (TreeNode item in this.treeProject.Nodes)
             {
                 item.Checked = false;
                 foreach (TreeNode chile in item.Nodes)
                 {
-                    if (chile.Checked == true) project = chile;
+                    if (chile.Checked == true) project = (Project)chile.Tag;
                 }
             }
             if (project == null)
@@ -431,6 +433,17 @@ namespace ZforeServiceClient.Forms
                 MessageBox.Show("请在左上角项目列表中选择人员所属项目名称", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+            /// 判断是编辑还是创建
+            string clickType = sender.ToString();
+            if (clickType == "编辑")
+            {
+                int index = this.dataGrid_people.CurrentRow.Index;
+                int employeeId = Convert.ToInt32(this.dataGrid_people.Rows[index].Cells["EmployeeID"].Value);
+                Employee employee = _employeeService.GetEmployeeByID(employeeId);
+                addEmployee = new AddEmployee(project,employee);
+            }
+            else
+                addEmployee = new AddEmployee(project);
             addEmployee.ShowDialog();
         }
         #endregion

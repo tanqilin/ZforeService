@@ -63,6 +63,7 @@
     <Compile Include="Database\Entity\Job.cs" />
     <Compile Include="Database\Entity\Log.cs" />
     <Compile Include="Database\Entity\Project.cs" />
+    <Compile Include="Database\Entity\Video.cs" />
     <Compile Include="Database\Model\BaseModel.cs" />
     <Compile Include="Database\Model\DeptAModel.cs" />
     <Compile Include="Database\Model\EmployeeModel.cs" />
@@ -71,11 +72,13 @@
     <Compile Include="Database\Service\Interface\IEmployeeService.cs" />
     <Compile Include="Database\Service\Interface\IJobService.cs" />
     <Compile Include="Database\Service\Interface\IProjectService.cs" />
+    <Compile Include="Database\Service\Interface\IVideoService.cs" />
     <Compile Include="Database\Service\Realization\DeptAService.cs" />
     <Compile Include="Database\Service\Realization\EmployeeService.cs" />
     <Compile Include="Database\Service\Realization\JobService.cs" />
     <Compile Include="Database\DBContext.cs" />
     <Compile Include="Database\Service\Realization\ProjectService.cs" />
+    <Compile Include="Database\Service\Realization\VideoService.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Config.cs" />
     <Compile Include="Model\Human.cs" />
