@@ -13,15 +13,15 @@ namespace ZforeFromwork.Database
         /// 获取线程内唯一的AppBoxMvcContext对象
         /// </summary>
         /// <returns></returns>
-        public static SqlContext GetDbContext()
+        public static DBContext GetDbContext()
         {
             // 首先先线程上下文中查看是否有已存在的DBContext
             // 如果有那么直接返回这个，如果没有就新建 
-            SqlContext DB = CallContext.GetData("SqlContext") as SqlContext;
+            DBContext DB = CallContext.GetData("DBContext") as DBContext;
             if (DB == null)
             {
-                DB = new SqlContext();
-                CallContext.SetData("SqlContext", DB);
+                DB = new DBContext();
+                CallContext.SetData("DBContext", DB);
             }
             return DB;
         }

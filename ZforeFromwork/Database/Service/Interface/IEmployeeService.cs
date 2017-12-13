@@ -23,6 +23,8 @@ namespace ZforeFromwork.Database.Service.Interface
 
         List<Employee> GetEmployeeByJobID(int id);
 
+        List<Employee> GetEmployeeByProjectNum(string num);
+
         List<Employee> FindEmployee(string search);
     }
 }

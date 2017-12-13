@@ -2,15 +2,9 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.IO;
 using System.Linq;
-using System.Runtime.InteropServices;
 using ZforeFromwork.Database.Service.Interface;
 using ZforeFromwork.Database.Service.Realization;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using ZforeFromwork.ReadCard;
 using ZforeFromwork.Database.Entity;
@@ -26,36 +20,44 @@ namespace ZforeServiceClient.Forms
         /// 读取信息存储容器
         /// </summary>
         private CardInfo card = new CardInfo();
+        private IJobService _jobService;
         private IDeptAService _deptAService = null;
         private IEmployeeService _employeeService;
-        IntPtr m_hDevice = IntPtr.Zero;
-        IntPtr FormHandle = IntPtr.Zero;
+        private IProjectService _projectService;
 
+        /// 显示进度框
+        LoadingForm loading = new LoadingForm();
+        
         public PersonnelForm()
         {
             InitializeComponent();
+            _jobService = new JobService();
             _employeeService = new EmployeeService();
+            _projectService = new ProjectService();
             AutoMapperConfiguration.Init();
         }
 
         /// 程序加载时执行
         protected override void OnLoad(EventArgs e)
         {
-            /// 显示进度框
-            LoadingForm loading = new LoadingForm();
             loading.Show();
-            loading.SetLoadingLength(2, "正在初始化工种信息...");
-            IJobService _jobService = new JobService();
-            var jobs = _jobService.GetAllJobs();
-            this.jobList.DataSource = jobs;
-            loading.SetLoadingLength(5, "正在加载项目信息...");
+            loading.SetLoadingLength(5, "正在初始化工种信息...");
+            this.InitJobList();
+            loading.SetLoadingLength(6, "正在加载项目信息...");
             this.InitTreeProject();
-            loading.SetLoadingLength(6, "正在加载人员信息...");
+            loading.SetLoadingLength(7, "正在加载人员信息...");
             this.loadEmployee();
-            loading.SetLoadingLength(7, "正在加载班组信息...");
+            loading.SetLoadingLength(8, "正在加载班组信息...");
             this.InitTreeGroup();
             loading.SetLoadingLength(10, "初始化完毕...");
             loading.Close();
+        }
+        #endregion
+
+        #region 加载工种信息
+        public void InitJobList()
+        {
+            this.jobList.DataSource = _jobService.GetAllJobs();
         }
         #endregion
 
@@ -95,11 +97,19 @@ namespace ZforeServiceClient.Forms
         /// </summary>
         private void InitTreeProject()
         {
+            this.treeProject.Nodes.Clear();
+            List<Project> projects = _projectService.GetAllProject();
+
             TreeNode root = new TreeNode();
             root.Text = "项目列表";
-            TreeNode first = new TreeNode();
-            first.Text = "稻田汇项目";
-            root.Nodes.Add(first);
+            foreach (Project item in projects)
+            {
+                TreeNode node = new TreeNode();
+                node.Tag = item;
+                node.Text = item.ProjectName;
+                root.Nodes.Add(node);
+                node = null;
+            }
             this.treeProject.Nodes.Add(root);
             this.treeProject.ExpandAll();
         }
@@ -130,16 +140,38 @@ namespace ZforeServiceClient.Forms
         }
         #endregion
 
-        #region 添加或编辑人员信息
-        /// <summary>
-        /// 添加或编辑人员信息
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void addEmployee_Click(object sender, EventArgs e)
+        #region 项目列表控件交互
+        private void allProject_Click(object sender, EventArgs e)
         {
-            Form addEmployee = new AddEmployee();
-            addEmployee.ShowDialog();
+            loadEmployee();
+            InitTreeProject();
+        }
+
+        private void treeProject_MouseDown(object sender, MouseEventArgs e)
+        {
+            Project selectPro = null;
+            /// 使用遍历把复选框修改为单选框
+            if ((sender as TreeView) != null)
+            {
+                this.treeProject.SelectedNode = treeProject.GetNodeAt(e.X, e.Y);
+                if (this.treeProject.SelectedNode == null) return;
+
+                foreach (TreeNode item in this.treeProject.Nodes)
+                {
+                    item.Checked = false;
+                    foreach (TreeNode chile in item.Nodes)
+                    {
+                        chile.Checked = false;
+                    }
+                }
+                this.treeProject.SelectedNode.Checked = true;
+                selectPro = (Project)this.treeProject.SelectedNode.Tag;
+                if(selectPro != null)
+                {
+                    List<Employee> employees = _employeeService.GetEmployeeByProjectNum(selectPro.ProjectNum);
+                    loadEmployee(employees);
+                }
+            }
         }
         #endregion
 
@@ -181,10 +213,19 @@ namespace ZforeServiceClient.Forms
         #endregion
 
         #region 工种列表控件交互
+
+        private void allJob_Click(object sender, EventArgs e)
+        {
+            this.loadEmployee();
+            this.InitJobList();
+        }
+
         private void jobList_MouseDown(object sender, MouseEventArgs e)
         {
             if ((sender as ListBox) != null)
             {
+                if (this.jobList.SelectedValue == null) return;
+
                 string jobID = this.jobList.SelectedValue.ToString();
                 if (String.IsNullOrEmpty(jobID)) return;
                 List<Employee> data = _employeeService.GetEmployeeByJobID(Convert.ToInt32(jobID));
@@ -193,7 +234,7 @@ namespace ZforeServiceClient.Forms
         }
         #endregion
 
-        #region 顶部菜单管理
+        #region 顶部右键菜单管理
         /// <summary>
         /// 搜索人员信息
         /// </summary>
@@ -204,6 +245,54 @@ namespace ZforeServiceClient.Forms
             string search = this.searchEmployee.Text;
             List<Employee> data = _employeeService.FindEmployee(search);
             this.loadEmployee(data);
+        }
+        #endregion
+
+        #region 项目右键菜单管理
+        /// <summary>
+        /// 右键菜单显示前执行
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void contextMenuStrip2_Opening(object sender, CancelEventArgs e)
+        {
+            int menus = this.contextMenuStrip2.Items.Count;
+            if (this.treeProject.SelectedNode == null || this.treeProject.SelectedNode.Tag == null)
+            {
+                for (int i = 1; i < menus; i++)
+                {
+                    if (i == 3) continue;
+                    this.contextMenuStrip2.Items[i].Enabled = false;
+                }
+            }
+            else
+            {
+                for (int i = 1; i < menus; i++)
+                {
+                    this.contextMenuStrip2.Items[i].Enabled = true;
+                }
+            }
+        }
+
+        private void addProject_Click(object sender, EventArgs e)
+        {
+            Form addProject = null;
+            string clickType = sender.ToString();
+            switch (clickType)
+            {
+                case "增加":
+                    addProject = new AddProjectForm();
+                    addProject.ShowDialog(); break;
+                case "编辑":
+                    addProject = new AddProjectForm();
+                    addProject.ShowDialog(); break; 
+                case "刷新":
+                case "删除": break;
+                default:break;
+            }
+            if(addProject != null && addProject.DialogResult == DialogResult.OK)
+                this.logList.Items.Insert(0, DateTime.Now.ToString() + ":成功插入项目信息");
+            this.InitTreeProject();
         }
         #endregion
 
@@ -300,19 +389,49 @@ namespace ZforeServiceClient.Forms
         /// <param name="e"></param>
         private void employeeRight_Click(object sender, EventArgs e)
         {
+            Form addEmpolyee = null;
             string clickType = sender.ToString();
             if (clickType == "刷新")
             {
                 this.loadEmployee();
+                return;
             }
             else if (clickType == "编辑")
             {
                 int index = this.dataGrid_people.CurrentRow.Index;
                 int employeeId = Convert.ToInt32(this.dataGrid_people.Rows[index].Cells["EmployeeID"].Value);
                 Employee employee = _employeeService.GetEmployeeByID(employeeId);
-                Form addEmpolyee = new AddEmployee(employee);
+                addEmpolyee = new AddEmployee(employee);
                 addEmpolyee.ShowDialog();
             }
+        }
+        #endregion
+
+        #region 添加或编辑人员信息
+        /// <summary>
+        /// 添加或编辑人员信息
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void addEmployee_Click(object sender, EventArgs e)
+        {
+            Form addEmployee = new AddEmployee();
+            /// 向所选项目中添加人员
+            TreeNode project = null;
+            foreach (TreeNode item in this.treeProject.Nodes)
+            {
+                item.Checked = false;
+                foreach (TreeNode chile in item.Nodes)
+                {
+                    if (chile.Checked == true) project = chile;
+                }
+            }
+            if (project == null)
+            {
+                MessageBox.Show("请在左上角项目列表中选择人员所属项目名称", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            addEmployee.ShowDialog();
         }
         #endregion
     }

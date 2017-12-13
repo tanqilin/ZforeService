@@ -23,12 +23,10 @@ namespace ZforeFromwork.Util
         {
             if (!Directory.Exists(filePath)) Directory.CreateDirectory(filePath);
 
-            using (FileStream stream = new FileStream(filePath + "ServiceLog.txt", FileMode.Append))
-            using (StreamWriter writer = new StreamWriter(stream))
+            using (StreamWriter writer = File.AppendText(filePath + "ServiceLog.txt"))
             {
                 writer.WriteLine($"{DateTime.Now}，【ERROR】:" + error);
                 writer.Close();
-                stream.Close();
             }
 
             // 遇到错误则发到邮箱
@@ -46,12 +44,10 @@ namespace ZforeFromwork.Util
             if (!Directory.Exists(filePath)) Directory.CreateDirectory(filePath);
 
             if (String.IsNullOrEmpty(logName)) logName = "ServiceLog";
-            using (FileStream stream = new FileStream(filePath + logName+ ".txt", FileMode.Append))
-            using (StreamWriter writer = new StreamWriter(stream))
+            using (StreamWriter writer = File.AppendText(filePath + logName + ".txt"))
             {
-                writer.WriteLine($"{DateTime.Now}，【INFO】:" + msg);
+                writer.WriteLine($"{DateTime.Now}，【WARING】:" + msg);
                 writer.Close();
-                stream.Close();
             }
         }
 
@@ -63,12 +59,10 @@ namespace ZforeFromwork.Util
         {
             if (!Directory.Exists(filePath)) Directory.CreateDirectory(filePath);
 
-            using (FileStream stream = new FileStream(filePath + "ServiceLog.txt", FileMode.Append))
-            using (StreamWriter writer = new StreamWriter(stream))
+            using (StreamWriter writer = File.AppendText(filePath + "ServiceLog.txt"))
             {
                 writer.WriteLine($"{DateTime.Now}，【WARING】:" + waring);
                 writer.Close();
-                stream.Close();
             }
         }
 
@@ -80,6 +74,7 @@ namespace ZforeFromwork.Util
             if (!Directory.Exists(filePath)) Directory.CreateDirectory(filePath);
 
             if (String.IsNullOrEmpty(logName)) logName = "ServiceLog";
+
             FileStream stream = new FileStream(filePath + logName + ".txt", FileMode.Create);
             using (StreamWriter writer = new StreamWriter(stream))
             {

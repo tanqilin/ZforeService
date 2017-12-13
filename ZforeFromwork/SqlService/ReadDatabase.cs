@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.IO;
 using System.Text;
@@ -20,31 +21,53 @@ namespace ZforeFromwork.SqlService
             string cinfig = XmlUtil.configPath + "config.xml";
             if (File.Exists(cinfig)) return true;
 
-            // 从配置文件读取sql语句
-            if (!File.Exists(XmlUtil.datePath + "WorkType.sql")) return false;
-            // 下边的方法读取txt不会出现乱码
-            FileStream fs = new FileStream(XmlUtil.datePath + "WorkType.sql", FileMode.Open);
-            StreamReader sr = new StreamReader(fs, Encoding.Default);
-            string script = sr.ReadToEnd();
-            string sql = String.Format(script.Replace("dbo.", ""));
+            string insertWork, createPro;
+            try
+            {
+                // 从配置文件读取sql语句
+                if (!File.Exists(XmlUtil.datePath + "WorkType.sql")) return false;
+                // 下边的方法读取txt不会出现乱码
+                FileStream fs = new FileStream(XmlUtil.datePath + "WorkType.sql", FileMode.Open);
+                StreamReader sr = new StreamReader(fs, Encoding.Default);
+                string script = sr.ReadToEnd();
+                insertWork = String.Format(script.Replace("dbo.", ""));
+                sr.Close();
+                fs.Close();
 
+                // 读取创建项目信息表脚本
+                FileStream proFs = new FileStream(XmlUtil.datePath + "TProjects.sql", FileMode.Open);
+                StreamReader proSr = new StreamReader(proFs, Encoding.Default);
+                createPro = proSr.ReadToEnd();
+                proSr.Close();
+                proFs.Close();
+            }
+            catch {
+                return false;
+            }
             // 开启数据库事务
             context.OpenConnection();
             SqlTransaction sqlTransaction = context.Connection.BeginTransaction();
-            SqlCommand sqlCommand = new SqlCommand(sql, context.Connection);
+            SqlCommand sqlCommand = new SqlCommand(insertWork, context.Connection);
             sqlCommand.Connection = context.Connection;
             sqlCommand.Transaction = sqlTransaction;
             try
             {
-                // 上传成功则更新Car字段
+                // 修改表结构和插入基础数据 
+                sqlCommand.ExecuteNonQuery();
+                sqlCommand.CommandType = CommandType.Text;
+                sqlCommand.CommandText = "ALTER TABLE TEmployee ADD Dahua IMAGE DEFAULT NULL";
+                sqlCommand.ExecuteNonQuery();
+                sqlCommand.CommandText = "ALTER TABLE TEmployee ADD EmployeeProNum nvarchar DEFAULT NULL";
+                sqlCommand.ExecuteNonQuery();
+                sqlCommand.CommandText = createPro;
                 sqlCommand.ExecuteNonQuery();
                 sqlTransaction.Commit();
             }
-            catch (Exception ex)
+            catch
             {
                 // 事务回滚
                 sqlTransaction.Rollback();
-                Console.WriteLine(ex.StackTrace);
+                LogUtil.WaringLog("数据库初始化失败。。。请删除原有数据库！再重新附加data文件夹下的备份数据库！");
                 return false;
             }
             finally

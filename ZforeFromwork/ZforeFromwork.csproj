@@ -56,11 +56,13 @@
     <Compile Include="AotuMapper\AutoMapperConfiguration.cs" />
     <Compile Include="AotuMapper\MappingExtensions.cs" />
     <Compile Include="Database\DBContextFactory.cs" />
+    <Compile Include="Database\DBManage.cs" />
     <Compile Include="Database\Entity\BaseEntity.cs" />
     <Compile Include="Database\Entity\DeptA.cs" />
     <Compile Include="Database\Entity\Employee.cs" />
     <Compile Include="Database\Entity\Job.cs" />
     <Compile Include="Database\Entity\Log.cs" />
+    <Compile Include="Database\Entity\Project.cs" />
     <Compile Include="Database\Model\BaseModel.cs" />
     <Compile Include="Database\Model\DeptAModel.cs" />
     <Compile Include="Database\Model\EmployeeModel.cs" />
@@ -68,10 +70,12 @@
     <Compile Include="Database\Service\Interface\IDeptAService.cs" />
     <Compile Include="Database\Service\Interface\IEmployeeService.cs" />
     <Compile Include="Database\Service\Interface\IJobService.cs" />
+    <Compile Include="Database\Service\Interface\IProjectService.cs" />
     <Compile Include="Database\Service\Realization\DeptAService.cs" />
     <Compile Include="Database\Service\Realization\EmployeeService.cs" />
     <Compile Include="Database\Service\Realization\JobService.cs" />
-    <Compile Include="Database\SqlContext.cs" />
+    <Compile Include="Database\DBContext.cs" />
+    <Compile Include="Database\Service\Realization\ProjectService.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Config.cs" />
     <Compile Include="Model\Human.cs" />
@@ -135,6 +139,5 @@
   <ItemGroup>
     <None Include="Web References\UploadWebservice\UploadWebservice.disco" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

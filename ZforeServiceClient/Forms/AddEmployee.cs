@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NetSDKCS;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -31,9 +32,15 @@ namespace ZforeServiceClient.Forms
         private IDeptAService _deptAService;
         private IEmployeeService _employeeService;
 
+        /// 调用身份证阅读器
         int m_iPort = 1001;
         IntPtr m_hDevice = IntPtr.Zero;
         IntPtr FormHandle = IntPtr.Zero;
+
+        /// 调用大华网络摄像头
+        IntPtr loginID = IntPtr.Zero;
+        IntPtr realHandle = IntPtr.Zero;
+        private const uint TimeOut = 3000;   // 连接超时
 
         public AddEmployee()
         {
@@ -41,6 +48,7 @@ namespace ZforeServiceClient.Forms
             _jobService = new JobService();
             _deptAService = new DeptAService();
             _employeeService = new EmployeeService();
+            this.InitDhVideo(); //编译的CPU版本和提供的dll不一致
         }
 
         public AddEmployee(Employee employee)
@@ -50,6 +58,7 @@ namespace ZforeServiceClient.Forms
             _jobService = new JobService();
             _deptAService = new DeptAService();
             _employeeService = new EmployeeService();
+            this.InitDhVideo();
         }
 
         /// <summary>
@@ -81,6 +90,34 @@ namespace ZforeServiceClient.Forms
             }
         }
 
+        /// <summary>
+        /// 初始化大华摄像头
+        /// </summary>
+        public void InitDhVideo()
+        {
+            try
+            {
+                /// 初始化大华SDK
+                bool res = NETClient.Init(null, IntPtr.Zero, null); //init NetClient.
+                if (res == false)
+                {
+                    this.dhVideo.Enabled = false;
+                }
+                else
+                {
+                    NET_DEVICEINFO_Ex deviceInfo = new NET_DEVICEINFO_Ex();
+                    loginID = NETClient.Login("192.168.1.108", Convert.ToUInt16(37777), "admin", "123456", EM_LOGIN_SPAC_CAP_TYPE.TCP, IntPtr.Zero, ref deviceInfo);
+                    if (loginID != IntPtr.Zero)
+                    {
+                        this.dhVideo.Enabled = true;
+                        realHandle = NETClient.StartRealPlay(loginID, 0, pictureDh.Handle, EM_RealPlayType.Realplay, null, null, IntPtr.Zero, TimeOut);
+                    }
+                }
+            }
+            catch (Exception err){
+
+            }
+        }
 
         #endregion
 
@@ -202,6 +239,17 @@ namespace ZforeServiceClient.Forms
         private void closeWin_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        /// <summary>
+        /// 关闭大华摄像头进行抓拍
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void dhVideo_Click(object sender, EventArgs e)
+        {
+            if(realHandle != IntPtr.Zero)
+                NETClient.StopRealPlay(realHandle);
         }
     }
 }

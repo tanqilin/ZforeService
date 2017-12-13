@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading;
+using ZforeFromwork.Database;
 using ZforeFromwork.Model;
 using ZforeFromwork.SqlService;
 
@@ -119,7 +120,8 @@ namespace ZforeFromwork.Util
             LogUtil.MsgLog("attend start！","attendLog");
             while (true)
             {
-                Thread.Sleep(60000);
+                DBManage.CopyDatabase(true);
+                Thread.Sleep(60*60000);
             }
         }
 

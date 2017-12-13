@@ -44,7 +44,11 @@ namespace ZforeFromwork.Database.Entity
 
         public int? DeptID { get; set; }
 
+        /// <summary>
+        /// 身份证图片和抓拍图片
+        /// </summary>
         public byte[] Photo { get; set; }
+        public byte[] Dahua { get; set; }
 
         public DateTime? RegDate { get; set; }
 
@@ -92,10 +96,12 @@ namespace ZforeFromwork.Database.Entity
 
         public string Note5 { get; set; }
 
-        public DateTime TimeStamp { get; set; }
+        public DateTime? TimeStamp { get; set; }
 
         public bool isBlackCard { get; set; }
 
         public string AcsString { get; set; }
+
+        public string EmployeeProNum { get; set; }
     }
 }

@@ -37,8 +37,11 @@ namespace ZforeFromwork.Database.Service.Realization
 
         public List<Employee> GetAllEmployee()
         {
-            var data =  base.GetAllEntitys<Employee>();
-            return data.Where(e=>e.PersonCode != "").ToList();
+            List<Employee> data = base.GetAllEntitys<Employee>();
+           
+            if (data == null) return null;
+
+            return data == null?data:data.Where(e=>e.PersonCode != "").ToList();
         }
 
         public List<Employee> GetEmployeeByDeptID(int id)
@@ -49,6 +52,11 @@ namespace ZforeFromwork.Database.Service.Realization
         public List<Employee> GetEmployeeByJobID(int id)
         {
             return db.TEmployee.Where(e => e.PersonCode != "").Where(e => e.JobID == id).ToList();
+        }
+
+        public List<Employee> GetEmployeeByProjectNum(string num)
+        {
+            return db.TEmployee.Where(e => e.EmployeeProNum == num).ToList();
         }
 
         /// <summary>

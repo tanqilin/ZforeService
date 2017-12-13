@@ -44,13 +44,13 @@
             this.combo_work = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.dhVideo = new System.Windows.Forms.Button();
+            this.pictureDh = new System.Windows.Forms.PictureBox();
             this.closeWin = new System.Windows.Forms.Button();
             this.picture_image = new System.Windows.Forms.PictureBox();
             this.rightSave = new System.Windows.Forms.Button();
             this.readCard = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureDh)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picture_image)).BeginInit();
             this.SuspendLayout();
             // 
@@ -192,26 +192,27 @@
             this.label8.TabIndex = 5;
             this.label8.Text = "工 种：";
             // 
-            // button1
+            // dhVideo
             // 
-            this.button1.Image = global::ZforeServiceClient.Properties.Resources.mkpic;
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(128, 295);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 14;
-            this.button1.Text = "抓  拍";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button1.UseVisualStyleBackColor = true;
+            this.dhVideo.Image = global::ZforeServiceClient.Properties.Resources.mkpic;
+            this.dhVideo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.dhVideo.Location = new System.Drawing.Point(128, 295);
+            this.dhVideo.Name = "dhVideo";
+            this.dhVideo.Size = new System.Drawing.Size(75, 23);
+            this.dhVideo.TabIndex = 14;
+            this.dhVideo.Text = "抓  拍";
+            this.dhVideo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.dhVideo.UseVisualStyleBackColor = true;
+            this.dhVideo.Click += new System.EventHandler(this.dhVideo_Click);
             // 
-            // pictureBox1
+            // pictureDh
             // 
-            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox1.Location = new System.Drawing.Point(357, 22);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(240, 142);
-            this.pictureBox1.TabIndex = 13;
-            this.pictureBox1.TabStop = false;
+            this.pictureDh.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureDh.Location = new System.Drawing.Point(357, 22);
+            this.pictureDh.Name = "pictureDh";
+            this.pictureDh.Size = new System.Drawing.Size(240, 142);
+            this.pictureDh.TabIndex = 13;
+            this.pictureDh.TabStop = false;
             // 
             // closeWin
             // 
@@ -269,8 +270,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(609, 330);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.dhVideo);
+            this.Controls.Add(this.pictureDh);
             this.Controls.Add(this.closeWin);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
@@ -291,13 +292,13 @@
             this.Controls.Add(this.text_birthdate);
             this.Controls.Add(this.text_sex);
             this.Controls.Add(this.text_nation);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "AddEmployee";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "编辑人员信息";
-            this.TopMost = true;
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureDh)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picture_image)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -326,7 +327,7 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button closeWin;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.PictureBox pictureDh;
+        private System.Windows.Forms.Button dhVideo;
     }
 }

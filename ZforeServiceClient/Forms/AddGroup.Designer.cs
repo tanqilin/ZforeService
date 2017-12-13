@@ -88,6 +88,7 @@
             this.Controls.Add(this.rightAdd);
             this.Controls.Add(this.groupName);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "AddGroup";

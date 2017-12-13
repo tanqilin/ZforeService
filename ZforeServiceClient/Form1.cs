@@ -247,13 +247,11 @@ namespace ZforeServiceClient
             }
 
             /// 初始化数据库种子数据
-            ReadDatabase database = new ReadDatabase();
-            if (database.InitDatabase())
-                this.serviceLog.Items.Add($"{DateTime.Now}:数据插入成功！");
-            else
-                this.serviceLog.Items.Add($"{DateTime.Now}:数据插入失败！");
-
-            this.serviceLog.Items.Add($"{DateTime.Now}:配置成功！");
+            //ReadDatabase database = new ReadDatabase();
+            //if (database.InitDatabase())
+            //    this.serviceLog.Items.Add($"{DateTime.Now}:数据配置成功！");
+            //else
+            //    this.serviceLog.Items.Add($"{DateTime.Now}:数据配置失败！详细情况请查看日志");
 
             /// 向Xml写入配置文件
             Config config = new Config();
@@ -261,6 +259,7 @@ namespace ZforeServiceClient
             config.projectName = ProjectName;
             config.onloadUrl = OnloadUrl;
             XmlUtil.WriteConfig(config);
+            this.serviceLog.Items.Add($"{DateTime.Now}:已生成配置文件...！");
 
             iniEnabledAllButton(false);
         }

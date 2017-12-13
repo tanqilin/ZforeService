@@ -53,18 +53,24 @@ namespace ZforeServiceClient.Forms
             else
                 group = selectedGroup;
 
-            group.DeptName = groupName;
-            group.DeptLevel = 1;
-            group.UpDeptID = 0;
+            try
+            {
+                group.DeptName = groupName;
+                group.DeptLevel = 1;
+                group.UpDeptID = 0;
 
-            /// 插入或更新
-            IDeptAService _deptAService = new DeptAService();
-            if (selectedGroup == null)
-                _deptAService.InsertDeptA(group);
-            else
-                _deptAService.UpdateDeptA(group);
-            this.DialogResult = DialogResult.OK;
-            this.Close();
+                /// 插入或更新
+                IDeptAService _deptAService = new DeptAService();
+                if (selectedGroup == null)
+                    _deptAService.InsertDeptA(group);
+                else
+                    _deptAService.UpdateDeptA(group);
+                this.DialogResult = DialogResult.OK;
+            }
+            catch
+            {
+                this.DialogResult = DialogResult.No;
+            }
         }
 
 

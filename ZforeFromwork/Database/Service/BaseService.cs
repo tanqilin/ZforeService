@@ -10,7 +10,7 @@ namespace ZforeFromwork.Database.Service
 {
     public class BaseService
     {
-        protected SqlContext db = DBContextFactory.GetDbContext();
+        protected DBContext db = DBContextFactory.GetDbContext();
 
         #region 基类方法
         /// <summary>
