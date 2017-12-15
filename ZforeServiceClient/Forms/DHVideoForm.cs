@@ -23,6 +23,7 @@ namespace ZforeServiceClient.Forms
         /// 调用大华网络摄像头
         IntPtr loginID = IntPtr.Zero;
         IntPtr realHandle = IntPtr.Zero;
+        private bool dh_initSdkResult = false;
         private const uint TimeOut = 5000;   // 连接超时
 
         public DHVideoForm()
@@ -36,6 +37,8 @@ namespace ZforeServiceClient.Forms
             List<Video> videos = _videoService.GetAllVideo();
             this.dataGridVideo.DataSource = videos;
             this.IniConfigControl();
+            /// 初始化大华SDK
+            dh_initSdkResult = NETClient.Init(null, IntPtr.Zero, null); //init NetClient.
         }
 
         /// <summary>
@@ -46,22 +49,22 @@ namespace ZforeServiceClient.Forms
         {
             try
             {
-                /// 初始化大华SDK
-                bool res = NETClient.Init(null, IntPtr.Zero, null); //init NetClient.
-                if (res == false)
+                if (!dh_initSdkResult)
                 {
                     this.rightAdd.Enabled = false;
                 }
                 else
                 {
+                    if (loginID != IntPtr.Zero) NETClient.Logout(loginID);
+
                     NET_DEVICEINFO_Ex deviceInfo = new NET_DEVICEINFO_Ex();
                     loginID = NETClient.Login(video.IP, Convert.ToUInt16(video.Port), video.UserName, video.Password, EM_LOGIN_SPAC_CAP_TYPE.TCP, IntPtr.Zero, ref deviceInfo);
                     if (loginID != IntPtr.Zero)
                     {
                         realHandle = NETClient.StartRealPlay(loginID, 0, videoWin.Handle, EM_RealPlayType.Realplay, null, null, IntPtr.Zero, TimeOut);
                     }
+                    this.rightAdd.Enabled = true;
                 }
-                this.rightAdd.Enabled = true;
             }
             catch
             {

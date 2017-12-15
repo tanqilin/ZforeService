@@ -15,6 +15,8 @@ namespace ZforeFromwork.Database.Service.Interface
 
         void UpdateDeptA(DeptA entity);
 
+        DeptA GetDeptAByID(int id);
+
         List<DeptA> GetAllGroup();
     }
 }

@@ -29,5 +29,12 @@ namespace ZforeFromwork.Database.Model
         //public string Home { get; set; }
 
         public byte[] Photo { get; set; }
+
+        /// <summary>
+        /// 是否离职(ture:否，false:在)
+        /// </summary>
+        public string Leave { get; set; }
+
+        public string ProjectName { get; set; }
     }
 }

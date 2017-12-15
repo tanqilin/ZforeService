@@ -45,15 +45,25 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.dhVideo = new System.Windows.Forms.Button();
-            this.pictureDh = new System.Windows.Forms.PictureBox();
+            this.pictureGet = new System.Windows.Forms.PictureBox();
             this.closeWin = new System.Windows.Forms.Button();
             this.picture_image = new System.Windows.Forms.PictureBox();
             this.rightSave = new System.Windows.Forms.Button();
             this.readCard = new System.Windows.Forms.Button();
             this.videoList = new System.Windows.Forms.ComboBox();
             this.videoConne = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureDh)).BeginInit();
+            this.pictureTab = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.pictureDh = new System.Windows.Forms.PictureBox();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.text_note = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureGet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picture_image)).BeginInit();
+            this.pictureTab.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureDh)).BeginInit();
+            this.tabPage2.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -158,7 +168,7 @@
             this.combo_group.DropDownHeight = 100;
             this.combo_group.FormattingEnabled = true;
             this.combo_group.IntegralHeight = false;
-            this.combo_group.Location = new System.Drawing.Point(357, 186);
+            this.combo_group.Location = new System.Drawing.Point(352, 217);
             this.combo_group.Name = "combo_group";
             this.combo_group.Size = new System.Drawing.Size(220, 20);
             this.combo_group.TabIndex = 7;
@@ -170,7 +180,7 @@
             this.combo_work.DropDownHeight = 80;
             this.combo_work.FormattingEnabled = true;
             this.combo_work.IntegralHeight = false;
-            this.combo_work.Location = new System.Drawing.Point(357, 219);
+            this.combo_work.Location = new System.Drawing.Point(352, 247);
             this.combo_work.Name = "combo_work";
             this.combo_work.Size = new System.Drawing.Size(220, 20);
             this.combo_work.TabIndex = 8;
@@ -179,7 +189,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(298, 188);
+            this.label7.Location = new System.Drawing.Point(291, 221);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(47, 12);
             this.label7.TabIndex = 5;
@@ -188,7 +198,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(298, 221);
+            this.label8.Location = new System.Drawing.Point(293, 251);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(47, 12);
             this.label8.TabIndex = 5;
@@ -196,33 +206,40 @@
             // 
             // dhVideo
             // 
+            this.dhVideo.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.dhVideo.Image = global::ZforeServiceClient.Properties.Resources.mkpic;
             this.dhVideo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.dhVideo.Location = new System.Drawing.Point(128, 295);
+            this.dhVideo.Location = new System.Drawing.Point(128, 297);
             this.dhVideo.Name = "dhVideo";
-            this.dhVideo.Size = new System.Drawing.Size(75, 23);
+            this.dhVideo.Size = new System.Drawing.Size(75, 26);
             this.dhVideo.TabIndex = 14;
             this.dhVideo.Text = "抓  拍";
             this.dhVideo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.dhVideo.UseVisualStyleBackColor = true;
             this.dhVideo.Click += new System.EventHandler(this.dhVideo_Click);
             // 
-            // pictureDh
+            // pictureGet
             // 
-            this.pictureDh.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureDh.Location = new System.Drawing.Point(357, 22);
-            this.pictureDh.Name = "pictureDh";
-            this.pictureDh.Size = new System.Drawing.Size(220, 111);
-            this.pictureDh.TabIndex = 13;
-            this.pictureDh.TabStop = false;
+            this.pictureGet.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureGet.BackColor = System.Drawing.Color.White;
+            this.pictureGet.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureGet.Location = new System.Drawing.Point(3, 3);
+            this.pictureGet.Name = "pictureGet";
+            this.pictureGet.Size = new System.Drawing.Size(188, 128);
+            this.pictureGet.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureGet.TabIndex = 13;
+            this.pictureGet.TabStop = false;
             // 
             // closeWin
             // 
+            this.closeWin.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.closeWin.Image = global::ZforeServiceClient.Properties.Resources.close;
             this.closeWin.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.closeWin.Location = new System.Drawing.Point(502, 295);
+            this.closeWin.Location = new System.Drawing.Point(502, 297);
             this.closeWin.Name = "closeWin";
-            this.closeWin.Size = new System.Drawing.Size(75, 23);
+            this.closeWin.Size = new System.Drawing.Size(75, 26);
             this.closeWin.TabIndex = 12;
             this.closeWin.Text = "关  闭";
             this.closeWin.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -241,12 +258,13 @@
             // 
             // rightSave
             // 
+            this.rightSave.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.rightSave.Cursor = System.Windows.Forms.Cursors.Hand;
             this.rightSave.Image = global::ZforeServiceClient.Properties.Resources.save;
             this.rightSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.rightSave.Location = new System.Drawing.Point(410, 295);
+            this.rightSave.Location = new System.Drawing.Point(410, 297);
             this.rightSave.Name = "rightSave";
-            this.rightSave.Size = new System.Drawing.Size(75, 23);
+            this.rightSave.Size = new System.Drawing.Size(75, 26);
             this.rightSave.TabIndex = 11;
             this.rightSave.Text = "确  定";
             this.rightSave.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -255,12 +273,13 @@
             // 
             // readCard
             // 
+            this.readCard.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.readCard.Cursor = System.Windows.Forms.Cursors.Hand;
             this.readCard.Image = global::ZforeServiceClient.Properties.Resources.read;
             this.readCard.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.readCard.Location = new System.Drawing.Point(31, 295);
+            this.readCard.Location = new System.Drawing.Point(31, 297);
             this.readCard.Name = "readCard";
-            this.readCard.Size = new System.Drawing.Size(90, 23);
+            this.readCard.Size = new System.Drawing.Size(90, 26);
             this.readCard.TabIndex = 9;
             this.readCard.Text = "读取二代证";
             this.readCard.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -273,7 +292,7 @@
             this.videoList.DropDownHeight = 100;
             this.videoList.FormattingEnabled = true;
             this.videoList.IntegralHeight = false;
-            this.videoList.Location = new System.Drawing.Point(358, 145);
+            this.videoList.Location = new System.Drawing.Point(354, 187);
             this.videoList.Name = "videoList";
             this.videoList.Size = new System.Drawing.Size(132, 20);
             this.videoList.TabIndex = 7;
@@ -284,7 +303,7 @@
             this.videoConne.Cursor = System.Windows.Forms.Cursors.Hand;
             this.videoConne.Image = global::ZforeServiceClient.Properties.Resources.connect;
             this.videoConne.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.videoConne.Location = new System.Drawing.Point(501, 143);
+            this.videoConne.Location = new System.Drawing.Point(497, 184);
             this.videoConne.Name = "videoConne";
             this.videoConne.Size = new System.Drawing.Size(75, 23);
             this.videoConne.TabIndex = 11;
@@ -293,13 +312,77 @@
             this.videoConne.UseVisualStyleBackColor = true;
             this.videoConne.Click += new System.EventHandler(this.videoConne_Click);
             // 
+            // pictureTab
+            // 
+            this.pictureTab.Alignment = System.Windows.Forms.TabAlignment.Right;
+            this.pictureTab.Controls.Add(this.tabPage1);
+            this.pictureTab.Controls.Add(this.tabPage2);
+            this.pictureTab.Location = new System.Drawing.Point(357, 22);
+            this.pictureTab.Multiline = true;
+            this.pictureTab.Name = "pictureTab";
+            this.pictureTab.SelectedIndex = 0;
+            this.pictureTab.Size = new System.Drawing.Size(220, 142);
+            this.pictureTab.TabIndex = 15;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.pictureDh);
+            this.tabPage1.Location = new System.Drawing.Point(4, 4);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(194, 134);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "预 览";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // pictureDh
+            // 
+            this.pictureDh.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureDh.BackColor = System.Drawing.Color.White;
+            this.pictureDh.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureDh.Location = new System.Drawing.Point(3, 3);
+            this.pictureDh.Name = "pictureDh";
+            this.pictureDh.Size = new System.Drawing.Size(188, 128);
+            this.pictureDh.TabIndex = 0;
+            this.pictureDh.TabStop = false;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.pictureGet);
+            this.tabPage2.Location = new System.Drawing.Point(4, 4);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(194, 134);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "抓 拍";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // text_note
+            // 
+            this.text_note.Location = new System.Drawing.Point(90, 247);
+            this.text_note.Name = "text_note";
+            this.text_note.Size = new System.Drawing.Size(187, 21);
+            this.text_note.TabIndex = 16;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(31, 251);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(41, 12);
+            this.label9.TabIndex = 17;
+            this.label9.Text = "备 注:";
+            // 
             // AddEmployee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(588, 332);
+            this.ClientSize = new System.Drawing.Size(588, 337);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.text_note);
             this.Controls.Add(this.dhVideo);
-            this.Controls.Add(this.pictureDh);
             this.Controls.Add(this.closeWin);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
@@ -322,14 +405,19 @@
             this.Controls.Add(this.text_birthdate);
             this.Controls.Add(this.text_sex);
             this.Controls.Add(this.text_nation);
+            this.Controls.Add(this.pictureTab);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "AddEmployee";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "编辑人员信息";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureDh)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureGet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picture_image)).EndInit();
+            this.pictureTab.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureDh)).EndInit();
+            this.tabPage2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -357,9 +445,15 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button closeWin;
-        private System.Windows.Forms.PictureBox pictureDh;
+        private System.Windows.Forms.PictureBox pictureGet;
         private System.Windows.Forms.Button dhVideo;
         private System.Windows.Forms.ComboBox videoList;
         private System.Windows.Forms.Button videoConne;
+        private System.Windows.Forms.TabControl pictureTab;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.PictureBox pictureDh;
+        private System.Windows.Forms.TextBox text_note;
+        private System.Windows.Forms.Label label9;
     }
 }

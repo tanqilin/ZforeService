@@ -9,11 +9,35 @@ namespace ZforeServiceClient.Forms
     public partial class AddProjectForm : Form
     {
         #region 属性和方法
+        private Project editProject = null;
         private IProjectService _projectService;
         public AddProjectForm()
         {
             InitializeComponent();
             _projectService = new ProjectService();
+        }
+
+        public AddProjectForm(Project project)
+        {
+            InitializeComponent();
+            this.editProject = project;
+            _projectService = new ProjectService();
+        }
+
+        protected override void OnLoad(EventArgs e)
+        {
+            if(editProject != null)
+            {
+                this.ProjectNum.Enabled = false;
+                this.text_verify.Enabled = false;
+                this.ProjectNum.Text = this.editProject.ProjectNum;
+                this.ProjectName.Text = this.editProject.ProjectName;
+            }
+            else
+            {
+                this.ProjectNum.Enabled = true;
+                this.text_verify.Enabled = true;
+            }
         }
         #endregion
 
@@ -25,7 +49,15 @@ namespace ZforeServiceClient.Forms
         /// <param name="e"></param>
         private void rightSubmit_Click(object sender, EventArgs e)
         {
-            Project project = new Project();
+            string verify = this.text_verify.Text.Trim();
+            if (this.editProject == null && verify != "ありがとう")
+            {
+                MessageBox.Show("不能私自添加项目噢^_^", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            Project project = this.editProject;
+            if (project == null) project = new Project();
 
             string projectNum = this.ProjectNum.Text.Trim();
             string projectName = this.ProjectName.Text.Trim();
@@ -36,16 +68,15 @@ namespace ZforeServiceClient.Forms
                 project.ProjectNum = projectNum;
                 project.ProjectName = projectName;
                 project.ProjectDeleted = "false";
-                _projectService.InsertProject(project);
+                if (this.editProject == null)
+                    _projectService.InsertProject(project);
+                else
+                    _projectService.UpdateProject(project);
                 this.DialogResult = DialogResult.OK;
             }
             catch
             {
                 this.DialogResult = DialogResult.No;
-            }
-            finally
-            {
-                this.Close();
             }
         }
         #endregion

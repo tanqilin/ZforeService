@@ -28,6 +28,11 @@ namespace ZforeFromwork.Database.Service.Realization
             base.UpdateEntity(entity);
         }
 
+        public DeptA GetDeptAByID(int id)
+        {
+            return db.TDeptA.Where(d => d.DeptID == id).FirstOrDefault();
+        }
+
         public List<DeptA> GetAllGroup()
         {
             return base.GetAllEntitys<DeptA>();

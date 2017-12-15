@@ -68,11 +68,10 @@ namespace ZforeServiceClient.Forms
         /// </summary>
         private void loadEmployee(List<Employee> data = null)
         {
-            List<Employee> employees = null;
-            if (data != null)
-                employees = data;
-            else
+            List<Employee> employees = data;
+            if (employees == null)
                 employees = _employeeService.GetAllEmployee();
+
             /// 筛选数据
             var models = employees.Select(
                 x => new EmployeeModel
@@ -83,6 +82,8 @@ namespace ZforeServiceClient.Forms
                     SexStr = x.Sex == false ? "男" : "女",
                     Birthday = x.Birthday,
                     PersonCode = x.PersonCode,
+                    Leave = x.Leave == true ? "离职" : "",
+                    ProjectName = _projectService.GetProjectByNum(x.EmployeeProNum).ProjectName,
                     Photo = x.Photo
                 }).ToList();
             this.dataGrid_people.DataSource = models;
@@ -234,6 +235,19 @@ namespace ZforeServiceClient.Forms
         }
         #endregion
 
+        #region 人员列表控件交互
+        /// <summary>
+        /// 处理人员列表行双击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void dataGridEmployee_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            object send = "编辑";
+            this.addEmployee_Click(send, null);
+        }
+        #endregion
+
         #region 窗口顶部菜单管理
         /// <summary>
         /// 搜索人员信息
@@ -295,7 +309,8 @@ namespace ZforeServiceClient.Forms
                     addProject = new AddProjectForm();
                     addProject.ShowDialog(); break;
                 case "编辑":
-                    addProject = new AddProjectForm();
+                    Project nodel = (Project)this.treeProject.SelectedNode.Tag;
+                    addProject = new AddProjectForm(nodel);
                     addProject.ShowDialog(); break; 
                 case "刷新":
                 case "删除": break;
@@ -400,12 +415,27 @@ namespace ZforeServiceClient.Forms
         /// <param name="e"></param>
         private void employeeRight_Click(object sender, EventArgs e)
         {
+            Form addEmployee = null;
             string clickType = sender.ToString();
-            if (clickType == "刷新")
+            /// 判断是编辑还是创建
+            int index = this.dataGrid_people.CurrentRow.Index;
+            int employeeId = Convert.ToInt32(this.dataGrid_people.Rows[index].Cells["EmployeeID"].Value);
+            Employee employee = _employeeService.GetEmployeeByID(employeeId);
+            if (employee == null) return;
+
+            if (clickType == "离职")
             {
-                this.loadEmployee();
-                return;
+                employee.Leave = !employee.Leave;
+                employee.Car = null;
+                employee.LeaveDate = DateTime.Now;
+                _employeeService.UpdateEmployee(employee);
             }
+            else if (clickType == "发卡")
+            {
+                addEmployee = new AddPassCardForm(employee);
+                addEmployee.ShowDialog();
+            }
+            this.loadEmployee();
         }
         #endregion
 
@@ -433,6 +463,7 @@ namespace ZforeServiceClient.Forms
                 MessageBox.Show("请在左上角项目列表中选择人员所属项目名称", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+
             /// 判断是编辑还是创建
             string clickType = sender.ToString();
             if (clickType == "编辑")
@@ -440,11 +471,14 @@ namespace ZforeServiceClient.Forms
                 int index = this.dataGrid_people.CurrentRow.Index;
                 int employeeId = Convert.ToInt32(this.dataGrid_people.Rows[index].Cells["EmployeeID"].Value);
                 Employee employee = _employeeService.GetEmployeeByID(employeeId);
-                addEmployee = new AddEmployee(project,employee);
+                addEmployee = new AddEmployee(project, employee);
             }
             else
+            {
                 addEmployee = new AddEmployee(project);
+            }
             addEmployee.ShowDialog();
+            this.loadEmployee();
         }
         #endregion
     }

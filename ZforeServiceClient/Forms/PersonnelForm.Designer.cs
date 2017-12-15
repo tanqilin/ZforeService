@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -38,18 +38,14 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PersonnelForm));
             this.dataGrid_people = new System.Windows.Forms.DataGridView();
-            this.EmployeeID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.image = new System.Windows.Forms.DataGridViewImageColumn();
-            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sex = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CardNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.age = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.number = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.添加ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.编辑ToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.发卡ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.删除ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.离职ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.删除ToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
@@ -78,6 +74,15 @@
             this.编辑ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.删除ToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.刷新ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.EmployeeID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.image = new System.Windows.Forms.DataGridViewImageColumn();
+            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sex = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProjectName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CardNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Leave = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.number = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.age = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid_people)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -112,107 +117,36 @@
             this.image,
             this.name,
             this.sex,
+            this.ProjectName,
             this.CardNo,
-            this.age,
-            this.number});
+            this.Leave,
+            this.number,
+            this.age});
             this.dataGrid_people.ContextMenuStrip = this.contextMenuStrip1;
             this.dataGrid_people.Location = new System.Drawing.Point(180, 30);
             this.dataGrid_people.MultiSelect = false;
             this.dataGrid_people.Name = "dataGrid_people";
             this.dataGrid_people.RowHeadersVisible = false;
             this.dataGrid_people.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToFirstHeader;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dataGrid_people.RowsDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dataGrid_people.RowsDefaultCellStyle = dataGridViewCellStyle11;
             this.dataGrid_people.RowTemplate.Height = 55;
             this.dataGrid_people.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGrid_people.Size = new System.Drawing.Size(792, 461);
             this.dataGrid_people.TabIndex = 0;
-            // 
-            // EmployeeID
-            // 
-            this.EmployeeID.DataPropertyName = "EmployeeID";
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.EmployeeID.DefaultCellStyle = dataGridViewCellStyle2;
-            this.EmployeeID.Frozen = true;
-            this.EmployeeID.HeaderText = "人员编号";
-            this.EmployeeID.Name = "EmployeeID";
-            this.EmployeeID.Width = 75;
-            // 
-            // image
-            // 
-            this.image.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.image.DataPropertyName = "Photo";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.NullValue = null;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.image.DefaultCellStyle = dataGridViewCellStyle3;
-            this.image.HeaderText = "头像";
-            this.image.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.image.Name = "image";
-            this.image.ReadOnly = true;
-            this.image.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.image.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.image.Width = 95;
-            // 
-            // name
-            // 
-            this.name.DataPropertyName = "EmployeeName";
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.name.DefaultCellStyle = dataGridViewCellStyle4;
-            this.name.HeaderText = "姓名";
-            this.name.Name = "name";
-            this.name.Width = 80;
-            // 
-            // sex
-            // 
-            this.sex.DataPropertyName = "SexStr";
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.sex.DefaultCellStyle = dataGridViewCellStyle5;
-            this.sex.HeaderText = "性别";
-            this.sex.Name = "sex";
-            this.sex.ReadOnly = true;
-            this.sex.Width = 50;
-            // 
-            // CardNo
-            // 
-            this.CardNo.DataPropertyName = "CardNo";
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.CardNo.DefaultCellStyle = dataGridViewCellStyle6;
-            this.CardNo.HeaderText = "门禁卡号";
-            this.CardNo.Name = "CardNo";
-            this.CardNo.ReadOnly = true;
-            this.CardNo.Width = 75;
-            // 
-            // age
-            // 
-            this.age.DataPropertyName = "Birthday";
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.age.DefaultCellStyle = dataGridViewCellStyle7;
-            this.age.HeaderText = "出生日期";
-            this.age.Name = "age";
-            this.age.ReadOnly = true;
-            // 
-            // number
-            // 
-            this.number.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.number.DataPropertyName = "PersonCode";
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.number.DefaultCellStyle = dataGridViewCellStyle8;
-            this.number.HeaderText = "身份证号";
-            this.number.MinimumWidth = 150;
-            this.number.Name = "number";
-            this.number.ReadOnly = true;
+            this.dataGrid_people.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridEmployee_CellDoubleClick);
             // 
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.添加ToolStripMenuItem,
             this.编辑ToolStripMenuItem2,
+            this.发卡ToolStripMenuItem,
             this.删除ToolStripMenuItem,
             this.离职ToolStripMenuItem,
             this.删除ToolStripMenuItem3});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(153, 136);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(146, 136);
             this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
             // 
             // 添加ToolStripMenuItem
@@ -220,29 +154,36 @@
             this.添加ToolStripMenuItem.Image = global::ZforeServiceClient.Properties.Resources.add;
             this.添加ToolStripMenuItem.Name = "添加ToolStripMenuItem";
             this.添加ToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.A)));
-            this.添加ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.添加ToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
             this.添加ToolStripMenuItem.Text = "增加";
             this.添加ToolStripMenuItem.Click += new System.EventHandler(this.addEmployee_Click);
             // 
             // 编辑ToolStripMenuItem2
             // 
             this.编辑ToolStripMenuItem2.Name = "编辑ToolStripMenuItem2";
-            this.编辑ToolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
+            this.编辑ToolStripMenuItem2.Size = new System.Drawing.Size(145, 22);
             this.编辑ToolStripMenuItem2.Text = "编辑";
             this.编辑ToolStripMenuItem2.Click += new System.EventHandler(this.addEmployee_Click);
+            // 
+            // 发卡ToolStripMenuItem
+            // 
+            this.发卡ToolStripMenuItem.Name = "发卡ToolStripMenuItem";
+            this.发卡ToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+            this.发卡ToolStripMenuItem.Text = "发卡";
+            this.发卡ToolStripMenuItem.Click += new System.EventHandler(this.employeeRight_Click);
             // 
             // 删除ToolStripMenuItem
             // 
             this.删除ToolStripMenuItem.Image = global::ZforeServiceClient.Properties.Resources.reset;
             this.删除ToolStripMenuItem.Name = "删除ToolStripMenuItem";
-            this.删除ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.删除ToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
             this.删除ToolStripMenuItem.Text = "刷新";
             this.删除ToolStripMenuItem.Click += new System.EventHandler(this.employeeRight_Click);
             // 
             // 离职ToolStripMenuItem
             // 
             this.离职ToolStripMenuItem.Name = "离职ToolStripMenuItem";
-            this.离职ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.离职ToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
             this.离职ToolStripMenuItem.Text = "离职";
             this.离职ToolStripMenuItem.Click += new System.EventHandler(this.employeeRight_Click);
             // 
@@ -250,7 +191,7 @@
             // 
             this.删除ToolStripMenuItem3.Image = global::ZforeServiceClient.Properties.Resources.delete;
             this.删除ToolStripMenuItem3.Name = "删除ToolStripMenuItem3";
-            this.删除ToolStripMenuItem3.Size = new System.Drawing.Size(152, 22);
+            this.删除ToolStripMenuItem3.Size = new System.Drawing.Size(145, 22);
             this.删除ToolStripMenuItem3.Text = "删除";
             this.删除ToolStripMenuItem3.Click += new System.EventHandler(this.employeeRight_Click);
             // 
@@ -280,8 +221,8 @@
             // 
             this.videoMenu.Image = global::ZforeServiceClient.Properties.Resources.video_32;
             this.videoMenu.Name = "videoMenu";
-            this.videoMenu.Size = new System.Drawing.Size(96, 23);
-            this.videoMenu.Text = "摄像头管理";
+            this.videoMenu.Size = new System.Drawing.Size(60, 23);
+            this.videoMenu.Text = "监控";
             this.videoMenu.Click += new System.EventHandler(this.videoMenu_Click);
             // 
             // 搜索ToolStripMenuItem
@@ -507,6 +448,99 @@
             this.刷新ToolStripMenuItem1.Text = "刷新";
             this.刷新ToolStripMenuItem1.Click += new System.EventHandler(this.addGroup_Click);
             // 
+            // EmployeeID
+            // 
+            this.EmployeeID.DataPropertyName = "EmployeeID";
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.EmployeeID.DefaultCellStyle = dataGridViewCellStyle2;
+            this.EmployeeID.Frozen = true;
+            this.EmployeeID.HeaderText = "人员编号";
+            this.EmployeeID.Name = "EmployeeID";
+            this.EmployeeID.Width = 75;
+            // 
+            // image
+            // 
+            this.image.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.image.DataPropertyName = "Photo";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.NullValue = null;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.image.DefaultCellStyle = dataGridViewCellStyle3;
+            this.image.HeaderText = "头像";
+            this.image.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.image.Name = "image";
+            this.image.ReadOnly = true;
+            this.image.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.image.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.image.Width = 95;
+            // 
+            // name
+            // 
+            this.name.DataPropertyName = "EmployeeName";
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.name.DefaultCellStyle = dataGridViewCellStyle4;
+            this.name.HeaderText = "姓名";
+            this.name.Name = "name";
+            this.name.Width = 80;
+            // 
+            // sex
+            // 
+            this.sex.DataPropertyName = "SexStr";
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.sex.DefaultCellStyle = dataGridViewCellStyle5;
+            this.sex.HeaderText = "性别";
+            this.sex.Name = "sex";
+            this.sex.ReadOnly = true;
+            this.sex.Width = 50;
+            // 
+            // ProjectName
+            // 
+            this.ProjectName.DataPropertyName = "ProjectName";
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.ProjectName.DefaultCellStyle = dataGridViewCellStyle6;
+            this.ProjectName.HeaderText = "所属项目";
+            this.ProjectName.Name = "ProjectName";
+            this.ProjectName.ReadOnly = true;
+            // 
+            // CardNo
+            // 
+            this.CardNo.DataPropertyName = "CardNo";
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.CardNo.DefaultCellStyle = dataGridViewCellStyle7;
+            this.CardNo.HeaderText = "门禁卡号";
+            this.CardNo.Name = "CardNo";
+            this.CardNo.ReadOnly = true;
+            this.CardNo.Width = 75;
+            // 
+            // Leave
+            // 
+            this.Leave.DataPropertyName = "Leave";
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.Leave.DefaultCellStyle = dataGridViewCellStyle8;
+            this.Leave.HeaderText = "是否在职";
+            this.Leave.Name = "Leave";
+            this.Leave.ReadOnly = true;
+            // 
+            // number
+            // 
+            this.number.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.number.DataPropertyName = "PersonCode";
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.number.DefaultCellStyle = dataGridViewCellStyle9;
+            this.number.HeaderText = "身份证号";
+            this.number.MinimumWidth = 150;
+            this.number.Name = "number";
+            this.number.ReadOnly = true;
+            // 
+            // age
+            // 
+            this.age.DataPropertyName = "Birthday";
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.age.DefaultCellStyle = dataGridViewCellStyle10;
+            this.age.HeaderText = "出生日期";
+            this.age.Name = "age";
+            this.age.ReadOnly = true;
+            // 
             // PersonnelForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -544,13 +578,6 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripTextBox searchEmployee;
         private System.Windows.Forms.ToolStripMenuItem 添加人员ToolStripMenuItem1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn EmployeeID;
-        private System.Windows.Forms.DataGridViewImageColumn image;
-        private System.Windows.Forms.DataGridViewTextBoxColumn name;
-        private System.Windows.Forms.DataGridViewTextBoxColumn sex;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CardNo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn age;
-        private System.Windows.Forms.DataGridViewTextBoxColumn number;
         private System.Windows.Forms.ToolStripMenuItem 搜索ToolStripMenuItem;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem 添加ToolStripMenuItem;
@@ -579,5 +606,15 @@
         private System.Windows.Forms.ToolStripMenuItem 离职ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 编辑ToolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem videoMenu;
+        private System.Windows.Forms.ToolStripMenuItem 发卡ToolStripMenuItem;
+        private System.Windows.Forms.DataGridViewTextBoxColumn EmployeeID;
+        private System.Windows.Forms.DataGridViewImageColumn image;
+        private System.Windows.Forms.DataGridViewTextBoxColumn name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn sex;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ProjectName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CardNo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Leave;
+        private System.Windows.Forms.DataGridViewTextBoxColumn number;
+        private System.Windows.Forms.DataGridViewTextBoxColumn age;
     }
 }

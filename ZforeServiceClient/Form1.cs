@@ -9,6 +9,8 @@ using System.Text;
 using System.Web.Services.Description;
 using System.Windows.Forms;
 using ZforeFromwork.Database.Entity;
+using ZforeFromwork.Database.Service.Interface;
+using ZforeFromwork.Database.Service.Realization;
 using ZforeFromwork.Model;
 using ZforeFromwork.SqlService;
 using ZforeFromwork.Util;
@@ -35,9 +37,10 @@ namespace ZforeServiceClient
         {
             // 读取出xml信息
             var config = XmlUtil.ReadConfig();
-            //// 使用xml传输图片，byte[] -> string -> byte[]
-            //string ret = System.Convert.ToBase64String(data[0].Picture); 
-            //byte[] buff = Convert.FromBase64String(ret);
+            ////// 使用xml传输图片，byte[] -> string -> byte[]
+            //IEmployeeService _employeeService = new EmployeeService();
+            //Employee employee = _employeeService.GetNewData();
+            //XmlUtil.CreateHumanXml(employee);
 
             if (config != null)
             {

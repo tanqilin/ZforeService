@@ -114,6 +114,12 @@
     <Compile Include="Forms\AddGroup.Designer.cs">
       <DependentUpon>AddGroup.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\AddPassCardForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AddPassCardForm.Designer.cs">
+      <DependentUpon>AddPassCardForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\AddProjectForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -155,6 +161,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\AddGroup.resx">
       <DependentUpon>AddGroup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AddPassCardForm.resx">
+      <DependentUpon>AddPassCardForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\AddProjectForm.resx">
       <DependentUpon>AddProjectForm.cs</DependentUpon>

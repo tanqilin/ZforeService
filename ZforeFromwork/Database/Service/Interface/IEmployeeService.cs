@@ -17,6 +17,10 @@ namespace ZforeFromwork.Database.Service.Interface
 
         Employee GetEmployeeByID(int id);
 
+        Employee GetEmployeeByIDCard(string cardNum);
+
+        bool ProjectEmployeeExists(Employee entity);
+
         List<Employee> GetAllEmployee();
 
         List<Employee> GetEmployeeByDeptID(int id);

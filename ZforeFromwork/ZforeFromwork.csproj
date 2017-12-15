@@ -79,7 +79,6 @@
     <Compile Include="Database\DBContext.cs" />
     <Compile Include="Database\Service\Realization\ProjectService.cs" />
     <Compile Include="Database\Service\Realization\VideoService.cs" />
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Config.cs" />
     <Compile Include="Model\Human.cs" />
     <Compile Include="Model\HumanResult.cs" />

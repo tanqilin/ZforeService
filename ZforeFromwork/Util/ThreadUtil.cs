@@ -4,6 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using ZforeFromwork.Database;
+using ZforeFromwork.Database.Entity;
+using ZforeFromwork.Database.Service.Interface;
+using ZforeFromwork.Database.Service.Realization;
 using ZforeFromwork.Model;
 using ZforeFromwork.SqlService;
 
@@ -15,11 +18,10 @@ namespace ZforeFromwork.Util
     public class ThreadUtil
     {
         #region 属性和构造函数
-
         private static Thread humanThread;
         private static Thread attendThread;
         private static Thread managerThread;
-
+        private static IEmployeeService _employeeService = new EmployeeService();
         #endregion
 
         #region 启动线程
@@ -73,17 +75,15 @@ namespace ZforeFromwork.Util
                 }
 
                 // 从数据库读取数据并转换未Xml字符串
-                ReadDatabase read = new ReadDatabase();
-                List<Human> data = read.ReadHumanInfo();
-                if (data == null || data.Count() == 0)
+                Employee employee = _employeeService.GetNewData();
+                if (employee == null)
                 {
                     LogUtil.MsgLog("There is no new data! Try again in 15 minutes", "humanLog");
                     Thread.Sleep(15 * 60000);
                     continue;
                 }
 
-                string ListHuman = XmlUtil.CreateHumanXml(data);
-
+                string ListHuman = XmlUtil.CreateHumanXml(employee);
                 try
                 {
                     Thread.Sleep(1000);
@@ -100,8 +100,7 @@ namespace ZforeFromwork.Util
                     {
                         UploadWebservice.UploadWebservice webservice = new UploadWebservice.UploadWebservice();
                         webservice.Timeout = 15000;
-                        // 执行WebService并返回结果
-                        LogUtil.MsgLog(ListHuman, "humanLog");
+                        LogUtil.MsgLog("调用WebService", "humanLog");
                         string result = webservice.UpHumanInfo(ListHuman);
                     }
                     catch { }
@@ -113,7 +112,7 @@ namespace ZforeFromwork.Util
         }
 
         /// <summary>
-        /// 读取考勤信息并发送
+        /// 读取考勤信息并发送(目前是定时备份数据库)
         /// </summary>
         static void ReadAttendData()
         {
@@ -180,8 +179,13 @@ namespace ZforeFromwork.Util
             if (results == null || results.Count == 0) throw new Exception();
             LogUtil.MsgLog(result, "humanLog");
 
-            ReadDatabase Sql = new ReadDatabase();
-            Sql.HumanResultSql(results);
+            /// 更新已上传的记录
+            Employee employee = _employeeService.GetEmployeeByIDCard(results[0].IdCard);
+            employee.Car = "1";
+            _employeeService.UpdateEmployee(employee);
+
+            ReadDatabase command = new ReadDatabase();
+            command.HumanResultSql(results);
         }
         #endregion
     }

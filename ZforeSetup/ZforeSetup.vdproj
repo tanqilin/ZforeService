@@ -291,6 +291,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_6713379749A04807AFCDF71BE37802D1"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_6BC1717CB852413DA28998E39FAA4910"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -646,12 +652,6 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_A8541A86AAE24E48A16B9AE9DBAB6ADD"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_CD8117CB19F84E55BE6F035CEB76135E"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -665,6 +665,12 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_5FD1CA153329ADAED493E291401FF391"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_A8541A86AAE24E48A16B9AE9DBAB6ADD"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -1659,6 +1665,26 @@
             "TargetName" = "8:connect.png"
             "Tag" = "8:"
             "Folder" = "8:_40E24B0EC2E44222AE945B86F7804BDF"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_6713379749A04807AFCDF71BE37802D1"
+            {
+            "SourcePath" = "8:..\\ZforeServiceClient\\bin\\Debug\\data\\分离数据库.bat"
+            "TargetName" = "8:分离数据库.bat"
+            "Tag" = "8:"
+            "Folder" = "8:_9F652329F7024449B6F4AEB116D8E822"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -2935,7 +2961,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:ZforeSetup"
         "ProductCode" = "8:{F35019A6-E12E-4C66-AFAC-C964395AC5EC}"
-        "PackageCode" = "8:{AC6E294A-59C4-4B42-B2A6-44C5E8FAA707}"
+        "PackageCode" = "8:{F0F847A5-D96C-4830-A61C-AF4CB45F2CCB}"
         "UpgradeCode" = "8:{9303E433-B0D9-4A32-B435-F922002BFA6B}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"

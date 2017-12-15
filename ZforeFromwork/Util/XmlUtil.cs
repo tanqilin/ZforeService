@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Xml;
 using System.Xml.Linq;
+using ZforeFromwork.Database.Entity;
+using ZforeFromwork.Database.Service.Interface;
+using ZforeFromwork.Database.Service.Realization;
 using ZforeFromwork.Model;
 
 namespace ZforeFromwork.Util
@@ -15,6 +18,8 @@ namespace ZforeFromwork.Util
         /// 配置文件config.xml路径
         public static string datePath = AppDomain.CurrentDomain.BaseDirectory + "\\data\\";
         public static string configPath = AppDomain.CurrentDomain.BaseDirectory + "\\conf\\";
+        public static IDeptAService _deptAService = new DeptAService();
+        public static IProjectService _projectService = new ProjectService();
 
         #region 写入配置文件
         /// <summary>
@@ -111,10 +116,61 @@ namespace ZforeFromwork.Util
         /// </summary>
         /// <param name="data">人员信息</param>
         /// <returns>Xml字符串</returns>
-        public static string CreateHumanXml(List<Human> data)
+        //public static string CreateHumanXml(List<Human> data)
+        //{
+        //    // 读取配置信息
+        //    var config = ReadConfig();
+
+        //    XmlDocument doc = new XmlDocument();
+        //    XmlDeclaration dec = doc.CreateXmlDeclaration("1.0", "GB2312", null);
+        //    doc.AppendChild(dec);
+
+        //    XmlElement root = doc.CreateElement("Message");
+        //    doc.AppendChild(root);
+
+        //    // Xml配置标签
+        //    XmlElement nodeProject = doc.CreateElement("Project");
+        //    nodeProject.SetAttribute("name", config.projectName);
+        //    nodeProject.SetAttribute("num", config.projectNum);
+        //    nodeProject.SetAttribute("url", config.onloadUrl);
+        //    root.AppendChild(nodeProject);
+
+        //    // Xml内容List
+        //    XmlNode node = doc.CreateElement("List");
+        //    foreach (Human item in data)
+        //    {
+        //        // 节点身份证号不能为空
+        //        if (String.IsNullOrEmpty(item.Number)) continue;
+
+        //        XmlElement nodeHuman = doc.CreateElement("Human");
+        //        nodeHuman.SetAttribute("name", item.Name);
+        //        nodeHuman.SetAttribute("birthday", item.Birthday);
+        //        nodeHuman.SetAttribute("gender", item.Gender == "男"?"1":"0");
+        //        nodeHuman.SetAttribute("idcard", item.Number);
+        //        nodeHuman.SetAttribute("address", item.Address);
+        //        nodeHuman.SetAttribute("leave", item.Leave);
+        //        nodeHuman.SetAttribute("leavedate", item.LeaveDate);
+        //        nodeHuman.SetAttribute("group", item.GroupName);
+        //        nodeHuman.SetAttribute("workcode", item.WorkCode);
+        //        nodeHuman.SetAttribute("photo", System.Convert.ToBase64String(item.Picture));
+        //        node.AppendChild(nodeHuman);
+        //    }
+        //    root.AppendChild(node);
+
+        //    // 创建一个文件夹存储上传的数据
+        //    if (!Directory.Exists(datePath))
+        //        Directory.CreateDirectory(datePath);
+        //    doc.Save(datePath + "Human.xml");
+        //    // 把xml转换为xml字符串
+        //    return doc.OuterXml;
+        //}
+
+        public static string CreateHumanXml(Employee employee)
         {
             // 读取配置信息
             var config = ReadConfig();
+            DeptA dept = _deptAService.GetDeptAByID(Convert.ToInt32(employee.DeptID));
+            Project project = _projectService.GetProjectByNum(employee.EmployeeProNum);
 
             XmlDocument doc = new XmlDocument();
             XmlDeclaration dec = doc.CreateXmlDeclaration("1.0", "GB2312", null);
@@ -125,29 +181,27 @@ namespace ZforeFromwork.Util
 
             // Xml配置标签
             XmlElement nodeProject = doc.CreateElement("Project");
-            nodeProject.SetAttribute("name", config.projectName);
-            nodeProject.SetAttribute("num", config.projectNum);
+            nodeProject.SetAttribute("name", project.ProjectName);
+            nodeProject.SetAttribute("num", project.ProjectNum);
             nodeProject.SetAttribute("url", config.onloadUrl);
             root.AppendChild(nodeProject);
 
             // Xml内容List
             XmlNode node = doc.CreateElement("List");
-            foreach (Human item in data)
+            if (employee != null)
             {
-                // 节点身份证号不能为空
-                if (String.IsNullOrEmpty(item.Number)) continue;
-
                 XmlElement nodeHuman = doc.CreateElement("Human");
-                nodeHuman.SetAttribute("name", item.Name);
-                nodeHuman.SetAttribute("birthday", item.Birthday);
-                nodeHuman.SetAttribute("gender", item.Gender == "男"?"1":"0");
-                nodeHuman.SetAttribute("idcard", item.Number);
-                nodeHuman.SetAttribute("address", item.Address);
-                nodeHuman.SetAttribute("leave", item.Leave);
-                nodeHuman.SetAttribute("leavedate", item.LeaveDate);
-                nodeHuman.SetAttribute("group", item.GroupName);
-                nodeHuman.SetAttribute("workcode", item.WorkCode);
-                nodeHuman.SetAttribute("photo", System.Convert.ToBase64String(item.Picture));
+                nodeHuman.SetAttribute("name", employee.EmployeeName);
+                nodeHuman.SetAttribute("birthday", employee.Birthday.ToString("yyyyMMdd"));
+                nodeHuman.SetAttribute("gender", employee.Sex == false ? "1" : "0");
+                nodeHuman.SetAttribute("idcard", employee.PersonCode);
+                nodeHuman.SetAttribute("address", employee.Home);
+                nodeHuman.SetAttribute("leave", employee.Leave.ToString());
+                nodeHuman.SetAttribute("leavedate", employee.LeaveDate == null?"": employee.LeaveDate.ToString());
+                nodeHuman.SetAttribute("group", dept == null?"": dept.DeptName);
+                nodeHuman.SetAttribute("workcode", employee.JobID.ToString());
+                nodeHuman.SetAttribute("photo", employee.Photo == null?"":System.Convert.ToBase64String(employee.Photo));
+                nodeHuman.SetAttribute("dahua", employee.Dahua == null?"":System.Convert.ToBase64String(employee.Dahua));
                 node.AppendChild(nodeHuman);
             }
             root.AppendChild(node);

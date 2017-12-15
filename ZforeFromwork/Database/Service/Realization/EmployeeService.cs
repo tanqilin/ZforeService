@@ -35,6 +35,22 @@ namespace ZforeFromwork.Database.Service.Realization
             return base.GetEntityById<Employee>(id);
         }
 
+        public Employee GetEmployeeByIDCard(string cardNum)
+        {
+            return db.TEmployee.Where(e=>e.PersonCode == cardNum).FirstOrDefault();
+        }
+
+        /// <summary>
+        /// 判断项目下人员是否存在
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <returns></returns>
+        public bool ProjectEmployeeExists(Employee entity)
+        {
+            var data = db.TEmployee.Where(e=>e.PersonCode == entity.PersonCode).Where(e => e.EmployeeProNum == entity.EmployeeProNum).FirstOrDefault();
+            return data == null ? false : true;
+        }
+
         public List<Employee> GetAllEmployee()
         {
             List<Employee> data = base.GetAllEntitys<Employee>();
@@ -72,7 +88,7 @@ namespace ZforeFromwork.Database.Service.Realization
             string searchText = search.Trim();
             if (!String.IsNullOrEmpty(searchText))
             {
-                q = q.Where(u => u.PersonCode.Contains(searchText) || u.EmployeeName.Contains(searchText));
+                q = q.Where(u => u.PersonCode.Contains(searchText) || u.EmployeeName.Contains(searchText)||u.CardNo.Contains(searchText));
             }
 
             return q.ToList();

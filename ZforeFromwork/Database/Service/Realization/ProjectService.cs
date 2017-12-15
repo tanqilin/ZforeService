@@ -18,6 +18,16 @@ namespace ZforeFromwork.Database.Service.Realization
             base.InsertEntity(ptoject);
         }
 
+        public void UpdateProject(Project ptoject)
+        {
+            base.UpdateEntity(ptoject);
+        }
+
+        public Project GetProjectByNum(string num)
+        {
+            return db.TProject.Where(p => p.ProjectNum == num).FirstOrDefault();
+        }
+
         public List<Project> GetAllProject()
         {
             return base.GetAllEntitys<Project>();

@@ -11,6 +11,10 @@ namespace ZforeFromwork.Database.Service.Interface
     {
         void InsertProject(Project ptoject);
 
+        void UpdateProject(Project ptoject);
+
+        Project GetProjectByNum(string num);
+
         List<Project> GetAllProject();
     }
 }
