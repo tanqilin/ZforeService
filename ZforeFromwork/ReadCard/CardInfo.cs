@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace ZforeFromwork.ReadCard
 {
+    /// <summary>
+    /// 身份信息模型
+    /// </summary>
     public class CardInfo
     {
         public CardInfo()
@@ -16,6 +19,8 @@ namespace ZforeFromwork.ReadCard
             this.BirthDate = new byte[128];
             this.CardID = new byte[128];
             this.Address = new byte[128];
+            this.Effected = new byte[128];
+            this.Expired = new byte[128];
         }
 
         public byte[] Name;
@@ -29,5 +34,15 @@ namespace ZforeFromwork.ReadCard
         public byte[] CardID;
 
         public byte[] Address;
+
+        /// <summary>
+        /// 有效起始日期
+        /// </summary>
+        public byte[] Effected;
+
+        /// <summary>
+        /// 有效截止日期
+        /// </summary>
+        public byte[] Expired;
     }
 }

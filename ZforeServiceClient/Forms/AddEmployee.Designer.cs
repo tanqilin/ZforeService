@@ -58,6 +58,12 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.text_note = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
+            this.text_phone = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.text_effected = new System.Windows.Forms.TextBox();
+            this.text_expired = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureGet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picture_image)).BeginInit();
             this.pictureTab.SuspendLayout();
@@ -71,54 +77,54 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(29, 22);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(47, 12);
+            this.label1.Size = new System.Drawing.Size(53, 12);
             this.label1.TabIndex = 0;
-            this.label1.Text = "姓 名：";
+            this.label1.Text = "姓  名：";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(29, 63);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(47, 12);
+            this.label2.Size = new System.Drawing.Size(53, 12);
             this.label2.TabIndex = 0;
-            this.label2.Text = "性 别：";
+            this.label2.Text = "性  别：";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(29, 104);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(47, 12);
+            this.label3.Size = new System.Drawing.Size(53, 12);
             this.label3.TabIndex = 0;
-            this.label3.Text = "民 族：";
+            this.label3.Text = "民  族：";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(29, 145);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(47, 12);
+            this.label4.Size = new System.Drawing.Size(53, 12);
             this.label4.TabIndex = 0;
-            this.label4.Text = "出 生：";
+            this.label4.Text = "出  生：";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(29, 189);
+            this.label5.Location = new System.Drawing.Point(29, 190);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(47, 12);
+            this.label5.Size = new System.Drawing.Size(53, 12);
             this.label5.TabIndex = 0;
-            this.label5.Text = "卡 号：";
+            this.label5.Text = "卡  号：";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(29, 220);
+            this.label6.Location = new System.Drawing.Point(28, 221);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(47, 12);
+            this.label6.Size = new System.Drawing.Size(53, 12);
             this.label6.TabIndex = 0;
-            this.label6.Text = "地 址：";
+            this.label6.Text = "地  址：";
             // 
             // text_name
             // 
@@ -150,14 +156,14 @@
             // 
             // text_number
             // 
-            this.text_number.Location = new System.Drawing.Point(90, 186);
+            this.text_number.Location = new System.Drawing.Point(90, 187);
             this.text_number.Name = "text_number";
             this.text_number.Size = new System.Drawing.Size(187, 21);
             this.text_number.TabIndex = 5;
             // 
             // text_address
             // 
-            this.text_address.Location = new System.Drawing.Point(90, 217);
+            this.text_address.Location = new System.Drawing.Point(90, 218);
             this.text_address.Name = "text_address";
             this.text_address.Size = new System.Drawing.Size(187, 21);
             this.text_address.TabIndex = 6;
@@ -209,7 +215,7 @@
             this.dhVideo.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.dhVideo.Image = global::ZforeServiceClient.Properties.Resources.mkpic;
             this.dhVideo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.dhVideo.Location = new System.Drawing.Point(128, 297);
+            this.dhVideo.Location = new System.Drawing.Point(128, 346);
             this.dhVideo.Name = "dhVideo";
             this.dhVideo.Size = new System.Drawing.Size(75, 26);
             this.dhVideo.TabIndex = 14;
@@ -237,7 +243,7 @@
             this.closeWin.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.closeWin.Image = global::ZforeServiceClient.Properties.Resources.close;
             this.closeWin.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.closeWin.Location = new System.Drawing.Point(502, 297);
+            this.closeWin.Location = new System.Drawing.Point(502, 346);
             this.closeWin.Name = "closeWin";
             this.closeWin.Size = new System.Drawing.Size(75, 26);
             this.closeWin.TabIndex = 12;
@@ -262,7 +268,7 @@
             this.rightSave.Cursor = System.Windows.Forms.Cursors.Hand;
             this.rightSave.Image = global::ZforeServiceClient.Properties.Resources.save;
             this.rightSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.rightSave.Location = new System.Drawing.Point(410, 297);
+            this.rightSave.Location = new System.Drawing.Point(410, 346);
             this.rightSave.Name = "rightSave";
             this.rightSave.Size = new System.Drawing.Size(75, 26);
             this.rightSave.TabIndex = 11;
@@ -277,7 +283,7 @@
             this.readCard.Cursor = System.Windows.Forms.Cursors.Hand;
             this.readCard.Image = global::ZforeServiceClient.Properties.Resources.read;
             this.readCard.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.readCard.Location = new System.Drawing.Point(31, 297);
+            this.readCard.Location = new System.Drawing.Point(31, 346);
             this.readCard.Name = "readCard";
             this.readCard.Size = new System.Drawing.Size(90, 26);
             this.readCard.TabIndex = 9;
@@ -361,26 +367,80 @@
             // 
             // text_note
             // 
-            this.text_note.Location = new System.Drawing.Point(90, 247);
+            this.text_note.Location = new System.Drawing.Point(352, 283);
             this.text_note.Name = "text_note";
-            this.text_note.Size = new System.Drawing.Size(187, 21);
+            this.text_note.Size = new System.Drawing.Size(220, 21);
             this.text_note.TabIndex = 16;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(31, 251);
+            this.label9.Location = new System.Drawing.Point(293, 287);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(41, 12);
             this.label9.TabIndex = 17;
             this.label9.Text = "备 注:";
             // 
+            // text_phone
+            // 
+            this.text_phone.Location = new System.Drawing.Point(90, 278);
+            this.text_phone.Name = "text_phone";
+            this.text_phone.Size = new System.Drawing.Size(187, 21);
+            this.text_phone.TabIndex = 16;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(31, 282);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(47, 12);
+            this.label10.TabIndex = 17;
+            this.label10.Text = "电  话:";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(30, 249);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(53, 12);
+            this.label11.TabIndex = 18;
+            this.label11.Text = "有效期：";
+            // 
+            // text_effected
+            // 
+            this.text_effected.Location = new System.Drawing.Point(90, 245);
+            this.text_effected.Name = "text_effected";
+            this.text_effected.Size = new System.Drawing.Size(80, 21);
+            this.text_effected.TabIndex = 19;
+            // 
+            // text_expired
+            // 
+            this.text_expired.Location = new System.Drawing.Point(197, 245);
+            this.text_expired.Name = "text_expired";
+            this.text_expired.Size = new System.Drawing.Size(80, 21);
+            this.text_expired.TabIndex = 19;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(178, 250);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(11, 12);
+            this.label12.TabIndex = 20;
+            this.label12.Text = "-";
+            // 
             // AddEmployee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(588, 337);
+            this.ClientSize = new System.Drawing.Size(588, 386);
+            this.Controls.Add(this.label12);
+            this.Controls.Add(this.text_expired);
+            this.Controls.Add(this.text_effected);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
+            this.Controls.Add(this.text_phone);
             this.Controls.Add(this.text_note);
             this.Controls.Add(this.dhVideo);
             this.Controls.Add(this.closeWin);
@@ -455,5 +515,11 @@
         private System.Windows.Forms.PictureBox pictureDh;
         private System.Windows.Forms.TextBox text_note;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox text_phone;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox text_effected;
+        private System.Windows.Forms.TextBox text_expired;
+        private System.Windows.Forms.Label label12;
     }
 }

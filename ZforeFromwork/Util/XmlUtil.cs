@@ -200,6 +200,9 @@ namespace ZforeFromwork.Util
                 nodeHuman.SetAttribute("leavedate", employee.LeaveDate == null?"": employee.LeaveDate.ToString());
                 nodeHuman.SetAttribute("group", dept == null?"": dept.DeptName);
                 nodeHuman.SetAttribute("workcode", employee.JobID.ToString());
+                nodeHuman.SetAttribute("phone", employee.Phone.ToString());
+                nodeHuman.SetAttribute("effected", employee.EffectedDate.ToString());
+                nodeHuman.SetAttribute("expired", employee.ExpiredDate.ToString());
                 nodeHuman.SetAttribute("photo", employee.Photo == null?"":System.Convert.ToBase64String(employee.Photo));
                 nodeHuman.SetAttribute("dahua", employee.Dahua == null?"":System.Convert.ToBase64String(employee.Dahua));
                 node.AppendChild(nodeHuman);

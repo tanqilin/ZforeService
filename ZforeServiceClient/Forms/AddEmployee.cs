@@ -1,6 +1,5 @@
 ﻿using NetSDKCS;
 using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Runtime.InteropServices;
@@ -62,7 +61,7 @@ namespace ZforeServiceClient.Forms
         protected override void OnLoad(EventArgs e)
         {
             this.InitAllDownList();
-            this.InitEmployeeControl(true);
+            this.InitEmployeeControl(false);
             this.VideoPictureCallBack = new fSnapRevCallBack(GetVideoPicture);
            
             /// 初始化大华SDK
@@ -126,6 +125,8 @@ namespace ZforeServiceClient.Forms
             this.text_number.Enabled = enable;
             this.text_address.Enabled = enable;
             this.text_nation.Enabled = enable;
+            this.text_effected.Enabled = enable;
+            this.text_expired.Enabled = enable;
 
             /// 不为null表示编辑时已经传了人员信息过来
             if (this.editEmployee != null)
@@ -136,6 +137,9 @@ namespace ZforeServiceClient.Forms
                 this.text_number.Text = editEmployee.PersonCode;
                 this.text_address.Text = editEmployee.Home;
                 this.text_nation.Text = editEmployee.Note4;
+                this.text_phone.Text = editEmployee.Phone;
+                this.text_expired.Text = editEmployee.ExpiredDate;
+                this.text_effected.Text = editEmployee.EffectedDate;
                 if (this.editEmployee.Photo != null)
                 {
                     MemoryStream ms = new MemoryStream(); //新建内存流
@@ -170,6 +174,8 @@ namespace ZforeServiceClient.Forms
             text_birthdate.Text = System.Text.Encoding.Default.GetString(card.BirthDate);
             text_number.Text = System.Text.Encoding.Default.GetString(card.CardID);
             text_address.Text = System.Text.Encoding.Default.GetString(card.Address);
+            text_effected.Text = System.Text.Encoding.Default.GetString(card.Effected);
+            text_expired.Text = System.Text.Encoding.Default.GetString(card.Expired);
         }
 
         /// <summary>
@@ -218,6 +224,8 @@ namespace ZforeServiceClient.Forms
                         Card.ZKNIDReaderAPI_GetNation(m_hDevice, card.Nation, 128);
                         Card.ZKNIDReaderAPI_GetBirthdate(m_hDevice, card.BirthDate, 128);
                         Card.ZKNIDReaderAPI_GetIDNum(m_hDevice, card.CardID, 128);
+                        Card.ZKNIDReaderAPI_GetExpiredDate(m_hDevice,card.Expired,128);
+                        Card.ZKNIDReaderAPI_GetEffectedDate(m_hDevice,card.Effected,128);
                         nRet = Card.ZKNIDReaderAPI_GetAddress(m_hDevice, card.Address, 128);
                     }
                     if (1 == nRet)
@@ -329,7 +337,12 @@ namespace ZforeServiceClient.Forms
         private void rightSave_Click(object sender, EventArgs e)
         {
             string CardID = this.text_number.Text;
-            if (project == null || String.IsNullOrEmpty(CardID)) return;
+            string phone = this.text_phone.Text.Trim();
+            /// 输入参数验证
+            if (project == null || 
+                String.IsNullOrEmpty(CardID)||
+                String.IsNullOrEmpty(phone) ||
+                phone.Length != 11) return;
 
             if (this.pictureGet.Image == null)
             {
@@ -343,6 +356,9 @@ namespace ZforeServiceClient.Forms
                 editEmployee.EmployeeName = this.text_name.Text.Trim();
                 editEmployee.Car = null;
                 editEmployee.EmployeeProNum = project.ProjectNum;
+                editEmployee.Phone = this.text_phone.Text.Trim();
+                editEmployee.EffectedDate = this.text_effected.Text.Trim();
+                editEmployee.ExpiredDate = this.text_expired.Text.Trim();
                 editEmployee.Dahua = dh_data == null? editEmployee.Dahua : GetImageBytes(this.pictureGet.Image);
                 editEmployee.DeptID = Convert.ToInt32(this.combo_group.SelectedValue);
                 editEmployee.JobID = Convert.ToInt32(this.combo_work.SelectedValue);
@@ -355,11 +371,14 @@ namespace ZforeServiceClient.Forms
                 editEmployee.Sex = this.text_sex.Text.Trim() == "男" ? false : true;
                 editEmployee.Birthday = DateTime.Parse(this.text_birthdate.Text.Trim());
                 editEmployee.PersonCode = "ID"+CardID;
+                editEmployee.Phone = this.text_phone.Text.Trim();
                 editEmployee.Home = this.text_address.Text.Trim();
                 editEmployee.Note4 = this.text_nation.Text.Trim();
                 editEmployee.Photo = this.picture_image.Image == null ? null: GetImageBytes(this.picture_image.Image);
                 editEmployee.Dahua = GetImageBytes(this.pictureGet.Image);
                 editEmployee.EmployeeProNum = project.ProjectNum;
+                editEmployee.EffectedDate = this.text_effected.Text.Trim();
+                editEmployee.ExpiredDate = this.text_expired.Text.Trim();
                 editEmployee.Note1 = this.text_note.Text.Trim();
                 editEmployee.DeptID = Convert.ToInt32(this.combo_group.SelectedValue);
                 editEmployee.JobID = Convert.ToInt32(this.combo_work.SelectedValue);

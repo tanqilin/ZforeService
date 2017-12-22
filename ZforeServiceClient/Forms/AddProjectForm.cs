@@ -50,7 +50,7 @@ namespace ZforeServiceClient.Forms
         private void rightSubmit_Click(object sender, EventArgs e)
         {
             string verify = this.text_verify.Text.Trim();
-            if (this.editProject == null && verify != "ありがとう")
+            if (this.editProject == null && verify != "zfore-tanqilin")
             {
                 MessageBox.Show("不能私自添加项目噢^_^", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;

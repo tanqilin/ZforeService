@@ -49,7 +49,14 @@ namespace ZforeFromwork.Database.Entity
         /// </summary>
         public byte[] Photo { get; set; }
         public byte[] Dahua { get; set; }
-
+        /// <summary>
+        /// 身份证有效起始日期
+        /// </summary>
+        public string EffectedDate { get; set; }
+        /// <summary>
+        /// 身份证有效截止日期
+        /// </summary>
+        public string ExpiredDate { get; set; }
         public DateTime? RegDate { get; set; }
 
         public DateTime? EndDate { get; set; }

@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace ZforeFromwork.ReadCard
 {
+    /// <summary>
+    /// 绑定外部Dll
+    /// </summary>
     public class Card
     {
         #region 导入外部DLL

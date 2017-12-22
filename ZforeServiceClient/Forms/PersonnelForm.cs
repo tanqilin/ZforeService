@@ -83,7 +83,7 @@ namespace ZforeServiceClient.Forms
                     Birthday = x.Birthday,
                     PersonCode = x.PersonCode,
                     Leave = x.Leave == true ? "离职" : "",
-                    ProjectName = _projectService.GetProjectByNum(x.EmployeeProNum).ProjectName,
+                    ProjectName = _projectService.GetProjectByNum(x.EmployeeProNum) == null?"": _projectService.GetProjectByNum(x.EmployeeProNum).ProjectName,
                     Photo = x.Photo
                 }).ToList();
             this.dataGrid_people.DataSource = models;
